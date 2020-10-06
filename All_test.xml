@@ -1,0 +1,9 @@
+<suite name="TestAll" verbose="1" preserve-order="true">
+<parameter name="browserName" value="CHROME" />
+	<test name="all-tests-package">
+		<packages>
+			<package name = ".*" />
+		</packages>
+	</test>
+</suite>
+

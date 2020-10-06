@@ -1,0 +1,32 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------------< WiZink:WiZink >----------------------------
+[INFO] Building WiZink 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ WiZink ---
+[INFO] Deleting C:\Users\scepedan\eclipse-workspace\pruebas_wizink_testng\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ WiZink ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\scepedan\eclipse-workspace\pruebas_wizink_testng\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ WiZink ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 15 source files to C:\Users\scepedan\eclipse-workspace\pruebas_wizink_testng\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ WiZink ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\scepedan\eclipse-workspace\pruebas_wizink_testng\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:testCompile (default-testCompile) @ WiZink ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to C:\Users\scepedan\eclipse-workspace\pruebas_wizink_testng\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.1:test (default-test) @ WiZink ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.830 s
+[INFO] Finished at: 2020-09-27T20:27:01+02:00
+[INFO] ------------------------------------------------------------------------

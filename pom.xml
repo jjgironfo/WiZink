@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>WiZink</groupId>
+  <artifactId>WiZink</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>WiZink</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	<maven-compiler-plugin>3.8.0</maven-compiler-plugin>
+	<maven-surefire-plugin>2.22.1</maven-surefire-plugin>
+	
+	<aspectj.version>1.9.1</aspectj.version>
+	<jdk.version>1.8</jdk.version>
+	<browser>chrome</browser>
+	<threadCount>1</threadCount>
+ 	
+ 
+  </properties>
+
+  <dependencies>			
+    <dependency>				
+        <groupId>org.seleniumhq.selenium</groupId>								
+        <artifactId>selenium-java</artifactId>								
+        <version>3.11.0</version>								
+	</dependency>
+		
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+    <dependency>		
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>3.16</version>
+    </dependency>
+    
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>3.16</version>
+    </dependency>
+    
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.12.1</version>
+	</dependency>
+	
+	<!-- testng -->
+	<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.14.3</version>
+			<scope>compile</scope> 
+	</dependency>
+	
+		
+
+	<!-- Allure testNG dependency -->
+	<dependency>
+	     <groupId>io.qameta.allure</groupId>
+	     <artifactId>allure-testng</artifactId>
+	     <version>2.12.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>io.qameta.allure</groupId>
+		<artifactId>allure-maven</artifactId>
+		<version>2.8</version>
+	</dependency>
+	
+	<!-- Remove log error - org.slf4j.impl.StaticLoggerBinder -->	
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-jdk14</artifactId>
+	    <version>1.7.25</version>
+	</dependency>
+	
+	<!-- aspectj -->
+	<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+	</dependency>	
+	
+	<!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc6 -->
+
+	
+	
+	<!-- Allure dependency -->
+  	</dependencies>
+	  <build>
+	  	<pluginManagement>
+	    	<plugins>
+	    		<plugin>
+	     			<groupId>org.apache.maven.plugins</groupId>
+	      			<artifactId>maven-compiler-plugin</artifactId>
+	      			<version>3.8.0</version>
+	      			<configuration>
+	       				<source>1.8</source>
+	       				<target>1.8</target>
+						<fork>true</fork>
+	                    <executable>${JAVA_HOME}\bin\javac</executable>
+	      			</configuration>
+	     		</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin}</version>
+	
+					<configuration>
+						<suiteXmlFiles>
+							<!-- <suiteXmlFile>${suiteName}</suiteXmlFile> -->
+							<!-- <suiteXmlFile>testNGAllTest.xml</suiteXmlFile> -->						
+							<!-- <suiteXmlFile>testNGTestUnitary.xml</suiteXmlFile> -->
+							<!-- suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>	-->						
+						</suiteXmlFiles>
+						
+						<!-- Allure -->
+						<systemProperties>
+							<property>
+								<name>allure.results.directory</name>
+								<value>target/allure-results</value>
+							</property>
+						</systemProperties>
+						
+						<!-- System Variables  -->
+						<systemPropertyVariables>
+							<!-- use -Dentorno=PRE/DES -->
+							<!-- <entorno>${entorno}</entorno> -->
+							<entorno>PRE</entorno>
+							<!-- hardcode environment for run individual tests -->
+							<!-- <environment>PRE</environment> -->
+						</systemPropertyVariables>
+						
+						<!-- Allure -->
+						
+						<testFailureIgnore>true</testFailureIgnore>
+						<parallel>methods</parallel>
+						<threadCount>${threadCount}</threadCount>
+						<argLine>
+							-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+						</argLine>
+					</configuration>
+				</plugin>
+				
+	    	</plugins>
+	   	</pluginManagement>
+  	 </build>
+   <!-- Allure reporting -->
+	<reporting>
+		<excludeDefaults>true</excludeDefaults>
+		<plugins>
+			<plugin>
+				<groupId>io.qameta.allure</groupId>
+				<artifactId>allure-maven</artifactId>
+				<version>${allure-maven}</version>
+				<configuration>
+					<reportDirectory>target/allure-report</reportDirectory>
+					<reportVersion>2.4.1</reportVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+  
+</project>
