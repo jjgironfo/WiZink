@@ -121,7 +121,8 @@
 							<!-- <suiteXmlFile>${suiteName}</suiteXmlFile> -->
 							<!-- <suiteXmlFile>testNGAllTest.xml</suiteXmlFile> -->						
 							<!-- <suiteXmlFile>testNGTestUnitary.xml</suiteXmlFile> -->
-							<!-- suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>	-->						
+							<!-- suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>	-->	
+							<suiteXmlFile>Test1.xml</suiteXmlFile>					
 						</suiteXmlFiles>
 						
 						<!-- Allure -->
