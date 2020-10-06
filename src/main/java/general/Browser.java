@@ -1,6 +1,7 @@
 package general;
 
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -126,7 +127,7 @@ public class Browser {
 		cleanChrome();
 		
 		// property
-		System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + "\\lib\\chromedriver");
+		System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 		
 		/** Chrome Options */
