@@ -29,7 +29,7 @@ public class PropertyControl {
 		Properties prop = new Properties();
 		// it is necessary null var initializing
 		File file = null;
-		file = new File(PathControl.getRootPath() + "\\properties\\" + opcion + ".properties");
+		file = new File(PathControl.getRootPath() + File.separator + "properties" + File.separator + opcion + ".properties");
 		// Se obtienen los bytes de entrada de un archivo en un sistema de archivos
 		FileInputStream fileInput = null;
 
