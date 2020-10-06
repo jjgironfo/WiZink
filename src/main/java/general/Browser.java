@@ -126,7 +126,7 @@ public class Browser {
 		cleanChrome();
 		
 		// property
-		System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + "\\lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + "\\lib\\chromedriver");
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 		
 		/** Chrome Options */
