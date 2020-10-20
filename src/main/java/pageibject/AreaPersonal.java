@@ -105,7 +105,7 @@ public class AreaPersonal  {
 
 			Browser.clickElementSyncro(btnAreaPersonal);
 			
-			System.out.println("OK - Se pulsa en el bot�n '�rea Personal'");
+			Reporting.reportOK("OK - Se pulsa en el bot�n '�rea Personal'");
 
 			// 1.3 Se pulsa Ir a �rea Personal y se visualizan los datos personales, demogr�ficos,
 			// foto de perfil y opciones de cambiar estos, el usuario y la contrase�a.
@@ -127,7 +127,7 @@ public class AreaPersonal  {
 			Browser.checkFieldText(btnCambiarDatoDemografico,"demographicDataChangeLink");
 			
 			// report 
-			Reporting.reportOK("Estamos en eel área personal");
+			Reporting.reportOK("Estamos en el área personal");
 
 
 	}
@@ -138,69 +138,92 @@ public class AreaPersonal  {
 	 * @return
 	 * 
 	 */
-	/**public void checkDocumentacion() throws Exception {
+	public boolean checkDocumentacion() throws Exception {
 		
-			Browser.waitExt(1);
-		
-			Browser.clickElementSyncro(btnAreaPersonal);
-			
-			System.out.println("OK - Se pulsa en el bot�n '�rea Personal'");
+			try {
+				Browser.waitExt(1);
+				boolean resultado = false;
 
-			Browser.waitExt(5);
-			Browser.clickElementSyncro(btnDocumentacion);
-			System.out.println("OK - Se pulsa en el bot�n 'Documentacion'");
-			
-			// 1.4 Se pulsa sobre la opci�n Documentaci�n y se muestra la documentaci�n disponible divida en bloques: Generales, Ahorro y Cr�dito.
-			Browser.checkFieldText(checkGenerales,"Generales") ;
-			Browser.checkFieldText(checkCredito, "Cr�dito");
-		
-			Reporting.reportOK("Estamos eEstamos en el area de documentacion");
-			
-			
-		
-			  // 1.5	Se pulsa sobre el enlace Contrato multicanal
-			Browser.clickElementSyncro(btnTerminosYCondicionesGeneral);
-			System.out.println("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
-			// PRE
-			// Borramos antes el fichero si existe y luego descargamos
-			ruta = Funciones.rutaPath + "Scripts\\properties\\Terminos y Condiciones General.pdf";
-			fichero = new File(ruta);
-			if (fichero.exists()) {
-				fichero.delete();
-			}	
-				// 1.5	Se pulsa sobre el enlace Contrato multicanal
-				ProjectPaths.sincronizaObjetoClick(btnContratoMulticanal);
-				egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'", "");
-				System.out.println("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
-				break;
-			default:
-				System.out.println("No se ha indicado un entorno valido");
-				break;
+				Browser.clickElementSyncro(btnAreaPersonal);
+				
+				Reporting.reportOK("OK - Se pulsa en el bot�n '�rea Personal'");
+
+				Browser.waitExt(5);
+				Browser.clickElementSyncro(btnDocumentacion);
+				Reporting.reportOK("OK - Se pulsa en el bot�n 'Documentacion'");
+				
+				// 1.4 Se pulsa sobre la opcin Documentacin y se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito.
+				resultado = (Browser.checkObjeto(checkGenerales) && Browser.checkObjeto(checkCredito));
+				if (resultado) {
+					//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito", "");
+					Reporting.reportOK("Se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito");
+				} else {
+					//egea.reportaTraza(testCase, "ERROR", "KO", "NO se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito", "");
+					Reporting.reportKO("KO - NO se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito");
+				}
+				
+				Properties datosConfig = PropertyControl.getProperties("config");
+				String entorno = datosConfig.getProperty("entorno");
+				
+				String ruta = "";
+				File fichero;
+				switch (entorno) {
+				case "DES":
+					// DES
+					// Borramos antes el fichero si existe y luego descargamos
+					ruta = Browser.rutaPath + File.separator + "properties" + File.separator + "Terminos y Condiciones General.pdf";
+					fichero = new File(ruta);
+					if (fichero.exists()) {
+						fichero.delete();
+					}
+					
+					// 1.5	Se pulsa sobre el enlace Contrato multicanal
+					Browser.clickElementSyncro(btnTerminosYCondicionesGeneral);
+					//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'", "");
+					Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
+					break;
+				case "PRE":
+					// PRE
+					// Borramos antes el fichero si existe y luego descargamos
+					ruta = Browser.rutaPath + File.separator + "properties" + File.separator + "OLB - Contrato Multicanal.pdf";
+					fichero = new File(ruta);
+					if (fichero.exists()) {
+						fichero.delete();
+					}
+					
+					// 1.5	Se pulsa sobre el enlace Contrato multicanal
+					Browser.clickElementSyncro(btnContratoMulticanal);
+					//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'", "");
+					Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
+					break;
+				default:
+					Reporting.reportKO("No se ha indicado un entorno valido");
+					break;
+				}
+
+				// Esperamos a que se descargue el Fichero PDF
+				Browser.waitExt(20);
+				
+				// Validamos que se ha descargado el Fichero PDF
+				fichero = new File(ruta);
+				resultado = fichero.exists();
+				if (resultado) {
+					//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha descargado el Fichero PDF", "");
+					Reporting.reportOK("OK - Validamos que se ha descargado el Fichero PDF");
+				} else {
+					//egea.reportaTraza(testCase, "ERROR", "KO", "NO se valida que se ha descargado el Fichero PDF", "");
+					Reporting.reportKO("KO - NO se valida que se ha descargado el Fichero PDF");
+				}
+				
+				return resultado;
+			} catch (Exception e) {
+				Reporting.reportKO("KO - NO se valida que se ha descargado el Fichero PDF");
+				e.printStackTrace();
+				throw new Exception("KO - NO se valida que se ha descargado el Fichero PDF " + e.toString());
 			}
-			
-			// Esperamos a que se descargue el Fichero PDF
-			ProjectPaths.waitExt(20);
-			
-			// Validamos que se ha descargado el Fichero PDF
-			fichero = new File(ruta);
-			resultado = fichero.exists();
-			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha descargado el Fichero PDF", "");
-				System.out.println("OK - Validamos que se ha descargado el Fichero PDF");
-			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "NO se valida que se ha descargado el Fichero PDF", "");
-				System.out.println("KO - NO se valida que se ha descargado el Fichero PDF");
-			}
-			
-			return resultado;
 
-		} catch (Exception e) {
-			System.out.println("KO - NO se valida que se ha descargado el Fichero PDF");
-			e.printStackTrace();
-			throw new Exception("KO - NO se valida que se ha descargado el Fichero PDF " + e.toString());
-		}
 
-	}**/
+	}
 
 	
 	/**

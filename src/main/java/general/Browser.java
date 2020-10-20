@@ -42,6 +42,7 @@ public class Browser {
 	private static String actualEnv;
 
 	private static Object object;
+	public static String rutaPath;
 
 	
 	/**
@@ -55,6 +56,7 @@ public class Browser {
 		usedNav = PropertyControl.getConfProperty("navUsed");
 		headless = Boolean.parseBoolean(PropertyControl.getConfProperty("headlessMode"));
 		actualEnv = PropertyControl.getConfProperty("actualEnv");
+		rutaPath = PathControl.getRootPath();
 		
 		// disable selenium log output 
 		java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
@@ -459,4 +461,20 @@ public class Browser {
 	public static List<WebElement> getListOfElements(By listId){
 		return driver.findElements(listId);
 	}
+	
+	/**
+   	 * Metodo para validar elemento y devuelve booleano
+     * @return 
+   	 * 
+   	 */
+    public static boolean checkObjeto(By elemento) throws Exception {
+	   boolean resultado = false;
+	   if (driver.findElements(elemento).size() != 0) {
+			resultado = true;
+		} else {
+			resultado = false;
+		}
+	   return resultado;
+    } 
+
 }
