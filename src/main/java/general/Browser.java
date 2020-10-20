@@ -35,6 +35,7 @@ public class Browser {
 	private static WebDriverWait elementWait;
 	private static WebDriverWait screenWait;
 	private static int timeDelay;
+	private static Integer timeImplicitlyWait;
 	
 	// nav data
 	private static String usedNav;
@@ -100,6 +101,7 @@ public class Browser {
 		elementWait = new WebDriverWait(driver, elementWaitTime);
 		screenWait = new WebDriverWait(driver, screenWaitTime);
 		timeDelay = Integer.parseInt(PropertyControl.getConfProperty("timeDelay"));
+		timeImplicitlyWait = Integer.parseInt(PropertyControl.getConfProperty("timeOut"));
 		
 		// configure windows
 		driver.manage().deleteAllCookies();
@@ -476,5 +478,61 @@ public class Browser {
 		}
 	   return resultado;
     } 
+    
+    /**
+	 * Metodo para realizar un scroll del navegador vertical
+	 * 
+	 * @param   String direccion: para hacer el scroll hacia arriba o hacia abajo
+	 */	
+	
+	public static void scrollNavegadorVertical(String direccion) {
+		JavascriptExecutor js = ((JavascriptExecutor) driver);
+		switch (direccion) {
+		case "ARRIBA":
+			js.executeScript("window.scrollTo(0, 0)");
+			break;
+		case "ABAJO":
+			js.executeScript("window.scrollTo(0, 10000)");
+			break;
+		default:
+			Log.info("El parametro de la direccin introducida no es correcto, las opciones son 'ARRIBA' y 'ABAJO'");
+			break;
+		}
+	}
+	
+	/**
+	 * Mtodo que devuelve el valor de la variable timeImplicitlyWait
+	 */
+	public static Integer getTimeImplicitWait() {
+		return timeImplicitlyWait;
+	}
+
+	
+	/**
+   	 * Metodo para Sincronizar el Spinner
+   	 * 
+   	 */
+    public static boolean cargarSpinner() throws Exception {
+    	boolean resultado = false;
+    	//boolean resultado = true;
+    	By objetoSpinerCargando = By.xpath("//div[@class='modal-backdrop in background-backdrop']");
+    	try {
+    		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    		if (driver.findElements(objetoSpinerCargando).size() != 0) {
+    			waitExt(3);
+    			Log.info("INFO - Se encuentra el Spinner Cargando + Se espera Tiempo");
+    			resultado = true;
+    		} else {
+    			Log.info("INFO - No se encuentra el Spinner Cargando");
+    			resultado = false;
+    		}
+    		driver.manage().timeouts().implicitlyWait(timeImplicitlyWait, TimeUnit.SECONDS);
+    	} catch (Exception e) {
+    		Log.info("INFO - Excepcion - No se encuentra el Spinner Cargando");
+    	}
+    	return resultado;
+    }
+
+
 
 }

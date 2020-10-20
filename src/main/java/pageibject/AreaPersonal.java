@@ -238,20 +238,20 @@ public class AreaPersonal  {
 
 			// 1.3 Se pulsa Ir a �rea Personal
 			Browser.clickElementSyncro(btnAreaPersonal);
-			System.out.println("OK - Se pulsa en el bot�n '�rea Personal'");
+			Reporting.reportOK("OK - Se pulsa en el bot�n '�rea Personal'");
 
 			// 1.4 Pulsar sobre el link 'Cambiar' de la Foto de Perfil
 			Browser.clickElementSyncro(btnCambiarDatoFoto);
-			System.out.println("OK - Se pulsa sobre el link 'Cambiar' de la Foto de Perfil");
+			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar' de la Foto de Perfil");
 
 			// 1.5 Pulsar sobre la foto y se muestran las fotos disponibles para seleccionar
 			Browser.clickElementSyncro(btnImagenCambioFoto);
 			
-			System.out.println("OK - Se pulsa sobre la foto y se muestran las fotos disponibles para seleccionar");
+			Reporting.reportOK("OK - Se pulsa sobre la foto y se muestran las fotos disponibles para seleccionar");
 			
 			// Realizamos la subida del Fichero
 			Browser.waitExt(1);
-			System.out.println("Subimos Imagen");
+			Reporting.reportOK("Subimos Imagen");
 
 			//Properties datosConfig = PropertyControl.getConfProperty("config");
 			//String text = datosConfig.getProperty("rutaImagen");
@@ -268,35 +268,36 @@ public class AreaPersonal  {
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 
-			System.out.println("Fin Subir Imagen");
+			Reporting.reportOK("Fin Subir Imagen");
 			Browser.waitExt(1);
 			
 			// 1.6 Seleccionar foto y pulsar en ok. La foto seleccionada se muestra como la del perfil
-			//Funciones.waitForElement(btnGuardarCambiosImagenCambioFoto,4,"no se carga la pantalla");
-			//Browser.scrollNavegadorVertical("ABAJO");
-			//Browser.sincronizaObjetoClick(btnGuardarCambiosImagenCambioFoto);
+			Browser.waitForElementSyncro(btnGuardarCambiosImagenCambioFoto);
+			Browser.scrollNavegadorVertical("ABAJO");
+			Browser.clickElementSyncro(btnGuardarCambiosImagenCambioFoto);
 			
-			System.out.println("OK - Seleccionar foto y pulsar en ok. La foto seleccionada se muestra como la del perfil");
+			Reporting.reportOK("OK - Seleccionar foto y pulsar en ok. La foto seleccionada se muestra como la del perfil");
 			
 			Browser.waitExt(1);
-			//Browser.cargarSpinner();
-			//Funciones.waitExt(1);
+			Browser.cargarSpinner();
+			Browser.waitExt(1);
 			
 			// Nos volvemos para verificar que se ha incluido el cambio de la Imagen -- Boton Volver
 			Browser.waitForElementSyncro(btnVolverImagenCambioFoto);
 			Browser.clickElementSyncro(btnVolverImagenCambioFoto);
 			
-			System.out.println("OK - Nos volvemos para verificar que se ha incluido el cambio de la Imagen");
+			Reporting.reportOK("OK - Nos volvemos para verificar que se ha incluido el cambio de la Imagen");
 			
 			// Validamos que se muestra el boton Eliminar (Significa que se ha incluido anteriormente)
+			//Este método no se encuentra en el código antiguo
 			//Browser.checkFieldDisabled(btnEliminarImagenCambioFoto, "delete", isDisabled);
 						
 			// Borramos la Imagen para futuras ejecuciones de la prueba
 			Browser.clickElementSyncro(btnEliminarImagenCambioFoto);
-			System.out.println("OK - Eliminamos la Imagen");
+			Reporting.reportOK("OK - Eliminamos la Imagen");
 			
 			//Browser.checkObjetoNoExiste(btnEliminarImagenCambioFoto);
-			System.out.println("OK - El boton Eliminar no existe");
+			Reporting.reportOK("OK - El boton Eliminar no existe");
 			
 			// report 
 			Reporting.reportOK("El botón eliminar no existe");
