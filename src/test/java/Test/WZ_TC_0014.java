@@ -59,8 +59,8 @@ public class WZ_TC_0014 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//areaPersonal.cambiarUsuarioPerfilAreaPersonal();
+			
+			areaPersonal.cambiarUsuarioPerfilAreaPersonal(userName, pass);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

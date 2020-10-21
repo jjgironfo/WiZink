@@ -59,8 +59,8 @@ public class WZ_TC_0012 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//areaPersonal.cambiarDatosDemograficos();
+
+			areaPersonal.cambiarDatosDemograficos();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

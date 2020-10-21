@@ -59,8 +59,8 @@ public class WZ_TC_0010 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//areaPersonal.checkAreaPersonal();
+			
+			areaPersonal.checkAreaPersonal();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

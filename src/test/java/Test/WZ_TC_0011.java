@@ -25,7 +25,7 @@ public class WZ_TC_0011 {
 	@Parameters({ "browserName","userName","password"})
 	@Test()
 	@Description("Modificar datos personales")
-	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
+	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass , @Optional String direccion) throws Exception {
 
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 
@@ -59,8 +59,8 @@ public class WZ_TC_0011 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//areaPersonal.cambiarDatosPersonales();
+			
+			areaPersonal.cambiarDatosPersonales(direccion);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
