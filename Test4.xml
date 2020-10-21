@@ -4,7 +4,7 @@
 	<test name=" poc">
 	  	<parameter name ="browserName" value = "CHROME" />
 	  	<classes>  
-	        <class name="Test.WZ_TC_0001"/>
+	        <class name="Test.WZ_TC_0004"/>
 	   	</classes>
 	</test>
 </suite> 

@@ -1,25 +1,30 @@
 package Test;
 
-import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.Properties;
+import java.util.List;
+import java.util.Map;
 
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.annotations.Optional;
 
+import io.qameta.allure.Description;
+import pageibject.Login;
 import general.Browser;
+
 import general.Final;
 import general.Log;
-import general.ProjectPaths;
 import general.Reporting;
-import pageibject.Login;
+
+
 
 public class WZ_TC_0002 {
+	
+	@Parameters({ "browserName","userName","password"})
+	@Test()
+	@Description("Login en wizink")
+	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 
-	@Parameters({ "url", "nombreUsuario", "contrasenia" })
-	@Test
-	public static void login(@Optional String url, @Optional String nombreUsuario, @Optional String contrasenia) throws Exception {
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 
 		try {
@@ -51,7 +56,7 @@ public class WZ_TC_0002 {
 			 * Start test
 			 */
 			
-			login.recordarUsuario();
+			login.doLoginUsuarioPassword(userName,pass);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

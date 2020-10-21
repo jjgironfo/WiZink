@@ -13,14 +13,15 @@ import general.Final;
 import general.Log;
 import general.ProjectPaths;
 import general.Reporting;
+import io.qameta.allure.Description;
 import pageibject.Login;
 
+public class WZ_TC_0003 {
 
-public class WZ_TC_0003{
-
-	@Parameters({ "browserName" })
-	@Test (description = "Recordar Usuario")
-	public static void recuperarUsuario(@Optional(Final.CHROME) String browserName) throws Exception {
+	@Parameters({ "url", "nombreUsuario", "contrasenia" })
+	@Test
+	@Description("Recordar usuario")
+	public static void login(@Optional String url, @Optional String nombreUsuario, @Optional String contrasenia) throws Exception {
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 
 		try {
@@ -52,7 +53,7 @@ public class WZ_TC_0003{
 			 * Start test
 			 */
 			
-			login.recordarPassword();
+			login.recordarUsuario();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
@@ -66,4 +67,5 @@ public class WZ_TC_0003{
 
 
 	}
+
 }
