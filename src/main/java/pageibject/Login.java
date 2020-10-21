@@ -14,6 +14,7 @@ import general.Browser;
 import general.Log;
 import general.PropertyControl;
 import general.Reporting;
+import general.Utilidades;
 
 public class Login {
 
@@ -116,7 +117,7 @@ public class Login {
 					//}
 				//}
 			
-			//Funciones.waitExt(20);
+			//Browser.waitExt(20);
 			//if (Browser.checkFieldDisabled(btnAccesoClientes, "Acceso clientes", isDisabled)) {
 				
 				Browser.clickElementSyncro(txtUsuario);
@@ -167,7 +168,7 @@ public class Login {
 	public void doLogout() throws Exception {
 
 			Browser.clickElementSyncro(btnLogout);
-			System.out.println("Hacemos el logout en la aplicacion");
+			Reporting.reportOK("Hacemos el logout en la aplicacion");
 
 			Reporting.reportOK("Log out Ok");
 
@@ -219,70 +220,71 @@ public class Login {
 	 * @return
 	 * 
 	 */
-	/**public boolean doRegistro() throws Exception {
+	public boolean doRegistro() throws Exception {
 		try {
 			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
-			if (ProjectPaths.checkObjeto(btnPrivacidadLogin)) {
+			if (Browser.checkObjeto(btnPrivacidadLogin)) {
 				try {
-					click(btnPrivacidadLogin);
+					driver.findElement(btnPrivacidadLogin).click();
 				} catch (Exception e) {
-					System.out.println("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
+					Reporting.reportKO("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
 				}
 			}
 
-			ProjectPaths.waitExt(1);
+			Browser.waitExt(1);
 			boolean resultado = false;
 			
-			// Pulsar el bot�n 'Reg�strate Ahora'
-			ProjectPaths.sincronizaObjetoClick(btnRegistrateAhora);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Reg�strate Ahora'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Reg�strate Ahora'");
+			// Pulsar el botn 'Regstrate Ahora'
+			Browser.clickElementSyncro(btnRegistrateAhora);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Regstrate Ahora'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Regstrate Ahora'");
 			
-			// Introducir el nif y la fecha de nacimiento y pulsar en el bot�n "seguir"
-			ProjectPaths.sincronizaObjetoSoloClick(radioNIF);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
-			System.out.println("OK - Se pulsa en el radio 'NIF'");
+			// Introducir el nif y la fecha de nacimiento y pulsar en el botn "seguir"
+			Browser.sincronizaObjetoSoloClick(radioNIF);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
+			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
 			
-			String Nif = Log.generaNif("1");
-			ProjectPaths.sincronizaObjetoEscribe(txtNif, Nif);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
-			System.out.println("OK - Se escribe el 'NIF'");
+			String Nif = Utilidades.generaNif("1");
+			Browser.writeTextSyncro(txtNif, Nif);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
+			Reporting.reportOK("OK - Se escribe el 'NIF'");
 			
 			String fechaNacimiento = "01/01/1990";
-			ProjectPaths.sincronizaObjetoEscribe(txtFechaNacimiento, fechaNacimiento);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
-			System.out.println("OK - Se escribe la 'Fecha de Nacimiento'");
+			Browser.writeTextSyncro(txtFechaNacimiento, fechaNacimiento);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
+			Reporting.reportOK("OK - Se escribe la 'Fecha de Nacimiento'");
 			
-			ProjectPaths.sincronizaObjetoClick(btnSeguir);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Seguir'");
+			Browser.clickElementSyncro(btnSeguir);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
 			
 	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
 			
-			// Rellenar los campos usuario, contrase�a y repetir contrase�a y el campo email. 
+			// Rellenar los campos usuario, contrasea y repetir contrasea y el campo email. 
 			// Hacer click en el check de condiciones en el pop up que se abre. 
-			// Introducir el c�digo OTP en el textbox
+			// Introducir el cdigo OTP en el textbox
 			
-//			Funciones.sincronizaObjetoClick(btnAccesoClientes);
-//			resultado = Funciones.checkObjeto(enlaceHome);
+//			Browser.clickElementSyncro(btnAccesoClientes);
+//			resultado = Browser.checkObjeto(enlaceHome);
 			
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				System.out.println("OK - TEXTO OK");
+				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
+				Reporting.reportOK("OK - TEXTO OK");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				System.out.println("KO - TEXTO KO");
+				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
+				Reporting.reportKO("KO - TEXTO KO");
 			}		
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - TEXTO KO");
+			Reporting.reportKO("KO - TEXTO KO");
 			e.printStackTrace();
 			throw new Exception("KO - TEXTO KO " + e.toString());
 		}
 
-	}**/
+
+	}
 	
 	/**
 	 * Metodo para Recordar Usuario en la aplicacion
@@ -290,79 +292,61 @@ public class Login {
 	 * @return
 	 * 
 	 */
-	/**public boolean doRecordarUsuario(String nif, String fecha, String usuario, String password) throws Exception {
+	public boolean doRecordarUsuario(String nif, String fecha, String usuario, String password) throws Exception {
 		try {
 			boolean resultado = false;
-			
-			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
-			if (ProjectPaths.checkObjeto(btnPrivacidadLogin)) {
-				try {
-					click(btnPrivacidadLogin);
-				} catch (Exception e) {
-					System.out.println("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
-				}
-			}
-						
-			// Pulsar el link "He olvidado mi usuario"
-			ProjectPaths.sincronizaObjetoClick(btnRecordarUsuario);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'He olvidado mi usuario'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'He olvidado mi usuario'");
-			
-			// Introducir el nif y la fecha de nacimiento y pulsar en el bot�n "seguir"
-			ProjectPaths.sincronizaObjetoSoloClick(radioNIF);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
-			System.out.println("OK - Se pulsa en el radio 'NIF'");
-			
-			ProjectPaths.sincronizaObjetoEscribe(txtNif, nif);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
-			System.out.println("OK - Se escribe el 'NIF'");
-			
-			ProjectPaths.sincronizaObjetoEscribe(txtFechaNacimiento, fecha);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
-			System.out.println("OK - Se escribe la 'Fecha de Nacimiento'");
-			
-			ProjectPaths.sincronizaObjetoClick(btnSeguirRecordarUsuario);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Seguir'");
-			
-			// Introducir el c�digo OTP en el textbox y pulsamos en continuar
-			ProjectPaths.waitExt(2);
-			ProjectPaths.checkObjeto(btnSeguirOTPRecordarUsuario);
-			introduceCodigoOTP(txtOTPRecordarUsuario, "");
-			egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
-			System.out.println("OK - Se introduce el OTP");
-			ProjectPaths.sincronizaObjetoClick(btnSeguirOTPRecordarUsuario);
 
-			ProjectPaths.sincronizaObjetoEscribe(txtUsuarioRecordarUsuario, usuario);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el Usuario", "");
-			System.out.println("OK - Se introduce el Usuario");
+			// Pulsar el link "He olvidado mi usuario"
+			Browser.clickElementSyncro(btnRecordarUsuario);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'He olvidado mi usuario'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'He olvidado mi usuario'");
 			
-			ProjectPaths.sincronizaObjetoEscribe(txtPasswordRecordarUsuario, password);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el Password", "");
-			System.out.println("OK - Se introduce el Password");
+			// Introducir el nif y la fecha de nacimiento y pulsar en el botn "seguir"
+			Browser.sincronizaObjetoSoloClick(radioNIF);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
+			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
 			
-			ProjectPaths.sincronizaObjetoClick(btnEntrarRecordarUsuario);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el boton Entrar", "");
-			System.out.println("OK - Se pulsa en el boton Entrar");
+			String Nif = Utilidades.generaNif("1");
 			
-			ProjectPaths.waitExt(2);
-			resultado = ProjectPaths.checkObjeto(enlaceHome);
+			Browser.writeTextSyncro(txtNif, Nif);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
+			Reporting.reportOK("OK - Se escribe el 'NIF'");
+			
+			String fechaNacimiento = "01/01/1990";
+			
+			Browser.writeTextSyncro(txtFechaNacimiento, fechaNacimiento);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
+			Reporting.reportOK("OK - Se escribe la 'Fecha de Nacimiento'");
+			
+			Browser.clickElementSyncro(btnSeguirRecordarUsuario);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
+			
+	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
+			
+			// Introducir el cdigo OTP en el textbox y pulsamos en continuar
+			
+			
+//			Browser.clickElementSyncro(btnAccesoClientes);
+//			resultado = Browser.checkObjeto(enlaceHome);
+			
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Se realiza la funcion 'He olvidado mi usuario'", "");
-				System.out.println("OK - Se realiza la funcion 'He olvidado mi usuario'");
+				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
+				Reporting.reportOK("OK - TEXTO OK");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "Se realiza la funcion 'He olvidado mi usuario'", "");
-				System.out.println("KO - No se realiza la funcion 'He olvidado mi usuario'");
+				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
+				Reporting.reportKO("KO - TEXTO KO");
 			}		
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - No se realiza la funcion 'He olvidado mi usuario'");
+			Reporting.reportKO("KO - TEXTO KO");
 			e.printStackTrace();
-			throw new Exception("KO - No se realiza la funcion 'He olvidado mi usuario' " + e.toString());
+			throw new Exception("KO - TEXTO KO " + e.toString());
 		}
 
-	}**/
+
+	}
 	
 	/**
 	 * Metodo para Recordar Contrase�a en la aplicacion
@@ -370,76 +354,62 @@ public class Login {
 	 * @return
 	 * 
 	 */
-	/**public boolean doRecordarPassword(String nif, String fecha, String usuario, String password) throws Exception {
+	public boolean doRecordarPassword(String nif, String fecha, String usuario, String password) throws Exception {
 		try {
 			boolean resultado = false;
-			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
-			if (ProjectPaths.checkObjeto(btnPrivacidadLogin)) {
-				try {
-					click(btnPrivacidadLogin);
-				} catch (Exception e) {
-					System.out.println("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
-				}
-			}
 
-			// Pulsar el link "He olvidado mi contase�a"
-			ProjectPaths.sincronizaObjetoClick(btnRecordarPassword);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'He olvidado mi contase�a'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'He olvidado mi usuario'");
+			// Pulsar el link "He olvidado mi contasea"
+			Browser.clickElementSyncro(btnRecordarPassword);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'He olvidado mi contasea'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'He olvidado mi usuario'");
 			
 			// Introducir el nif y la fecha de nacimiento y pulsar en seguir
-			ProjectPaths.sincronizaObjetoSoloClick(radioNIF);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
-			System.out.println("OK - Se pulsa en el radio 'NIF'");
+			Browser.sincronizaObjetoSoloClick(radioNIF);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
+			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
 			
-			ProjectPaths.sincronizaObjetoEscribe(txtNif, nif);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
-			System.out.println("OK - Se escribe el 'NIF'");
+			String Nif = Utilidades.generaNif("1");
 			
-			ProjectPaths.sincronizaObjetoEscribe(txtUsuarioRecordarPassword, usuario);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'Usuario'", "");
-			System.out.println("OK - Se escribe el 'Usuario'");
+			Browser.writeTextSyncro(txtNif, Nif);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
+			Reporting.reportOK("OK - Se escribe el 'NIF'");
 			
-			ProjectPaths.sincronizaObjetoClick(btnSeguir);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Seguir'");
+			//String usuario = "Usuario";
 			
-			// Introducimos nueva password y damos a Continuar
-			ProjectPaths.sincronizaObjetoEscribe(txtPasswordNuevaRecordarPassword, password);
-			ProjectPaths.sincronizaObjetoEscribe(txtPasswordNuevaRepetirRecordarPassword, password);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la Nueva Contrase�a y se repite", "");
-			System.out.println("OK - Se escribe la Nueva Contrase�a y se repite");
+			Browser.writeTextSyncro(txtUsuarioRecordarPassword, usuario);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'Usuario'", "");
+			Reporting.reportOK("OK - Se escribe el 'Usuario'");
 			
-			ProjectPaths.sincronizaObjetoClick(btnSeguir);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Seguir'");
+			Browser.clickElementSyncro(btnSeguir);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
+			
+	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
 			
 			// Introducir el OTP y pulsar continuar
-			ProjectPaths.waitExt(2);
-			ProjectPaths.checkObjeto(btnSeguir);
-			introduceCodigoOTP(txtOTPRecordarUsuario, "");
-			egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
-			System.out.println("OK - Se introduce el OTP");
-			ProjectPaths.sincronizaObjetoClick(btnSeguir);
+			// Introducimos nueva password y damos a Continuar
 			
-			ProjectPaths.waitExt(2);
-			resultado = ProjectPaths.checkObjeto(checkPasswordNueva);
+			
+//			Browser.clickElementSyncro(btnAccesoClientes);
+//			resultado = Browser.checkObjeto(enlaceHome);
+			
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Se valida que se ha realizado la Modificacion del Password", "");
-				System.out.println("OK - Se valida que se ha realizado la Modificacion del Password");
+				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
+				Reporting.reportOK("OK - TEXTO OK");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "No se valida que se ha realizado la Modificacion del Password", "");
-				System.out.println("KO - No se valida que se ha realizado la Modificacion del Password");
+				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
+				Reporting.reportKO("KO - TEXTO KO");
 			}		
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - No se valida que se ha realizado la Modificacion del Password");
+			Reporting.reportKO("KO - TEXTO KO");
 			e.printStackTrace();
-			throw new Exception("KO - No se valida que se ha realizado la Modificacion del Password " + e.toString());
+			throw new Exception("KO - TEXTO KO " + e.toString());
 		}
 
-	}**/
+
+	}
 	
 	
 }

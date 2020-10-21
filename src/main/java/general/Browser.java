@@ -592,6 +592,16 @@ public class Browser {
 		}
 		return elem;
 	}
+    
+    /**
+	 * Metodo que espera a la carga del Objeto y pulsa Click sobre el elemento
+	 * 
+	 */
+    public static void sincronizaObjetoSoloClick(By elemento) throws Exception {
+    	cargarSpinner();
+		driver.findElement(elemento).click();
+    }
+
 
 
 
