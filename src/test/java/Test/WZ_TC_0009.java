@@ -58,8 +58,8 @@ public class WZ_TC_0009 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//mensajes.borrarMensajes();
+			
+			mensajes.borrarMensajes();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

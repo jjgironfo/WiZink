@@ -58,8 +58,8 @@ public class WZ_TC_0008 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//mensajes.redactarMsg();
+			
+			mensajes.redactarMsg();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
