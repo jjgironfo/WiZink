@@ -311,7 +311,7 @@ public class Producto {
 			Browser.scrollNavegadorVertical("ABAJO");			
 			
 			// Borramos antes el fichero si existe y luego descargamos
-			String ruta = Browser.rutaPath + "Scripts\\properties\\movimientosExtracto.xls";
+			String ruta = Browser.rutaPath + File.separator + "properties" + File.separator + "movimientosExtracto.xls";
 			File fichero = new File(ruta);
 			if (fichero.exists()) {
 				fichero.delete();
