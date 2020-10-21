@@ -3,8 +3,9 @@ package pageibject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
+import general.Browser;
 import general.ProjectPaths;
+import general.Reporting;
 
 public class Mensajes {
 
@@ -46,55 +47,48 @@ public class Mensajes {
 	 * @return
 	 * 
 	 */
-	/**public boolean checkMsgRecibidos() throws Exception {
+	public boolean checkMsgRecibidos() throws Exception {
 		try {
-			ProjectPaths.waitExt(1);	
+			Browser.waitExt(1);	
 			boolean resultado = false;
 			
-			click(btnMensajes);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes'");
+			Browser.clickElementSyncro(btnMensajes);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
 			
-			ProjectPaths.waitExt(6);
-			isDisplayed(btnMsgRecibidos);
-			click(btnMsgRecibidos);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes Recibidos'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes Recibidos'");
+			Browser.waitExt(6);
+			Browser.isElementDisplayed(btnMsgRecibidos);
+			Browser.clickElementSyncro(btnMsgRecibidos);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Recibidos'");
 			
-			ProjectPaths.waitExt(2);
-//			Funciones.sincronizaObjetoClick(listaMensajesBandeja);
-//			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el primer Mensaje de la bandeja", "");
-//			System.out.println("OK - Se pulsa en el primer Mensaje de la bandeja");
-//			
-//			// Validamos que se muestra el mensaje recibido
-//			resultado = Funciones.checkObjeto(detalleMensajesBandeja);
-//			if (resultado) {
-//				egea.reportaTraza(testCase, "INFO", "OK", "Se abre el Mensaje Recibido y se valida la pantalla", "");
-//				System.out.println("OK - Se abre el Mensaje Recibido y se valida la pantalla");
-//			} else {
-//				egea.reportaTraza(testCase, "ERROR", "KO", "NO se abre el Mensaje Recibido y se valida la pantalla", "");
-//				System.out.println("KO - No se abre el Mensaje Recibido y se valida la pantalla");
-//			}
+			Browser.waitExt(2);
+			Browser.clickElementSyncro(listaMensajesBandeja);
+			Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
+			
+			// Validamos que se muestra el mensaje recibido
+			resultado = Browser.checkObjeto(detalleMensajesBandeja);
+			if (resultado) {
+				Reporting.reportOK("OK - Se abre el Mensaje Recibido y se valida la pantalla");
+			} else {
+				Reporting.reportKO("KO - No se abre el Mensaje Recibido y se valida la pantalla");
+			}
 
 			// Validamos que se muestra el mensaje recibido
-			resultado = isDisplayed(checkPantallaMensajesRecibidos);
+			resultado = Browser.isElementDisplayed(checkPantallaMensajesRecibidos);
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Se valida la pantalla Mensajes Recibidos", "");
-				System.out.println("OK - Se valida la pantalla Mensajes Recibidos");
+				Reporting.reportOK("OK - Se valida la pantalla Mensajes Recibidos");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "No se valida la pantalla Mensajes Recibidos", "");
-				System.out.println("KO - No se valida la pantalla Mensajes Recibidos");
+				Reporting.reportKO("KO - No se valida la pantalla Mensajes Recibidos");
 			}
 			
 			return resultado;
 			
 		} catch (Exception e) {
-			System.out.println("KO - No se valida la pantalla Mensajes Recibidos");
+			Reporting.reportKO("KO - No se valida la pantalla Mensajes Recibidos");
 			e.printStackTrace();
 			throw new Exception("KO - No se valida la pantalla Mensajes Recibidos " + e.toString());
 		}
 
-	}**/
+	}
 	
 	/**
 	 * Metodo para Validar los Mensajes Enviados
