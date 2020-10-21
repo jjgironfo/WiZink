@@ -13,6 +13,7 @@ import pageibject.AreaPersonal;
 import pageibject.Login;
 import pageibject.Mensajes;
 import pageibject.PosicionGlobal;
+import pageibject.Producto;
 import general.Browser;
 
 import general.Final;
@@ -42,7 +43,7 @@ public class WZ_TC_0020 {
 			 */
 
 			Login login = new Login();
-			Producto producto = new Producto();
+			Producto producto = new Producto(codeTC);
 			
 			/**
 			 *  INITIALIZE BROWSER
