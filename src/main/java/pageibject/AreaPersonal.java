@@ -312,55 +312,72 @@ public class AreaPersonal  {
 	 * @return
 	 * 
 	 */
-/**	public boolean cambiarPasswordPerfilAreaPersonal(String password) throws Exception {
+	public boolean cambiarPasswordPerfilAreaPersonal(String password) throws Exception {
 		try {
-			ProjectPaths.waitExt(1);
+			Browser.waitExt(1);
 			boolean resultado = false;
 
-			// 1.3 Se pulsa Ir a �rea Personal
-			click(btnAreaPersonal);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n '�rea Personal'", "");
-			System.out.println("OK - Se pulsa en el bot�n '�rea Personal'");
+			// 1.3 Se pulsa Ir a rea Personal
+			Browser.clickElementSyncro(btnAreaPersonal);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
 
-			// 1.4 Pulsar el bot�n "CAMBIAR MI CONTRASE�A"
-			ProjectPaths.waitExt(1);
-			click(btnCambiarMiPassword);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi Contrase�a'", "");
-			System.out.println("OK - Se pulsa sobre el link 'Cambiar Mi Contrase�a'");
+			// 1.4 Pulsar el botn "CAMBIAR MI CONTRASEA"
+			Browser.waitExt(1);
+			Browser.clickElementSyncro(btnCambiarMiPassword);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi Contrasea'", "");
+			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi Contrasea'");
 
-			// 1.5 Introducir la contrase�a antigua, y la nueva en los campos contrase�a y repetir contrase�a
-			click(txtPassActualMiPass);
-			type(password,txtPassActualMiPass);
-			click(txtPassCrea1MiPass);
-			type(password,txtPassCrea1MiPass);
-			click(txtPassCrea2MiPass);
-			type(password,txtPassCrea2MiPass);
+			// 1.5 Introducir la contrasea antigua, y la nueva en los campos contrasea y repetir contrasea
+			//String password = "";
+			Properties datosConfig = PropertyControl.getProperties("config");
+			Properties datosLogin = PropertyControl.getProperties("login");
+
+			String entorno = datosConfig.getProperty("entorno");
+			switch (entorno) {
+			case "DES":
+				password = datosLogin.getProperty("password_DES");
+				break;
+			case "PRE":
+				password = datosLogin.getProperty("password_PRE");
+				break;
+			case "PRO":
+				password = datosLogin.getProperty("password_PRO");
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			
+			Browser.writeTextSyncro(txtPassActualMiPass, password);
+			Browser.writeTextSyncro(txtPassCrea1MiPass, password);
+			Browser.writeTextSyncro(txtPassCrea2MiPass, password);
 			
-			// 1.6 Pulsar en el bot�n "GUARDAR CAMBIOS". Los cambios se guardan de manera correcta
-			click(btnGuardarCambiosMiPass);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Guardar Cambios'", "");
-			System.out.println("OK - Se pulsa sobre el link 'Guardar Cambios'");
+			// 1.6 Pulsar en el botn "GUARDAR CAMBIOS". Los cambios se guardan de manera correcta
+			Browser.clickElementSyncro(btnGuardarCambiosMiPass);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Guardar Cambios'", "");
+			Reporting.reportOK("OK - Se pulsa sobre el link 'Guardar Cambios'");
 			
-			// Validamos que se guarda la Nueva Contrase�a indicada
-			resultado = isDisplayed(checkCambioPass);
+			// Validamos que se guarda la Nueva Contrasea indicada
+			resultado = (Browser.checkObjeto(checkCambioPass));
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrase�a indicada", "");
-				System.out.println("OK - Validamos que se guarda la Nueva Contrase�a indicada");
+				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
+				Reporting.reportOK("OK - Validamos que se guarda la Nueva Contrasea indicada");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrase�a indicada", "");
-				System.out.println("KO - NO se guarda la Nueva Contrase�a indicada");
+				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrasea indicada", "");
+				Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			}
 			
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - NO se guarda la Nueva Contrase�a indicada");
+			Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			e.printStackTrace();
-			throw new Exception("KO - NO se guarda la Nueva Contrase�a indicada " + e.toString());
+			throw new Exception("KO - NO se guarda la Nueva Contrasea indicada " + e.toString());
 		}
 
-	}**/
+
+	}
 	
 	/**
 	 * Metodo para Validar el Area Personal
