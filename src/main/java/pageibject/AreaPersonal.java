@@ -482,69 +482,57 @@ public class AreaPersonal  {
 	 * @return
 	 * 
 	 */
-	/**public boolean cambiarDatosPersonales(String direccion) throws Exception {
+	public boolean cambiarDatosPersonales(String direccion) throws Exception {
 		try {
 			boolean resultado = false;
 
-			// 1.3 Se pulsa Ir a �rea Personal
-			click(btnAreaPersonal);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n '�rea Personal'", "");
-			System.out.println("OK - Se pulsa en el bot�n '�rea Personal'");
+			// 1.3 Se pulsa Ir a rea Personal
+			Browser.clickElementSyncro(btnAreaPersonal);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
 
-			// 1.4 Pulsar el bot�n Cambiar Datos Personales
-			click(btnCambiarDatosAreaPersonal);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Personales'", "");
-			System.out.println("OK - Se pulsa sobre el link 'Cambiar Datos Personales'");
+			// 1.4 Pulsar el botn Cambiar Datos Personales
+			Browser.clickElementSyncro(btnCambiarDatosAreaPersonal);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Personales'", "");
+			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Personales'");
 
 			// Se introduce el otp recibido por sms y se pulsa en seguir
-			ProjectPaths.waitExt(3);
-			introduceCodigoOTPDatosPersonales(txtOTPDatosPersonales, "");
-			egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
-			System.out.println("OK - Se introduce el OTP");
+			Browser.checkObjeto(btnSeguirDatosPersonales);
+			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
+			Reporting.reportOK("OK - Se introduce el OTP");
 			
 			// Pulsamos en Seguir
-			click(btnSeguirDatosPersonales);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Seguir'");
+			Browser.clickElementSyncro(btnSeguirDatosPersonales);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
-			// Modificar el nombre seleccionamos fichero y pulsamos continuar
-			String valorDireccion = ProjectPaths.obtenerTextoElemento(txtNombreDatosPersonales, "value");
-			click(txtNombreDatosPersonales);
-			clear(txtNombreDatosPersonales);
-			String DireccionMod = valorDireccion + " TEST";
-			
-			type(DireccionMod,txtNombreDatosPersonales);
-			egea.reportaTraza(testCase, "INFO", "OK", "Modificamos el 'nombre' en los Datos Personales", "");
-			System.out.println("OK - Modificamos el 'nombre' en los Datos Personales");
-			
-			// Subimos el documento PDF
-			// Funciones.sincronizaObjetoClick(BTNCONTINUAR);
+			// Modificar el telfono y Pulsar en "COMPLETAR"
 			
 			
-			// Fin de Subida documento PDF
 			
-			// Pulsamos en Continuar
-			// Funciones.sincronizaObjetoClick(BTNCONTINUAR);
 			
-			// Validamos el Mesaje de la Modificacion
-			resultado = isDisplayed(btnSeleccionardni);
+			
+			// Validamos que se guarda la Nueva Contrasea indicada
+//			resultado = (Funciones.checkObjeto(checkCambioPass));
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Modificamos el 'Nombre' en los Datos Personales", "");
-				System.out.println("OK - Modificamos el 'Nombre' en los Datos Personalesa");
+				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
+				Reporting.reportOK("OK - Validamos que se guarda la Nueva Contrasea indicada");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "NO modificamos el 'Nombre' en los Datos Personales", "");
-				System.out.println("KO - NO modificamos el 'Nombre' en los Datos Personales");
+				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrasea indicada", "");
+				Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			}
 			
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - NO Modificamos el 'Nombre' en los Datos Personales");
+			Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			e.printStackTrace();
-			throw new Exception("KO - NO Modificamos el 'Nombre' en los Datos Personales " + e.toString());
+			throw new Exception("KO - NO se guarda la Nueva Contrasea indicada " + e.toString());
 		}
 
-	}**/
+
+	}
 	
 	
 	/**
