@@ -16,6 +16,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -532,6 +534,26 @@ public class Browser {
     	}
     	return resultado;
     }
+    
+    /**
+   	 * Metodo Introducir el Codigo OTP
+   	 * 
+   	 */
+    public static void introduceCodigoOTP(By elemento, String codigoOTP) throws Exception {
+	   Browser.waitExt(2);
+	   if (codigoOTP == "") {
+			// Codigo Automatico
+			//codigoOTP = "123456";
+			List<LogEntry> listaConsole = Browser.driver.manage().logs().get(LogType.BROWSER).getAll();
+			codigoOTP = listaConsole.get(listaConsole.size()-1).toString().substring(65, 71);
+			System.out.println("Cdigo OTP: "+ codigoOTP);
+			Browser.writeTextSyncro(elemento, codigoOTP);
+    	} else {
+    		// Codigo Pasado por Parametro
+    		Browser.writeTextSyncro(elemento, codigoOTP);
+    	}
+    }
+
 
 
 
