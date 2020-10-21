@@ -19,11 +19,11 @@ import general.Reporting;
 
 
 
-public class WZ_TC_0006 {
+public class WZ_TC_0007 {
 	
 	@Parameters({ "browserName","userName","password"})
 	@Test()
-	@Description("Mostrar Mensajes Recibidos")
+	@Description("Mostrar Mensajes Enviados")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
@@ -59,7 +59,7 @@ public class WZ_TC_0006 {
 			
 			login.doLoginUsuarioPassword(userName, pass);
 			//PENDIENTE
-			//mensajes.checkMsgRecibidos();
+			//mensajes.checkMsgEnviados();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
