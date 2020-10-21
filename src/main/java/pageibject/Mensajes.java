@@ -96,57 +96,51 @@ public class Mensajes {
 	 * @return
 	 * 
 	 */
-	/**public boolean checkMsgEnviados() throws Exception {
+	public boolean checkMsgEnviados() throws Exception {
 		try {
 			boolean resultado = false;
 			
-			click(btnMensajes);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes'");
+			Browser.clickElementSyncro(btnMensajes);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
 			
 			//Funciones.waitForElement(btnMsgRedactar,4,"no se carga la pantalla");
-			ProjectPaths.waitExt(2);
-			click(btnMsgRedactar);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se Muestra la p�gina de creaci�n de mensajes", "");
-			System.out.println("OK - Se Muestra la p�gina de creaci�n de mensajes");
+			Browser.waitExt(2);
+			Browser.clickElementSyncro(btnMsgRedactar);
+			Reporting.reportOK("OK - Se Muestra la p�gina de creaci�n de mensajes");
 			
 			//Escribimos un mensaje para asegurar mensajes en  bandeja salida
-			ProjectPaths.waitExt(4);
-			click(desplegableAsuntoMsg);
-			click(desplegableOpcionConsultaTarjetaMsg);
-			click(textAreaMsg);
-			type("test123",textAreaMsg);
-			click(btnEnviarMsg);
+			Browser.waitExt(4);
+			Browser.clickElementSyncro(desplegableAsuntoMsg);
+			Browser.clickElementSyncro(desplegableOpcionConsultaTarjetaMsg);
+			Browser.clickElementSyncro(textAreaMsg);
+			Browser.writeTextSyncro(textAreaMsg,"test123");
+			Browser.clickElementSyncro(btnEnviarMsg);
 			
-			ProjectPaths.waitExt(4);
-			click(btnMsgEnviados);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes Enviados'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
+			Browser.waitExt(4);
+			Browser.clickElementSyncro(btnMsgEnviados);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
 			
 			//Funciones.waitForElement(listaMensajesBandeja, 5, "Esperando a carga bandeja entrada");
-			click(listaMensajesBandeja);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el primer Mensaje de la bandeja", "");
-			System.out.println("OK - Se pulsa en el primer Mensaje de la bandeja");
-			ProjectPaths.waitExt(4);
+			Browser.clickElementSyncro(listaMensajesBandeja);
+			Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
+			Browser.waitExt(4);
 			
 			// Validamos que se muestra el mensaje Enviado
-			resultado = isDisplayed(btnBorrarMsg);
+			resultado = Browser.isElementDisplayed(btnBorrarMsg);
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", " Validamos que se muestra el mensaje Enviado", "");
-				System.out.println("OK -  Validamos que se muestra el mensaje Enviado");
+				Reporting.reportOK("OK -  Validamos que se muestra el mensaje Enviado");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "NO validamos que se muestra el mensaje Enviado", "");
-				System.out.println("KO - No validamos que se muestra el mensaje Enviado");
+				Reporting.reportKO("KO - No validamos que se muestra el mensaje Enviado");
 			}
 			return resultado;
 			
 		} catch (Exception e) {
-			System.out.println("KO - NO validamos que se muestra el mensaje Enviado");
+			Reporting.reportKO("KO - NO validamos que se muestra el mensaje Enviado");
 			e.printStackTrace();
 			throw new Exception("KO - NO validamos que se muestra el mensaje Enviado " + e.toString());
 		}
 
-	}**/
+	}
 	
 	
 	/**
