@@ -152,48 +152,43 @@ public class PosicionGlobal {
 	 * @return
 	 * 
 	 */
-	/**public boolean checkEliminarFavoritos() throws Exception {
+	public boolean checkEliminarFavoritos() throws Exception {
 		try {
 			boolean resultado = false;
 			
 			//1.3 En el apartado de Accesos directos pulsar sobre A�adir
-			//Funciones.sincronizaObjetoClick(btnAnadirAccesoDirecto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'A�adir Acceso Directo'", "");
-			//System.out.println("OK - Se pulsa en el bot�n 'A�adir Acceso Directo'");
+			Browser.clickElementSyncro(btnAnadirAccesoDirecto);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'A�adir Acceso Directo'");
 			
 			JavascriptExecutor  js = (JavascriptExecutor ) driver;
-			//js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
-			//Funciones.sincronizaObjetoClick(btnEliminarAccesoDirectoPopUp);
+			js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
+			Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 			
 			// 1.6 Seleccionar uno de los accesos directos creados y pulsar el icono X para eliminarlo:
 			js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el aspa Roja para eliminar el Acceso Directo creado anteriormente", "");
-			System.out.println("OK - Se pulsa en el aspa Roja para eliminar el Acceso Directo creado anteriormente");
+			Reporting.reportOK("OK - Se pulsa en el aspa Roja para eliminar el Acceso Directo creado anteriormente");
 			
 			// 1.7 Se pulsa eliminar
-			ProjectPaths.sincronizaObjetoClick(btnEliminarAccesoDirectoPopUp);
+			Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 			//Funciones.waitExt(3);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Eliminar'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Eliminar'");
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Eliminar'");
 						
 			// Validamos que el Aspa Roja del Acceso directo no existe
-			ProjectPaths.waitForElement(btnAnadirAccesoDirectoPopUp, 2, "Volviendo a a�adir");
-			resultado = (ProjectPaths.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp));
+			Browser.waitForElement(btnAnadirAccesoDirectoPopUp, 2, "Volviendo a a�adir");
+			resultado = (Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp));
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Se valida se ha eliminado el Acceso Directo creado", "");
-				System.out.println("OK - Se valida se ha eliminado el Acceso Directo creado");
+				Reporting.reportOK("OK - Se valida se ha eliminado el Acceso Directo creado");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "No se valida se ha eliminado el Acceso Directo creado", "");
-				System.out.println("KO - NO se valida se ha eliminado el Acceso Directo creado");
+				Reporting.reportKO("KO - NO se valida se ha eliminado el Acceso Directo creado");
 			}
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - No se valida se ha eliminado el Acceso Directo creado");
+			Reporting.reportKO("KO - No se valida se ha eliminado el Acceso Directo creado");
 			e.printStackTrace();
 			throw new Exception("KO - No se valida se ha eliminado el Acceso Directo creado " + e.toString());
 		}
 
-	}**/
+	}
 
 }

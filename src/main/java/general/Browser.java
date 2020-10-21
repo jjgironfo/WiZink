@@ -570,9 +570,28 @@ public class Browser {
     }
     
     /**
-   	 * Metodo Introducir el Codigo OTP
+   	 * Metodo para esperar un elemento
    	 * 
    	 */
+
+    public static WebElement waitForElement(By by, int timeout, String msg) throws Exception {
+		WebElement elem = null;
+		int i = 0;
+		boolean flag = false;
+		while (i < timeout && !flag) {
+			try {
+				elem = driver.findElement(by);
+				flag = true;
+			} catch (Exception e) {
+				i++;
+			}
+			Browser.waitExt(1);
+		}
+		if (!flag) {
+			throw new Exception("Se ha superado la espera para el elemento: " + msg);
+		}
+		return elem;
+	}
 
 
 
