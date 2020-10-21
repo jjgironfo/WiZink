@@ -18,7 +18,7 @@ import pageibject.Login;
 
 public class WZ_TC_0003 {
 
-	@Parameters({ "browserName", "nombreUsuario", "contrasenia" })
+	@Parameters({ "browserName" })
 	@Test
 	@Description("Recordar usuario")
 	public static void login(@Optional String url, @Optional String nombreUsuario, @Optional String contrasenia) throws Exception {

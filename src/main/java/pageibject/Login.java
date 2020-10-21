@@ -102,7 +102,7 @@ public class Login {
 			//boolean isDisabled = false;
 			
 		nombreUsuario = PropertyControl.getLogProperty("usuario_PRE");
-		nombreUsuario = PropertyControl.getLogProperty("password_PRE");
+		contrasenia = PropertyControl.getLogProperty("password_PRE");
 		Browser.clickElementSyncro(btnPrivacidadLogin);
 		Browser.clickElementSyncro(btnAreaCliente);
 			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
