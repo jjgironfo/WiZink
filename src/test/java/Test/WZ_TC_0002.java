@@ -25,7 +25,7 @@ public class WZ_TC_0002 {
 	@Description("Login en wizink")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 
-		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.TWO].getClassName());
+		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 
 		try {
 
