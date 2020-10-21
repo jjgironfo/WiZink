@@ -22,11 +22,11 @@ import general.Reporting;
 
 
 
-public class WZ_TC_0021 {
+public class WZ_TC_0032 {
 	
 	@Parameters({ "browserName","userName","password"})
 	@Test()
-	@Description("Visualizar Gráfica de gastos del mes")
+	@Description("Solicitar reenvío de tarjeta")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
@@ -61,8 +61,8 @@ public class WZ_TC_0021 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			
-			producto.checkProductoExtractosGraficos();
+		
+			producto.reenviarTarjeta();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

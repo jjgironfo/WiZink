@@ -61,8 +61,8 @@ public class WZ_TC_0019 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//producto.checkProductoMovimientosHoy();
+			
+			producto.checkProductoMovimientosHoy();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

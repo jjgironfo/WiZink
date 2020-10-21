@@ -61,8 +61,8 @@ public class WZ_TC_0020 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			//PENDIENTE
-			//producto.checkProductoExtractos();
+			
+			producto.checkProductoExtractos();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
