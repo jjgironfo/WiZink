@@ -199,49 +199,42 @@ public class Mensajes {
 	 * @return
 	 * 
 	 */
-	/**public boolean borrarMensajes() throws Exception {
+	public boolean borrarMensajes() throws Exception {
 		try {
 			boolean resultado = false;
 			
-			ProjectPaths.sincronizaObjetoClick(btnMensajes);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes'");
+			Browser.clickElementSyncro(btnMensajes);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
 			
-			ProjectPaths.waitExt(4);
-			ProjectPaths.sincronizaObjetoClick(btnMsgEnviados);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes Enviados'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
+			Browser.waitExt(4);
+			Browser.clickElementSyncro(btnMsgEnviados);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
 			
-			ProjectPaths.sincronizaObjetoClick(listaMensajesBandeja);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el primer Mensaje de la bandeja", "");
-			System.out.println("OK - Se pulsa en el primer Mensaje de la bandeja");
+			Browser.clickElementSyncro(listaMensajesBandeja);
+			Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
 			
-			ProjectPaths.waitExt(4);
-			ProjectPaths.sincronizaObjetoClick(btnBorrarMsg);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Borrar Mensaje'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Borrar Mensaje'");
+			Browser.waitExt(4);
+			Browser.clickElementSyncro(btnBorrarMsg);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Borrar Mensaje'");
 			
-			ProjectPaths.sincronizaObjetoClick(btnBorrarSIMsgPopUp);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Si' para borrar el Mensaje", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Si' para borrar el Mensaje");
+			Browser.clickElementSyncro(btnBorrarSIMsgPopUp);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Si' para borrar el Mensaje");
 			
 			// Validamos que se muestra el mensaje 'Mensaje borrado'
-			resultado = (ProjectPaths.checkObjeto(checkMensajeBorrarMsg));
+			resultado = (Browser.checkObjeto(checkMensajeBorrarMsg));
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Se muestra el mensaje informativo 'Mensaje borrado'", "");
-				System.out.println("OK - Se muestra el mensaje informativo 'Mensaje borrado'");
+				Reporting.reportOK("OK - Se muestra el mensaje informativo 'Mensaje borrado'");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "NO se muestra el mensaje informativo 'Mensaje borrado'", "");
-				System.out.println("KO - No se muestra el mensaje informativo 'Mensaje borrado'");
+				Reporting.reportKO("KO - No se muestra el mensaje informativo 'Mensaje borrado'");
 			}
 			return resultado;
 			
 		} catch (Exception e) {
-			System.out.println("KO - No se muestra el mensaje informativo 'Mensaje borrado'");
+			Reporting.reportKO("KO - No se muestra el mensaje informativo 'Mensaje borrado'");
 			e.printStackTrace();
 			throw new Exception("KO - No se muestra el mensaje informativo 'Mensaje borrado' " + e.toString());
 		}
 
-	}**/
+	}
 	
 }
