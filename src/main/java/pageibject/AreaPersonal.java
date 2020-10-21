@@ -61,8 +61,8 @@ public class AreaPersonal  {
 	private By checkcambioUsuario = By.xpath("//p[text()='Has cambiado tu usuario de acceso.']");
 	
 	//Cambiar datos direccion
-	//private By txtNombreVia = By.id("direccion");
-	//private By checkCambiarDireccion = By.xpath("//p[text()='Por mantener actualizados tus datos de contacto']");
+	private By txtNombreVia = By.id("direccion");
+	private By checkCambiarDireccion = By.xpath("//p[text()='Por mantener actualizados tus datos de contacto']");
 	
 	// Cambiar Imagen Perfil
 	private By btnImagenCambioFoto = By.id("profile");
@@ -541,72 +541,63 @@ public class AreaPersonal  {
 	 * @return
 	 * 
 	 */
-	/**public boolean cambiarDatosDemograficos() throws Exception {
+	public boolean cambiarDatosDemograficos() throws Exception {
 		try {
 			boolean resultado = false;
+			String nombreVia = "Prueba123";
 			
-			// 1.3 Se pulsa Ir a �rea Personal
-			click(btnAreaPersonal);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n '�rea Personal'", "");
-			System.out.println("OK - Se pulsa en el bot�n '�rea Personal'");
+			// 1.3 Se pulsa Ir a rea Personal
+			Browser.clickElementSyncro(btnAreaPersonal);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
 
-			// 1.4 Pulsar el bot�n Cambiar Datos Demogr�ficos
-			click(btnCambiarDatoDemografico);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Demogr�ficos'", "");
-			System.out.println("OK - Se pulsa sobre el link 'Cambiar Datos Demogr�ficos'");
+			// 1.4 Pulsar el botn Cambiar Datos Demogrficos
+			Browser.clickElementSyncro(btnCambiarDatoDemografico);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Demogrficos'", "");
+			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Demogrficos'");
 
 			// Se introduce el otp recibido por sms y se pulsa en seguir
-			isDisplayed(btnSeguirDatosPersonales);
-			introduceCodigoOTP(txtOTPDatosPersonales, "");
-			egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
-			System.out.println("OK - Se introduce el OTP");
+			Browser.checkObjeto(btnSeguirDatosPersonales);
+			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
+			Reporting.reportOK("OK - Se introduce el OTP");
 			
 			// Pulsamos en Seguir
-			click(btnSeguirDatosPersonales);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Seguir'");
+			Browser.clickElementSyncro(btnSeguirDatosPersonales);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
-			// Modifcar la direcci�n 
-			// Modificar la direccion y Pulsar en "COMPLETAR"
-			String valorDireccion = ProjectPaths.obtenerTextoElemento(txtDireccionDatosPersonales, "value");
-			ProjectPaths.sincronizaObjetoLimpia(txtDireccionDatosPersonales);
-			String DireccionMod = valorDireccion + " TEST";
+			// Modifcar la direccin 
 			
-			/*Funciones.sincronizaObjetoEscribe(txtNombreVia, nombreVia);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la direccion", "");
-			System.out.println("OK - Se escribe la direccion");
-			click(txtDireccionDatosPersonales);
-			type(DireccionMod,txtDireccionDatosPersonales);
-			egea.reportaTraza(testCase, "INFO", "OK", "Modificamos la 'Direcci�n' en los Datos Personales", "");
-			System.out.println("OK - Modificamos la 'Direcci�n' en los Datos Personales");
-			
-			// Pulsamos en Seguir
-			click(btnSeguirDatosPersonales);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Seguir'");
+			Browser.writeTextSyncro(txtNombreVia, nombreVia);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la direccion", "");
+			Reporting.reportOK("OK - Se escribe la direccion");
 		
-			
-			
-			// Validamos que se guardan los cambios
-			ProjectPaths.waitExt(2);
-			resultado = isDisplayed(checkCambiarDatosPersonales);
+			// Pulsamos en Seguir
+			Browser.clickElementSyncro(btnSeguirDatosPersonales);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
+		
+			// Validamos que se guarda la Nueva Contrasea indicada
+			resultado = (Browser.checkObjeto(checkCambiarDireccion));
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha cambiado la Direcci�n del apartado Datos Personales", "");
-				System.out.println("OK - Validamos que se ha cambiado la Direcci�n del apartado Datos Personales");
+				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
+				Reporting.reportOK("OK - TEXTO OK");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "No se valida que se haya cambiado la Direcci�n del apartado Datos Personales", "");
-				System.out.println("KO - No se valida que se haya cambiado la Direcci�n del apartado Datos Personales");
+				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrasea indicada", "");
+				Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			}
 			
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - NO se guarda la Nueva Contrase�a indicada");
+			Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			e.printStackTrace();
-			throw new Exception("KO - NO se guarda la Nueva Contrase�a indicada " + e.toString());
+			throw new Exception("KO - NO se guarda la Nueva Contrasea indicada " + e.toString());
 		}
 
-	}**/
+	}
+
 	
 	
 	
