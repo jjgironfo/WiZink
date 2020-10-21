@@ -149,56 +149,49 @@ public class Mensajes {
 	 * @return
 	 * 
 	 */
-	/**public boolean redactarMsg() throws Exception {
+	public boolean redactarMsg() throws Exception {
 		try {
 
 			boolean resultado = false;
 			
-			ProjectPaths.sincronizaObjetoSoloClick(btnMensajes);
+			Browser.clickElementSyncro(btnMensajes);
 			//Funciones.waitExt(2);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes'");
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
 			
-			ProjectPaths.waitForElement(btnMsgRedactar,4,"no se carga la pantalla");
-			ProjectPaths.sincronizaObjetoClick(btnMsgRedactar);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Mensajes Enviados'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
+			Browser.waitForElement(btnMsgRedactar,4,"no se carga la pantalla");
+			Browser.clickElementSyncro(btnMsgRedactar);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
 			
-			ProjectPaths.waitExt(1);
-			ProjectPaths.sincronizaObjetoClick(desplegableAsuntoMsg);
-			ProjectPaths.sincronizaObjetoClick(desplegableOpcionConsultaTarjetaMsg);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona el Asunto con 'Consulta Tarjeta'", "");
-			System.out.println("OK - Se selecciona el Asunto con 'Consulta Tarjeta'");
+			Browser.waitExt(1);
+			Browser.clickElementSyncro(desplegableAsuntoMsg);
+			Browser.clickElementSyncro(desplegableOpcionConsultaTarjetaMsg);
+			Reporting.reportOK("OK - Se selecciona el Asunto con 'Consulta Tarjeta'");
 			
-			ProjectPaths.waitExt(1);
-			ProjectPaths.sincronizaObjetoEscribe(textAreaMsg, "Texto prueba");
-			egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el mensaje a Enviar", "");
-			System.out.println("OK - Se escribe el mensaje a Enviar");
+			Browser.waitExt(1);
+			Browser.writeTextSyncro(textAreaMsg, "Texto prueba");
+			Reporting.reportOK("OK - Se escribe el mensaje a Enviar");
 			
 
-			ProjectPaths.sincronizaObjetoClick(btnEnviarMsg);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Enviar'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Enviar'");
+			Browser.clickElementSyncro(btnEnviarMsg);
+			Reporting.reportOK("OK - Se pulsa en el bot�n 'Enviar'");
 			
 			
 			// Validamos que se muestra el PopUp indicando que se ha enviado el Mensaje
-			resultado = (ProjectPaths.checkObjeto(checkMensajeEnvioMsg));
+			resultado = (Browser.checkObjeto(checkMensajeEnvioMsg));
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Se valida que el Mensaje ha sido enviado puesto que se muestra el PopUp", "");
-				System.out.println("OK - Se valida que el Mensaje ha sido enviado puesto que se muestra el PopUp");
+				Reporting.reportOK("OK - Se valida que el Mensaje ha sido enviado puesto que se muestra el PopUp");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "NO se valida que el Mensaje haya sido enviado puesto que NO se muestra el PopUp", "");
-				System.out.println("KO - NO se valida que el Mensaje haya sido enviado puesto que NO se muestra el PopUp");
+				Reporting.reportKO("KO - NO se valida que el Mensaje haya sido enviado puesto que NO se muestra el PopUp");
 			}
 			return resultado;
 			
 		} catch (Exception e) {
-			System.out.println("KO - NO se valida que el Mensaje haya sido enviado puesto que NO se muestra el PopUp");
+			Reporting.reportKO("KO - NO se valida que el Mensaje haya sido enviado puesto que NO se muestra el PopUp");
 			e.printStackTrace();
 			throw new Exception("KO - NO se valida que el Mensaje haya sido enviado puesto que NO se muestra el PopUp " + e.toString());
 		}
 
-	}**/
+	}
 	
 	/**
 	 * Metodo XXXXXXXXX
