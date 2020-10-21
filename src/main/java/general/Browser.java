@@ -554,6 +554,25 @@ public class Browser {
     	}
     }
 
+    /**
+   	 * Metodo para validar que elemento no existe y devuelve booleano
+     * @return 
+   	 * 
+   	 */
+    public static boolean checkObjetoNoExiste(By elemento) throws Exception {
+	   boolean resultado = false;
+	   if (driver.findElements(elemento).size() == 0) {
+			resultado = true;
+		} else {
+			resultado = false;
+		}
+	   return resultado;
+    }
+    
+    /**
+   	 * Metodo Introducir el Codigo OTP
+   	 * 
+   	 */
 
 
 
