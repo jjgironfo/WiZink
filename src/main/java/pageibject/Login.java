@@ -168,7 +168,7 @@ public class Login {
 	public void doLogout() throws Exception {
 
 			Browser.clickElementSyncro(btnLogout);
-			System.out.println("Hacemos el logout en la aplicacion");
+			Reporting.reportOK("Hacemos el logout en la aplicacion");
 
 			Reporting.reportOK("Log out Ok");
 
@@ -227,7 +227,7 @@ public class Login {
 				try {
 					driver.findElement(btnPrivacidadLogin).click();
 				} catch (Exception e) {
-					System.out.println("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
+					Reporting.reportKO("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
 				}
 			}
 
@@ -237,26 +237,26 @@ public class Login {
 			// Pulsar el botn 'Regstrate Ahora'
 			Browser.clickElementSyncro(btnRegistrateAhora);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Regstrate Ahora'", "");
-			System.out.println("OK - Se pulsa en el botn 'Regstrate Ahora'");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Regstrate Ahora'");
 			
 			// Introducir el nif y la fecha de nacimiento y pulsar en el botn "seguir"
 			Browser.sincronizaObjetoSoloClick(radioNIF);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
-			System.out.println("OK - Se pulsa en el radio 'NIF'");
+			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
 			
 			String Nif = Utilidades.generaNif("1");
 			Browser.writeTextSyncro(txtNif, Nif);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
-			System.out.println("OK - Se escribe el 'NIF'");
+			Reporting.reportOK("OK - Se escribe el 'NIF'");
 			
 			String fechaNacimiento = "01/01/1990";
 			Browser.writeTextSyncro(txtFechaNacimiento, fechaNacimiento);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
-			System.out.println("OK - Se escribe la 'Fecha de Nacimiento'");
+			Reporting.reportOK("OK - Se escribe la 'Fecha de Nacimiento'");
 			
 			Browser.clickElementSyncro(btnSeguir);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el botn 'Seguir'");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
 			
 	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
@@ -270,15 +270,15 @@ public class Login {
 			
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				System.out.println("OK - TEXTO OK");
+				Reporting.reportOK("OK - TEXTO OK");
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				System.out.println("KO - TEXTO KO");
+				Reporting.reportKO("KO - TEXTO KO");
 			}		
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - TEXTO KO");
+			Reporting.reportKO("KO - TEXTO KO");
 			e.printStackTrace();
 			throw new Exception("KO - TEXTO KO " + e.toString());
 		}
@@ -299,28 +299,28 @@ public class Login {
 			// Pulsar el link "He olvidado mi usuario"
 			Browser.clickElementSyncro(btnRecordarUsuario);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'He olvidado mi usuario'", "");
-			System.out.println("OK - Se pulsa en el botn 'He olvidado mi usuario'");
+			Reporting.reportOK("OK - Se pulsa en el botn 'He olvidado mi usuario'");
 			
 			// Introducir el nif y la fecha de nacimiento y pulsar en el botn "seguir"
 			Browser.sincronizaObjetoSoloClick(radioNIF);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
-			System.out.println("OK - Se pulsa en el radio 'NIF'");
+			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
 			
 			String Nif = Utilidades.generaNif("1");
 			
 			Browser.writeTextSyncro(txtNif, Nif);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
-			System.out.println("OK - Se escribe el 'NIF'");
+			Reporting.reportOK("OK - Se escribe el 'NIF'");
 			
 			String fechaNacimiento = "01/01/1990";
 			
 			Browser.writeTextSyncro(txtFechaNacimiento, fechaNacimiento);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
-			System.out.println("OK - Se escribe la 'Fecha de Nacimiento'");
+			Reporting.reportOK("OK - Se escribe la 'Fecha de Nacimiento'");
 			
 			Browser.clickElementSyncro(btnSeguirRecordarUsuario);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el botn 'Seguir'");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
 	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
 			
@@ -332,15 +332,15 @@ public class Login {
 			
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				System.out.println("OK - TEXTO OK");
+				Reporting.reportOK("OK - TEXTO OK");
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				System.out.println("KO - TEXTO KO");
+				Reporting.reportKO("KO - TEXTO KO");
 			}		
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - TEXTO KO");
+			Reporting.reportKO("KO - TEXTO KO");
 			e.printStackTrace();
 			throw new Exception("KO - TEXTO KO " + e.toString());
 		}
@@ -361,28 +361,28 @@ public class Login {
 			// Pulsar el link "He olvidado mi contasea"
 			Browser.clickElementSyncro(btnRecordarPassword);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'He olvidado mi contasea'", "");
-			System.out.println("OK - Se pulsa en el botn 'He olvidado mi usuario'");
+			Reporting.reportOK("OK - Se pulsa en el botn 'He olvidado mi usuario'");
 			
 			// Introducir el nif y la fecha de nacimiento y pulsar en seguir
 			Browser.sincronizaObjetoSoloClick(radioNIF);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
-			System.out.println("OK - Se pulsa en el radio 'NIF'");
+			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
 			
 			String Nif = Utilidades.generaNif("1");
 			
 			Browser.writeTextSyncro(txtNif, Nif);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
-			System.out.println("OK - Se escribe el 'NIF'");
+			Reporting.reportOK("OK - Se escribe el 'NIF'");
 			
 			//String usuario = "Usuario";
 			
 			Browser.writeTextSyncro(txtUsuarioRecordarPassword, usuario);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'Usuario'", "");
-			System.out.println("OK - Se escribe el 'Usuario'");
+			Reporting.reportOK("OK - Se escribe el 'Usuario'");
 			
 			Browser.clickElementSyncro(btnSeguir);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
-			System.out.println("OK - Se pulsa en el botn 'Seguir'");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
 	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
 			
@@ -395,15 +395,15 @@ public class Login {
 			
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				System.out.println("OK - TEXTO OK");
+				Reporting.reportOK("OK - TEXTO OK");
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				System.out.println("KO - TEXTO KO");
+				Reporting.reportKO("KO - TEXTO KO");
 			}		
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - TEXTO KO");
+			Reporting.reportKO("KO - TEXTO KO");
 			e.printStackTrace();
 			throw new Exception("KO - TEXTO KO " + e.toString());
 		}
