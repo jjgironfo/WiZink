@@ -3,9 +3,9 @@ package pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
-
+import general.Browser;
 import general.ProjectPaths;
+import general.Reporting;
 
 public class NumeroTarjeta  {
 
@@ -22,10 +22,9 @@ public class NumeroTarjeta  {
 	
 	
 
-	/**public NumeroTarjeta(WebDriver driver, String testCase, EgeaCom egea) {
-		super(driver);
+	/**public NumeroTarjeta(WebDriver driver, String testCase) {
+		super();
 		this.testCase = testCase;
-		this.egea = egea;
 	}**/
 
 	/**
@@ -34,47 +33,45 @@ public class NumeroTarjeta  {
 	 * @return
 	 * 
 	 */
-/**	public boolean mostrarNumeroTarjeta() throws Exception {
+	public boolean mostrarNumeroTarjeta() throws Exception {
 		try {
 			boolean resultado = false;
 
-			// Pulsar sobre bot�n "Numero tarjeta" situado en la barra
-			click(btnNumeroTarjeta);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'N�mero tarjeta'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'N�mero tarjeta'");
-			ProjectPaths.waitExt(10);
+			// Pulsar sobre botn "Numero tarjeta" situado en la barra
+			Browser.clickElementSyncro(btnNumeroTarjeta);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Nmero tarjeta'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Nmero tarjeta'");
 			
 			// Introducir el OTP
-			if(isDisplayed(btnVerDatosTarjeta)){
-				introduceCodigoOTP(btnOTPTarjeta, "");
-				egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
-				System.out.println("OK - Se introduce el OTP");
-			}
-
+			Browser.checkObjeto(btnVerDatosTarjeta);
+			Browser.introduceCodigoOTP(btnOTPTarjeta, "");
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
+			Reporting.reportOK("OK - Se introduce el OTP");
 			
 			// Pulsar en "VER DATOS"
-			click(btnVerDatosTarjeta);
-			egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el bot�n 'Ver Datos'", "");
-			System.out.println("OK - Se pulsa en el bot�n 'Ver Datos'");
+			Browser.clickElementSyncro(btnVerDatosTarjeta);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Ver Datos'", "");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Ver Datos'");
 			
 			// Validamos Que se muestra el mensaje Final
-			resultado = isDisplayed(checkMostrarNumeroTarjeta);
+			resultado = (Browser.checkObjeto(checkMostrarNumeroTarjeta));
 			if (resultado) {
-				egea.reportaTraza(testCase, "INFO", "OK", "Se valida el mensaje: 'Ahora puedes ver toda la numeraci�n de tus tarjetas y tus productos de ahorro.'", "");
-				System.out.println("OK - Se valida el mensaje: 'Ahora puedes ver toda la numeraci�n de tus tarjetas y tus productos de ahorro.'");
+				//egea.reportaTraza(testCase, "INFO", "OK", "Se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'", "");
+				Reporting.reportOK("OK - Se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'");
 			} else {
-				egea.reportaTraza(testCase, "ERROR", "KO", "No se valida el mensaje: 'Ahora puedes ver toda la numeraci�n de tus tarjetas y tus productos de ahorro.'", "");
-				System.out.println("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeraci�n de tus tarjetas y tus productos de ahorro.'");
+				//egea.reportaTraza(testCase, "ERROR", "KO", "No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'", "");
+				Reporting.reportKO("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'");
 			}
 			return resultado;
 
 		} catch (Exception e) {
-			System.out.println("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeraci�n de tus tarjetas y tus productos de ahorro.'");
+			Reporting.reportKO("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'");
 			e.printStackTrace();
-			throw new Exception("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeraci�n de tus tarjetas y tus productos de ahorro.' " + e.toString());
+			throw new Exception("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.' " + e.toString());
 		}
 
-	}**/
+	}
+
 	
 
 }

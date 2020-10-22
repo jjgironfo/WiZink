@@ -59,8 +59,7 @@ public class WZ_TC_0005 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName,pass);
-			//PENDIENTE
-			//numeroTarjeta.mostrarNumeroTarjeta();
+			numeroTarjeta.mostrarNumeroTarjeta();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
