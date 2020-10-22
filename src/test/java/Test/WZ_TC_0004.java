@@ -13,7 +13,7 @@ import general.Final;
 import general.Log;
 import general.ProjectPaths;
 import general.Reporting;
-import pageibject.Login;
+import pageobject.Login;
 
 
 public class WZ_TC_0004{

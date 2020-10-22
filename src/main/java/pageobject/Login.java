@@ -1,4 +1,4 @@
-package pageibject;
+package pageobject;
 
 import static general.Browser.driver;
 

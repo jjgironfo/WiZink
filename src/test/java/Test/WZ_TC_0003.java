@@ -14,7 +14,7 @@ import general.Log;
 import general.ProjectPaths;
 import general.Reporting;
 import io.qameta.allure.Description;
-import pageibject.Login;
+import pageobject.Login;
 
 public class WZ_TC_0003 {
 

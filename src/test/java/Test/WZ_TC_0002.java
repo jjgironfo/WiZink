@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Optional;
 
 import io.qameta.allure.Description;
-import pageibject.Login;
+import pageobject.Login;
 import general.Browser;
 
 import general.Final;

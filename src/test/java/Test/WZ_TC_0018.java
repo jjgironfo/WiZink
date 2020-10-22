@@ -9,10 +9,10 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Optional;
 
 import io.qameta.allure.Description;
-import pageibject.AreaPersonal;
-import pageibject.Login;
-import pageibject.Mensajes;
-import pageibject.PosicionGlobal;
+import pageobject.AreaPersonal;
+import pageobject.Login;
+import pageobject.Mensajes;
+import pageobject.PosicionGlobal;
 import general.Browser;
 
 import general.Final;
