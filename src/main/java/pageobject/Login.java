@@ -19,6 +19,7 @@ import general.Utilidades;
 public class Login {
 
 	String testCase;
+	private static String actualEnv;
  //pre
 	private By btnAreaCliente =  By.id("btnLogin");
 
@@ -101,9 +102,10 @@ public class Login {
 	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia) throws Exception {
 		
 			//boolean isDisabled = false;
-			
-		nombreUsuario = PropertyControl.getLogProperty("usuario_PRE");
-		contrasenia = PropertyControl.getLogProperty("password_PRE");
+		actualEnv = PropertyControl.getConfProperty("actualEnv");
+		
+		nombreUsuario = PropertyControl.getLogProperty("usuario_" + actualEnv);
+		contrasenia = PropertyControl.getLogProperty("password_" + actualEnv);
 		Browser.clickElementSyncro(btnPrivacidadLogin);
 		Browser.clickElementSyncro(btnAreaCliente);
 			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
