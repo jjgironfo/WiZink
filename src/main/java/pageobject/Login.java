@@ -20,7 +20,7 @@ public class Login {
 
 	String testCase;
  //pre
-	private By btnAreaCliente = By.xpath("//*[@class='area']");
+	private By btnAreaCliente =  By.id("btnLogin");
 
 	// Objetos Login
 	private By txtUsuario = By.id("user-userName");
