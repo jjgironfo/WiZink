@@ -143,6 +143,7 @@ public class Browser {
 		datos.put("download.default_directory", PathControl.getRootPath());
 		// Set options
 		options.setExperimentalOption("prefs", datos);
+		options.addArguments("ignore-certificate-errors");
 
 		// initialize driver
 		driver = new ChromeDriver(options);
@@ -213,9 +214,14 @@ public class Browser {
 	 * @author Pablo Muñoz
 	 */
 	public static void clickElementSyncro(By elemento) {
-		elementWait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
-		elementWait.until(ExpectedConditions.elementToBeClickable(elemento));
-		driver.findElement(elemento).click();
+		try {
+			elementWait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
+			elementWait.until(ExpectedConditions.elementToBeClickable(elemento));
+			driver.findElement(elemento).click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	
