@@ -61,8 +61,14 @@ public class Mensajes {
 			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Recibidos'");
 			
 			Browser.waitExt(2);
-			Browser.clickElementSyncro(listaMensajesBandeja);
-			Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
+			resultado = Browser.checkObjeto(listaMensajesBandeja);
+			if (resultado) {
+				Browser.clickElementSyncro(listaMensajesBandeja);
+				Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
+			} else {
+				Reporting.reportKO("KO - No hay mensajes en la bandeja de mensajes recibidos");
+			}
+			
 			
 			// Validamos que se muestra el mensaje recibido
 			resultado = Browser.checkObjeto(detalleMensajesBandeja);

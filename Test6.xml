@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Chrome">
+	<test name="MostrarMensajesRecibidos">
+	  	<parameter name ="browserName" value = "CHROME" />
+	  	<classes>  
+	        <class name="Test.WZ_TC_0006"/>
+	   	</classes>
+	</test>
+</suite> 
