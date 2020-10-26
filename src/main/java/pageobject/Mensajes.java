@@ -53,12 +53,12 @@ public class Mensajes {
 			boolean resultado = false;
 			
 			Browser.clickElementSyncro(btnMensajes);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes'");
 			
 			Browser.waitExt(6);
 			Browser.isElementDisplayed(btnMsgRecibidos);
 			Browser.clickElementSyncro(btnMsgRecibidos);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Recibidos'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes Recibidos'");
 			
 			Browser.waitExt(2);
 			resultado = Browser.checkObjeto(listaMensajesBandeja);
@@ -107,12 +107,12 @@ public class Mensajes {
 			boolean resultado = false;
 			
 			Browser.clickElementSyncro(btnMensajes);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes'");
 			
 			//Funciones.waitForElement(btnMsgRedactar,4,"no se carga la pantalla");
 			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnMsgRedactar);
-			Reporting.reportOK("OK - Se Muestra la p�gina de creaci�n de mensajes");
+			Reporting.reportOK("OK - Se Muestra la página de creaci�n de mensajes");
 			
 			//Escribimos un mensaje para asegurar mensajes en  bandeja salida
 			Browser.waitExt(4);
@@ -124,11 +124,13 @@ public class Mensajes {
 			
 			Browser.waitExt(4);
 			Browser.clickElementSyncro(btnMsgEnviados);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes Enviados'");
 			
 			//Funciones.waitForElement(listaMensajesBandeja, 5, "Esperando a carga bandeja entrada");
-			Browser.clickElementSyncro(listaMensajesBandeja);
-			Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
+			
+				Browser.clickElementSyncro(listaMensajesBandeja);
+				Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
+			
 			Browser.waitExt(4);
 			
 			// Validamos que se muestra el mensaje Enviado

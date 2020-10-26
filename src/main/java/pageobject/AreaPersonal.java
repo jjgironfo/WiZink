@@ -27,13 +27,14 @@ public class AreaPersonal  {
 	// Check Pantalla Area Personal
 	private By txtNombreApellidos = By.xpath("//h4[text()='Nombre y apellidos']");
 	private By txtNIF = By.xpath("//h4[text()='NIF']");
+	private By txtNIE = By.xpath("//h4[text()='NIE']");
 	private By txtFechaNacimiento = By.xpath("//h4[text()='Fecha de nacimiento']");
 	private By fotoPerfil = By.id("imgProfileCustomerData");
-	private By direccion = By.xpath("//h4[text()='Direcci�n']");
+	private By direccion = By.xpath("//h4[text()='Dirección']");
 	private By email = By.xpath("//h4[text()='Email']");
-	private By telefono = By.xpath("//h4[text()='Tel�fono']");
+	private By telefono = By.xpath("//h4[text()='Teléfono']");
 	private By btnCambiarMiUsuario = By.xpath("//button[text()='Cambiar mi usuario']");
-	private By btnCambiarMiPassword = By.xpath("//button[text()='Cambiar mi contrase�a']");
+	private By btnCambiarMiPassword = By.xpath("//button[text()='Cambiar mi contraseña']");
 	private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
 	private By btnCambiarDatosAreaPersonal = By.id("personalDataChangeLink");
 	private By btnCambiarDatoFoto = By.id("changePhoto");
@@ -76,7 +77,7 @@ public class AreaPersonal  {
 	private By txtPassCrea1MiPass = By.id("user-password-create");
 	private By txtPassCrea2MiPass = By.id("user-password-repeat");
 	private By btnGuardarCambiosMiPass = By.id("continueButton");
-	private By checkCambioPass = By.xpath("//p[text()='Has cambiado tu contrase�a para acceder a WiZink.']");
+	private By checkCambioPass = By.xpath("//p[text()='Has cambiado tu contraseña para acceder a WiZink.']");
 	
 	// Opciones
 //	private By btnDatosPersonales = By.id("customerLink1");
@@ -85,7 +86,7 @@ public class AreaPersonal  {
 	
 	// Documentacion
 	private By checkGenerales = By.xpath("//h4[text()='Generales']");
-	private By checkCredito = By.xpath("//h4[text()='Cr�dito']");
+	private By checkCredito = By.xpath("//h4[text()='Crédito']");
 	
 	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[text()='Terminos y Condiciones General']");
 	private By btnContratoMulticanal = By.xpath("//a/p[text()='OLB - Contrato Multicanal']");
@@ -101,33 +102,45 @@ public class AreaPersonal  {
 	public void checkAreaPersonal() throws Exception {
 
 			
-			boolean isDisabled = true;
+				
+				boolean isDisabled = true;
+				boolean NIF = false;
+				boolean NIE = false;
 
-			Browser.clickElementSyncro(btnAreaPersonal);
-			
-			Reporting.reportOK("OK - Se pulsa en el bot�n '�rea Personal'");
+				Browser.clickElementSyncro(btnAreaPersonal);
+				
+				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
-			// 1.3 Se pulsa Ir a �rea Personal y se visualizan los datos personales, demogr�ficos,
-			// foto de perfil y opciones de cambiar estos, el usuario y la contrase�a.
-			Browser.checkFieldText(btnCambiarMiUsuario, "Cambiar mi usuario");
+				// 1.3 Se pulsa Ir a �rea Personal y se visualizan los datos personales, demogr�ficos,
+				// foto de perfil y opciones de cambiar estos, el usuario y la contrase�a.
+				Browser.checkFieldText(btnCambiarMiUsuario, "Cambiar mi usuario");
+				
+				// Validamos la pantalla de �rea Personal
+				Browser.checkFieldText(txtNombreApellidos,"Nombre y apellidos");
+				NIF = Browser.isElementDisplayed(txtNIF);
+				NIE = Browser.isElementDisplayed(txtNIE);
+				if (NIF) {
+					Reporting.reportOK("OK -  Validamos que se muestra el campo NIF");
+				} else if (NIE) {
+					Reporting.reportOK("OK -  Validamos que se muestra el campo NIE");
+				}
+				
+				Browser.checkFieldText(txtFechaNacimiento, "Fecha de nacimiento"); 
+				Browser.checkFieldText(fotoPerfil,"imgProfileCustomerData");
+				Browser.checkFieldText(direccion,"Dirección");
+				Browser.checkFieldText(email,"Email");
+				Browser.checkFieldText(telefono,"Telófono"); 
+				Browser.checkFieldText(btnCambiarMiUsuario,"Cambiar mi usuario");
+				Browser.checkFieldText(btnCambiarMiPassword,"Cambiar mi contrase�a");
+				Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
+				Browser.checkFieldText(btnCambiarDatosAreaPersonal,"personalDataChangeLink") ;
+				Browser.checkFieldText(btnCambiarDatoFoto,"changePhoto");
+				Browser.checkFieldText(btnCambiarDatoDemografico,"demographicDataChangeLink");
+				
+				// report 
+				Reporting.reportOK("Estamos en el área personal");
 			
-			// Validamos la pantalla de �rea Personal
-			Browser.checkFieldText(txtNombreApellidos,"Nombre y apellidos");
-			Browser.checkFieldText(txtNIF,"NIF");
-			Browser.checkFieldText(txtFechaNacimiento, "Fecha de nacimiento"); 
-			Browser.checkFieldText(fotoPerfil,"imgProfileCustomerData");
-			Browser.checkFieldText(direccion,"Direcci�n");
-			Browser.checkFieldText(email,"Email");
-			Browser.checkFieldText(telefono,"Tel�fono"); 
-			Browser.checkFieldText(btnCambiarMiUsuario,"Cambiar mi usuario");
-			Browser.checkFieldText(btnCambiarMiPassword,"Cambiar mi contrase�a");
-			Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
-			Browser.checkFieldText(btnCambiarDatosAreaPersonal,"personalDataChangeLink") ;
-			Browser.checkFieldText(btnCambiarDatoFoto,"changePhoto");
-			Browser.checkFieldText(btnCambiarDatoDemografico,"demographicDataChangeLink");
 			
-			// report 
-			Reporting.reportOK("Estamos en el área personal");
 
 
 	}
@@ -146,11 +159,11 @@ public class AreaPersonal  {
 
 				Browser.clickElementSyncro(btnAreaPersonal);
 				
-				Reporting.reportOK("OK - Se pulsa en el bot�n '�rea Personal'");
+				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
 				Browser.waitExt(5);
 				Browser.clickElementSyncro(btnDocumentacion);
-				Reporting.reportOK("OK - Se pulsa en el bot�n 'Documentacion'");
+				Reporting.reportOK("OK - Se pulsa en el botón 'Documentacion'");
 				
 				// 1.4 Se pulsa sobre la opcin Documentacin y se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito.
 				resultado = (Browser.checkObjeto(checkGenerales) && Browser.checkObjeto(checkCredito));
