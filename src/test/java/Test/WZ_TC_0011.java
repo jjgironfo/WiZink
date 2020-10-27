@@ -22,7 +22,7 @@ import general.Reporting;
 
 public class WZ_TC_0011 {
 	
-	@Parameters({ "browserName","userName","password"})
+	@Parameters({ "browserName","userName","password","direccion"})
 	@Test()
 	@Description("Modificar datos personales")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass , @Optional String direccion) throws Exception {

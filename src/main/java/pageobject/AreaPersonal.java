@@ -35,7 +35,7 @@ public class AreaPersonal  {
 	private By telefono = By.xpath("//h4[text()='Teléfono']");
 	private By btnCambiarMiUsuario = By.xpath("//button[text()='Cambiar mi usuario']");
 	private By btnCambiarMiPassword = By.xpath("//button[text()='Cambiar mi contraseña']");
-	private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
+	//private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
 	private By btnCambiarDatosAreaPersonal = By.id("personalDataChangeLink");
 	private By btnCambiarDatoFoto = By.id("changePhoto");
 	private By btnCambiarDatoDemografico = By.id("demographicDataChangeLink");
@@ -120,9 +120,9 @@ public class AreaPersonal  {
 				NIF = Browser.isElementDisplayed(txtNIF);
 				NIE = Browser.isElementDisplayed(txtNIE);
 				if (NIF) {
-					Reporting.reportOK("OK -  Validamos que se muestra el campo NIF");
+					Browser.checkFieldText(txtNIF, "NIF"); 
 				} else if (NIE) {
-					Reporting.reportOK("OK -  Validamos que se muestra el campo NIE");
+					Browser.checkFieldText(txtNIE, "NIE");
 				}
 				
 				Browser.checkFieldText(txtFechaNacimiento, "Fecha de nacimiento"); 
@@ -132,7 +132,7 @@ public class AreaPersonal  {
 				Browser.checkFieldText(telefono,"Telófono"); 
 				Browser.checkFieldText(btnCambiarMiUsuario,"Cambiar mi usuario");
 				Browser.checkFieldText(btnCambiarMiPassword,"Cambiar mi contrase�a");
-				Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
+				//Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
 				Browser.checkFieldText(btnCambiarDatosAreaPersonal,"personalDataChangeLink") ;
 				Browser.checkFieldText(btnCambiarDatoFoto,"changePhoto");
 				Browser.checkFieldText(btnCambiarDatoDemografico,"demographicDataChangeLink");
