@@ -64,8 +64,8 @@ public class WZ_TC_0011 {
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			Reporting.reportResultKO();
-			Log.info(e);
 			
 		} finally {
 			Browser.stopDriver();

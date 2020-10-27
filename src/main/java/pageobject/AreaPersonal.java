@@ -35,7 +35,7 @@ public class AreaPersonal  {
 	private By telefono = By.xpath("//h4[text()='Teléfono']");
 	private By btnCambiarMiUsuario = By.xpath("//button[text()='Cambiar mi usuario']");
 	private By btnCambiarMiPassword = By.xpath("//button[text()='Cambiar mi contraseña']");
-	//private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
+	private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
 	private By btnCambiarDatosAreaPersonal = By.id("personalDataChangeLink");
 	private By btnCambiarDatoFoto = By.id("changePhoto");
 	private By btnCambiarDatoDemografico = By.id("demographicDataChangeLink");
@@ -44,7 +44,7 @@ public class AreaPersonal  {
 	
 	
 	// Cambiar Datos Personales
-	private By txtOTPDatosPersonales = By.xpath("//*[@id='verify-code']");
+	private By txtOTPDatosPersonales = By.id("verify-code");
 	private By btnSeguirDatosPersonales = By.id("continueButton");
 	
 	//private By txtTelefonoDatosPersonales = By.id("phone");
@@ -107,6 +107,7 @@ public class AreaPersonal  {
 				boolean NIF = false;
 				boolean NIE = false;
 
+				Browser.waitExt(5);
 				Browser.clickElementSyncro(btnAreaPersonal);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
@@ -132,7 +133,7 @@ public class AreaPersonal  {
 				Browser.checkFieldText(telefono,"Telófono"); 
 				Browser.checkFieldText(btnCambiarMiUsuario,"Cambiar mi usuario");
 				Browser.checkFieldText(btnCambiarMiPassword,"Cambiar mi contrase�a");
-				//Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
+				Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
 				Browser.checkFieldText(btnCambiarDatosAreaPersonal,"personalDataChangeLink") ;
 				Browser.checkFieldText(btnCambiarDatoFoto,"changePhoto");
 				Browser.checkFieldText(btnCambiarDatoDemografico,"demographicDataChangeLink");
@@ -500,11 +501,13 @@ public class AreaPersonal  {
 			boolean resultado = false;
 
 			// 1.3 Se pulsa Ir a rea Personal
+			Browser.waitExt(5);
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
 
 			// 1.4 Pulsar el botn Cambiar Datos Personales
+			
 			Browser.clickElementSyncro(btnCambiarDatosAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Personales'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Personales'");
@@ -527,7 +530,7 @@ public class AreaPersonal  {
 			
 			
 			// Validamos que se guarda la Nueva Contrasea indicada
-//			resultado = (Funciones.checkObjeto(checkCambioPass));
+			resultado = (Browser.checkObjeto(checkCambioPass));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
 				Reporting.reportOK("OK - Validamos que se guarda la Nueva Contrasea indicada");
@@ -539,8 +542,8 @@ public class AreaPersonal  {
 			return resultado;
 
 		} catch (Exception e) {
-			Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			e.printStackTrace();
+			Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			throw new Exception("KO - NO se guarda la Nueva Contrasea indicada " + e.toString());
 		}
 

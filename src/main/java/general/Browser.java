@@ -551,8 +551,8 @@ public class Browser {
 			// Codigo Automatico
 			//codigoOTP = "123456";
 			List<LogEntry> listaConsole = Browser.driver.manage().logs().get(LogType.BROWSER).getAll();
-			codigoOTP = listaConsole.get(listaConsole.size()-1).toString().substring(65, 71);
-			System.out.println("Cdigo OTP: "+ codigoOTP);
+			codigoOTP = listaConsole.toString().substring(listaConsole.toString().indexOf("Codigo SMS") + 12, listaConsole.toString().indexOf("Codigo SMS") + 18);
+			System.out.println("Código OTP: "+ codigoOTP);
 			Browser.writeTextSyncro(elemento, codigoOTP);
     	} else {
     		// Codigo Pasado por Parametro
