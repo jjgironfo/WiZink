@@ -89,12 +89,13 @@ public class Mensajes {
 			return resultado;
 			
 		} catch (Exception e) {
-			Reporting.reportKO("KO - No se valida la pantalla Mensajes Recibidos");
 			e.printStackTrace();
+			Reporting.reportKO("KO - No se valida la pantalla Mensajes Recibidos");
 			throw new Exception("KO - No se valida la pantalla Mensajes Recibidos " + e.toString());
 		}
 
 	}
+
 	
 	/**
 	 * Metodo para Validar los Mensajes Enviados
