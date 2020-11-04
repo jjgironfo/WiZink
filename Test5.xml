@@ -3,6 +3,8 @@
 <suite name="Chrome">
 	<test name="MostrarNumeroTarjeta">
 	  	<parameter name ="browserName" value = "CHROME" />
+	  	<parameter name ="userName" value = "digesp067" />
+	  	<parameter name ="password" value = "qwert6" />
 	  	<classes>  
 	        <class name="Test.WZ_TC_0005"/>
 	   	</classes>

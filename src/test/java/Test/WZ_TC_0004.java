@@ -18,9 +18,9 @@ import pageobject.Login;
 
 public class WZ_TC_0004{
 
-	@Parameters({ "browserName" })
+	@Parameters({ "browserName","userName","password" })
 	@Test (description = "Recordar Contraseña")
-	public static void recuperarUsuario(@Optional(Final.CHROME) String browserName) throws Exception {
+	public static void recuperarUsuario(@Optional String url, @Optional String nombreUsuario, @Optional String contrasenia) throws Exception {
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 
 		try {
