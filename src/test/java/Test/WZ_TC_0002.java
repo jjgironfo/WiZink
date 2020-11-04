@@ -61,11 +61,6 @@ public class WZ_TC_0002 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName,pass);
-			try {
-				utilidades.takeRemoteScreenshot(driver);
-			} catch (Exception e) {
-			// TODO: handle exception
-			}
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

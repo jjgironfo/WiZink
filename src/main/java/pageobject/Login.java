@@ -16,7 +16,7 @@ import general.PropertyControl;
 import general.Reporting;
 import general.Utilidades;
 
-public class Login {
+public class Login extends Utilidades{
 
 	String testCase;
 	private static String actualEnv;
@@ -126,7 +126,12 @@ public class Login {
 				Browser.writeTextSyncro(txtUsuario, nombreUsuario);
 				Browser.clickElementSyncro(txtPassword);
 				Browser.writeTextSyncro(txtPassword, contrasenia);
-
+				try {
+					this.takeRemoteScreenshot(driver);
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 				Browser.clickElementSyncro(btnAccesoClientes);
 			//}
 			
