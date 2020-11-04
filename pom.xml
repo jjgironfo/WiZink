@@ -122,7 +122,15 @@
 							<!-- <suiteXmlFile>testNGAllTest.xml</suiteXmlFile> -->						
 							<!-- <suiteXmlFile>testNGTestUnitary.xml</suiteXmlFile> -->
 							<!-- suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>	-->	
-							<suiteXmlFile>All_test.xml</suiteXmlFile>					
+							<suiteXmlFile>Test2.xml</suiteXmlFile>		
+							<suiteXmlFile>Test3.xml</suiteXmlFile>	
+							<suiteXmlFile>Test4.xml</suiteXmlFile>	
+							<suiteXmlFile>Test5.xml</suiteXmlFile>	
+							<suiteXmlFile>Test6.xml</suiteXmlFile>	
+							<suiteXmlFile>Test7.xml</suiteXmlFile>	
+							<suiteXmlFile>Test8.xml</suiteXmlFile>	
+							<suiteXmlFile>Test9.xml</suiteXmlFile>
+							<suiteXmlFile>Test10.xml</suiteXmlFile>					
 						</suiteXmlFiles>
 						
 						<!-- Allure -->
