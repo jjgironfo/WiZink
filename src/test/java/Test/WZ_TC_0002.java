@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Optional;
 
 import io.qameta.allure.Description;
@@ -15,6 +16,7 @@ import general.Browser;
 import general.Final;
 import general.Log;
 import general.Reporting;
+import general.Utilidades;
 
 
 
@@ -23,8 +25,10 @@ public class WZ_TC_0002 {
 	@Parameters({ "browserName","userName","password"})
 	@Test()
 	@Description("Login en wizink")
+	
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
-
+		Utilidades utilidades = null;
+		WebDriver driver = null;
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 
 		try {
@@ -57,6 +61,11 @@ public class WZ_TC_0002 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName,pass);
+			try {
+				utilidades.takeRemoteScreenshot(driver);
+			} catch (Exception e) {
+			// TODO: handle exception
+			}
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

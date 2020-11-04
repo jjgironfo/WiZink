@@ -1,6 +1,21 @@
 package general;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Calendar;
 import java.util.Random;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
+
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 
 public class Utilidades {
 
@@ -116,5 +131,36 @@ public class Utilidades {
 		return cif;
 	}
     
-    
+	@Attachment(value = "Screenshot jpg attachment", type = "image/jpg")
+    @Step("Taking a screenshot from Assert")
+	
+	public static byte[] takeRemoteScreenshot(WebDriver driver) throws URISyntaxException, IOException {
+		
+
+		
+		try {
+               String filename = generateRandomFilename();
+               WebDriver augmentedDriver = new Augmenter().augment(driver);
+               File screenshot = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);
+               FileUtils.copyFile(screenshot, new File(reportsDir + SLASH + "2" + filename));
+               return Files.readAllBytes(Paths.get(screenshot.toURI()));
+        } catch (IOException e) {
+               System.out.println("We have a problem: Error in screenshot");
+               System.out.println(e);
+        }
+        return null;
+  }
+	
+	 private static final String SLASH = File.separator;
+	 public static final String reportsDir = "." + SLASH + "target" + SLASH + "site" + SLASH + "images";
+	 
+	 public static String generateRandomFilename() {
+         Calendar c = Calendar.getInstance();
+         String filename = "Test.jpg";
+         filename = "" + c.get(Calendar.YEAR) + "-" + c.get(Calendar.MONTH) + "-" + c.get(Calendar.DAY_OF_MONTH) + "-"
+                      + c.get(Calendar.HOUR_OF_DAY) + "-" + c.get(Calendar.MINUTE) + "-" + c.get(Calendar.SECOND) + "-"
+                      + filename;
+         return filename;
+   }
+	 
 }
