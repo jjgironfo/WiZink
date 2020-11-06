@@ -334,13 +334,13 @@ public class AreaPersonal  {
 			// 1.3 Se pulsa Ir a rea Personal
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
-			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
 			// 1.4 Pulsar el botn "CAMBIAR MI CONTRASEA"
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnCambiarMiPassword);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi Contrasea'", "");
-			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi Contrasea'");
+			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi Contraseña'");
 
 			// 1.5 Introducir la contrasea antigua, y la nueva en los campos contrasea y repetir contrasea
 			String password = "";
@@ -530,12 +530,13 @@ public class AreaPersonal  {
 			
 			
 			// Validamos que se guarda la Nueva Contrasea indicada
-			resultado = (Browser.checkObjeto(checkCambioPass));
+			resultado = (Browser.checkObjeto(checkCambiarDatosPersonales));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
 				Reporting.reportOK("OK - Validamos que se guarda la Nueva Contrasea indicada");
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrasea indicada", "");
+				
 				Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
 			}
 			
@@ -543,8 +544,8 @@ public class AreaPersonal  {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
-			throw new Exception("KO - NO se guarda la Nueva Contrasea indicada " + e.toString());
+			Reporting.reportKO("KO - NO se guarda la Nueva Contraseña indicada");
+			throw new Exception("KO - NO se guarda la Nueva Contraseña indicada " + e.toString());
 		}
 
 
