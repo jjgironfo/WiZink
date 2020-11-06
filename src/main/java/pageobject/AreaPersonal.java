@@ -504,7 +504,7 @@ public class AreaPersonal  {
 			Browser.waitExt(5);
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
-			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
 			// 1.4 Pulsar el botn Cambiar Datos Personales
 			
@@ -521,7 +521,7 @@ public class AreaPersonal  {
 			// Pulsamos en Seguir
 			Browser.clickElementSyncro(btnSeguirDatosPersonales);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
-			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Seguir'");
 			
 			// Modificar el telfono y Pulsar en "COMPLETAR"
 			

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="RecordarUsuario">
+<suite name="3.RecordarUsuario">
 	<test name="RecordarUsuario">
 	  	<parameter name ="browserName" value = "CHROME" />
 	  	<parameter name ="userName" value = "digesp067" />

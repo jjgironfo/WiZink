@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="RecordarContraseña">
+<suite name="4.RecordarContraseña">
 	<test name="RecordarContraseña">
 	  	<parameter name ="browserName" value = "CHROME" />
 	  	<parameter name ="userName" value = "digesp067" />

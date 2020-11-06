@@ -165,11 +165,11 @@ public class Mensajes {
 			
 			Browser.clickElementSyncro(btnMensajes);
 			//Funciones.waitExt(2);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes'");
 			
 			Browser.waitForElement(btnMsgRedactar,4,"no se carga la pantalla");
 			Browser.clickElementSyncro(btnMsgRedactar);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes Enviados'");
 			
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(desplegableAsuntoMsg);
@@ -182,7 +182,7 @@ public class Mensajes {
 			
 
 			Browser.clickElementSyncro(btnEnviarMsg);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Enviar'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Enviar'");
 			
 			
 			// Validamos que se muestra el PopUp indicando que se ha enviado el Mensaje
@@ -213,21 +213,21 @@ public class Mensajes {
 			boolean resultado = false;
 			
 			Browser.clickElementSyncro(btnMensajes);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes'");
 			
 			Browser.waitExt(4);
 			Browser.clickElementSyncro(btnMsgEnviados);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Mensajes Enviados'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes Enviados'");
 			
 			Browser.clickElementSyncro(listaMensajesBandeja);
 			Reporting.reportOK("OK - Se pulsa en el primer Mensaje de la bandeja");
 			
 			Browser.waitExt(4);
 			Browser.clickElementSyncro(btnBorrarMsg);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Borrar Mensaje'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Borrar Mensaje'");
 			
 			Browser.clickElementSyncro(btnBorrarSIMsgPopUp);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Si' para borrar el Mensaje");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Si' para borrar el Mensaje");
 			
 			// Validamos que se muestra el mensaje 'Mensaje borrado'
 			resultado = (Browser.checkObjeto(checkMensajeBorrarMsg));
