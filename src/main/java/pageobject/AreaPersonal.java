@@ -19,7 +19,7 @@ import general.Reporting;
 public class AreaPersonal  {
 
 	String testCase;
-	
+	private static String actualEnv;
 
 	// Objetos Area Personal
 	private By btnAreaPersonal = By.id("userDataHeaderLink");
@@ -32,7 +32,7 @@ public class AreaPersonal  {
 	private By fotoPerfil = By.id("imgProfileCustomerData");
 	private By direccion = By.xpath("//h4[text()='Dirección']");
 	private By email = By.xpath("//h4[text()='Email']");
-	private By telefono = By.xpath("//h4[text()='Teléfono']");
+	private By telefono = By.id("phone");
 	private By btnCambiarMiUsuario = By.xpath("//button[text()='Cambiar mi usuario']");
 	private By btnCambiarMiPassword = By.xpath("//button[text()='Cambiar mi contraseña']");
 	private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
@@ -496,10 +496,11 @@ public class AreaPersonal  {
 	 * @return
 	 * 
 	 */
-	public boolean cambiarDatosPersonales(String direccion) throws Exception {
+	public boolean cambiarDatosPersonales(String telefono) throws Exception {
 		try {
 			boolean resultado = false;
-
+			actualEnv = PropertyControl.getConfProperty("actualEnv");
+			telefono = PropertyControl.getLogProperty("telefono_" + actualEnv);
 			// 1.3 Se pulsa Ir a rea Personal
 			Browser.waitExt(5);
 			Browser.clickElementSyncro(btnAreaPersonal);
@@ -508,7 +509,7 @@ public class AreaPersonal  {
 
 			// 1.4 Pulsar el botn Cambiar Datos Personales
 			
-			Browser.clickElementSyncro(btnCambiarDatosAreaPersonal);
+			Browser.clickElementSyncro(btnCambiarDatoDemografico);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Personales'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Personales'");
 
@@ -525,9 +526,11 @@ public class AreaPersonal  {
 			
 			// Modificar el telfono y Pulsar en "COMPLETAR"
 			
+			Browser.clickElementSyncro(this.telefono);
+			Browser.writeTextSyncro(this.telefono, telefono);
 			
-			
-			
+			//Guardar los cambios
+			Browser.clickElementSyncro(btnGuardarCambiosMiPass);
 			
 			// Validamos que se guarda la Nueva Contrasea indicada
 			resultado = (Browser.checkObjeto(checkCambiarDatosPersonales));
