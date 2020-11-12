@@ -5,6 +5,7 @@
 	  	<parameter name ="browserName" value = "CHROME" />
 	  	<parameter name ="userName" value = "digesp067" />
 	  	<parameter name ="password" value = "qwert6" />
+	  	<parameter name ="telefono" value = "648738382" />
 	  	<classes>  
 	        <class name="Test.WZ_TC_0011"/>
 	   	</classes>

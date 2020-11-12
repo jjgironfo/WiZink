@@ -63,7 +63,7 @@ public class AreaPersonal  {
 	
 	//Cambiar datos direccion
 	private By txtNombreVia = By.id("direccion");
-	private By checkCambiarDireccion = By.xpath("//p[text()='Por mantener actualizados tus datos de contacto']");
+	private By checkCambiarDireccion = By.xpath("//*[contains(text(),'Por mantener actualizados tus datos de contacto.')]");
 	
 	// Cambiar Imagen Perfil
 	private By btnImagenCambioFoto = By.id("profile");

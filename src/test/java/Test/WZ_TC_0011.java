@@ -22,10 +22,10 @@ import general.Reporting;
 
 public class WZ_TC_0011 {
 	
-	@Parameters({ "browserName","userName","password","direccion"})
+	@Parameters({ "browserName","userName","password","telefono"})
 	@Test()
 	@Description("Modificar datos personales")
-	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass , @Optional String direccion) throws Exception {
+	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass , @Optional String telefono) throws Exception {
 
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 
@@ -60,7 +60,7 @@ public class WZ_TC_0011 {
 			
 			login.doLoginUsuarioPassword(userName, pass);
 			
-			areaPersonal.cambiarDatosPersonales(direccion);
+			areaPersonal.cambiarDatosPersonales(telefono);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
