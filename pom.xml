@@ -121,7 +121,7 @@
 							<!-- <suiteXmlFile>${suiteName}</suiteXmlFile> -->
 							<!-- <suiteXmlFile>testNGAllTest.xml</suiteXmlFile> -->						
 							<!-- <suiteXmlFile>testNGTestUnitary.xml</suiteXmlFile> -->
-							<!-- suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>	
+							<!-- suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>	-->
 							<suiteXmlFile>Test2.xml</suiteXmlFile>		
 							<suiteXmlFile>Test3.xml</suiteXmlFile>	
 							<suiteXmlFile>Test4.xml</suiteXmlFile>	
@@ -130,8 +130,8 @@
 							<suiteXmlFile>Test7.xml</suiteXmlFile>	
 							<suiteXmlFile>Test8.xml</suiteXmlFile>	
 							<suiteXmlFile>Test9.xml</suiteXmlFile>
-							<suiteXmlFile>Test10.xml</suiteXmlFile> -->	
-							<suiteXmlFile>Test11.xml</suiteXmlFile>
+							<suiteXmlFile>Test10.xml</suiteXmlFile> 	
+							<suiteXmlFile>Test11.xml</suiteXmlFile> 
 							<suiteXmlFile>Test12.xml</suiteXmlFile>				
 						</suiteXmlFiles>
 						
