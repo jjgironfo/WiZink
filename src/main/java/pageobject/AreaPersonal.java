@@ -1,5 +1,6 @@
 package pageobject;
 
+import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -8,10 +9,13 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Properties;
 
+import javax.swing.ImageIcon;
+
 import org.openqa.selenium.By;
 
 import general.Browser;
 import general.Final;
+import general.PathControl;
 import general.PropertyControl;
 import general.Reporting;
 
@@ -33,8 +37,8 @@ public class AreaPersonal  {
 	private By direccion = By.xpath("//h4[text()='Dirección']");
 	private By email = By.xpath("//h4[text()='Email']");
 	private By telefono = By.id("phone");
-	private By btnCambiarMiUsuario = By.xpath("//button[text()='Cambiar mi usuario']");
-	private By btnCambiarMiPassword = By.xpath("//button[text()='Cambiar mi contraseña']");
+	private By btnCambiarMiUsuario = By.id("cambiarUsername");
+	private By btnCambiarMiPassword = By.id("cambiarContrasena");
 	private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
 	private By btnCambiarDatosAreaPersonal = By.id("personalDataChangeLink");
 	private By btnCambiarDatoFoto = By.id("changePhoto");
@@ -60,6 +64,7 @@ public class AreaPersonal  {
 	private By txtUsuarioCambiarUsuario = By.id("alias");
 	private By txtPasswordCambiarUsuario = By.id("password");
 	private By checkcambioUsuario = By.xpath("//p[text()='Has cambiado tu usuario de acceso.']");
+	private By volverInicio = By.id("gotoUserData");
 	
 	//Cambiar datos direccion
 	private By txtNombreVia = By.id("direccion");
@@ -250,9 +255,9 @@ public class AreaPersonal  {
 		
 			boolean isDisabled = true;
 
-			// 1.3 Se pulsa Ir a �rea Personal
+			// 1.3 Se pulsa Ir a Área Personal
 			Browser.clickElementSyncro(btnAreaPersonal);
-			Reporting.reportOK("OK - Se pulsa en el bot�n '�rea Personal'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
 			// 1.4 Pulsar sobre el link 'Cambiar' de la Foto de Perfil
 			Browser.clickElementSyncro(btnCambiarDatoFoto);
@@ -266,21 +271,12 @@ public class AreaPersonal  {
 			// Realizamos la subida del Fichero
 			Browser.waitExt(1);
 			Reporting.reportOK("Subimos Imagen");
-
-			//Properties datosConfig = PropertyControl.getConfProperty("config");
-			//String text = datosConfig.getProperty("rutaImagen");
 			
-			//StringSelection stringSelection = new StringSelection(text);
-			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-			//clipboard.setContents(stringSelection, stringSelection);
+			//File file = new File("/Users/cexmobile/git/wizink_testng/IMAGEN.png");
+			//StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
+			//Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+			uploadMediaByRobot("IMAGEN.png");
 
-			Robot robot = new Robot();
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_V);
-			robot.keyRelease(KeyEvent.VK_V);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
 
 			Reporting.reportOK("Fin Subir Imagen");
 			Browser.waitExt(1);
@@ -347,7 +343,7 @@ public class AreaPersonal  {
 			Properties datosConfig = PropertyControl.getProperties("config");
 			Properties datosLogin = PropertyControl.getProperties("login");
 
-			String entorno = datosConfig.getProperty("entorno");
+			String entorno = datosConfig.getProperty("actualEnv");
 			switch (entorno) {
 			case "DES":
 				password = datosLogin.getProperty("password_DES");
@@ -406,7 +402,7 @@ public class AreaPersonal  {
 			// 1.3 Se pulsa Ir a rea Personal
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
-			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
+			Reporting.reportOK("OK - Se pulsa en el botn Área Personal'");
 
 			// 1.4 Pulsar el botn "CAMBIAR MI USUARIO"
 			Browser.clickElementSyncro(btnCambiarMiUsuario);
@@ -418,7 +414,7 @@ public class AreaPersonal  {
 			Properties datosConfig = PropertyControl.getProperties("config");
 			Properties datosLogin = PropertyControl.getProperties("login");
 
-			String entorno = datosConfig.getProperty("entorno");
+			String entorno = datosConfig.getProperty("actualEnv");
 			switch (entorno) {
 			case "DES":
 				usuario = datosLogin.getProperty("usuario_DES");
@@ -438,7 +434,7 @@ public class AreaPersonal  {
 			}
 
 			// 1.5 Introducir el nuevo usuario y la clave actual
-						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, usuario);
+						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, "digesp066");
 						Browser.writeTextSyncro(txtPasswordCambiarUsuario, password);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el nuevo Usuario y contrasea", "");
 						Reporting.reportOK("OK - Se escribe el nuevo Usuario y contrasea");
@@ -447,11 +443,16 @@ public class AreaPersonal  {
 						Browser.clickElementSyncro(btnSeguirDatosPersonales);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 						Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
+						
+						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
+						Browser.clickElementSyncro(volverInicio);
+						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+						Reporting.reportOK("OK - Se pulsa en el botón 'Volver al inicio'");
 				
 						// 1.3 Se pulsa Ir a rea Personal para volver al usuario antiguo
 						Browser.clickElementSyncro(btnAreaPersonal);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
-						Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
+						Reporting.reportOK("OK - Se pulsa en el botn 'Área Personal'");
 
 						// 1.4 Pulsar el botn "CAMBIAR MI USUARIO" 
 						Browser.clickElementSyncro(btnCambiarMiUsuario);
@@ -459,15 +460,12 @@ public class AreaPersonal  {
 						Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi usuario'");
 						
 						// 1.5 Introducir el nuevo usuario y la clave actual
-						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, nombreUsuario);
-						Browser.writeTextSyncro(txtPasswordCambiarUsuario, contrasenia);
+						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, usuario);
+						Browser.writeTextSyncro(txtPasswordCambiarUsuario, password);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el nuevo Usuario y contrasea", "");
 						Reporting.reportOK("OK - Se escribe el nuevo Usuario y contrasea");
-									
-						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
-						Browser.clickElementSyncro(btnSeguirDatosPersonales);
-						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
-						Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
+			
+						
 						
 						// Validamos que se guarda el nuevo usuario
 						resultado = (Browser.checkObjeto(checkcambioUsuario));
@@ -479,6 +477,11 @@ public class AreaPersonal  {
 							Reporting.reportKO("KO - NO se guarda el nuevo Usuario indicadoa");
 						}
 						
+						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
+						Browser.clickElementSyncro(volverInicio);
+						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+						Reporting.reportOK("OK - Se pulsa en el botón 'Volver al inicio'");
+						
 						return resultado;
 
 					} catch (Exception e) {
@@ -488,6 +491,47 @@ public class AreaPersonal  {
 					}
 
 
+	}
+	
+	public static void uploadMediaByRobot(String fileName) {
+	    //File Need to be imported
+	    File file = new File(PathControl.getRootPath() + File.separator + fileName);
+	    StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
+	    //Copy to clipboard
+	    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+
+	    Robot robot = null;
+	    try {
+	        robot = new Robot();
+	    } catch (AWTException e) {
+	        e.printStackTrace();
+	    }
+
+	    // Cmd + Tab is needed since it launches a Java app and the browser looses focus
+	    robot.keyPress(KeyEvent.VK_META);
+	    robot.keyPress(KeyEvent.VK_TAB);
+	    robot.keyRelease(KeyEvent.VK_META);
+	    robot.keyRelease(KeyEvent.VK_TAB);
+	    robot.delay(500);
+
+	    //Open Goto window
+	    robot.keyPress(KeyEvent.VK_META);
+	    robot.keyPress(KeyEvent.VK_SHIFT);
+	    robot.keyPress(KeyEvent.VK_G);
+	    robot.keyRelease(KeyEvent.VK_META);
+	    robot.keyRelease(KeyEvent.VK_SHIFT);
+	    robot.keyRelease(KeyEvent.VK_G);
+
+	    //Paste the clipboard value
+	    robot.keyPress(KeyEvent.VK_META);
+	    robot.keyPress(KeyEvent.VK_V);
+	    robot.keyRelease(KeyEvent.VK_META);
+	    robot.keyRelease(KeyEvent.VK_V);
+
+	    //Press Enter key to close the Goto window and Upload window
+	    robot.keyPress(KeyEvent.VK_ENTER);
+	    robot.keyRelease(KeyEvent.VK_ENTER);
+	    robot.delay(500);
 	}
 	
 	/**
