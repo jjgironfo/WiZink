@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="22.Visualizar XLS">
+	<test name="Visualizar XLS">
+		<parameter name ="browserName" value = "CHROME" />
+	  	<classes>  
+	        <class name="Test.WZ_TC_0022"/>
+	   	</classes>
+	</test>
+</suite> 

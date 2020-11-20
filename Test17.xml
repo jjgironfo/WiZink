@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="17.Mostrar Favoritos">
+	<test name="Mostrar Favoritos">
+		<parameter name ="browserName" value = "CHROME" />
+	  	<classes>  
+	        <class name="Test.WZ_TC_0017"/>
+	   	</classes>
+	</test>
+</suite> 

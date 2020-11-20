@@ -60,7 +60,7 @@ public class WZ_TC_0018 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			posicionGlobal.checkEliminarFavoritos();
+			posicionGlobal.checkFavoritos();
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

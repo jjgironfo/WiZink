@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="24.Mostrar Menu opciones">
+	<test name="Mostrar menu opciones">
+		<parameter name ="browserName" value = "CHROME" />
+	  	<classes>  
+	        <class name="Test.WZ_TC_0024"/>
+	   	</classes>
+	</test>
+</suite> 

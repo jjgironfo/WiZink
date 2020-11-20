@@ -14,7 +14,7 @@ public class PosicionGlobal {
 	String testCase;
 
 	// Objetos Posicion Global
-	private By btnAnadirAccesoDirecto = By.xpath("//*[text()='A�ADIR']/ancestor::a");
+	private By btnAnadirAccesoDirecto = By.xpath("//*[text()='AÑADIR']/ancestor::a");
 	
 	// PopUP Accesos Directos
 	private By btnAnadirAccesoDirectoPopUp = By.id("addShortcutButton");
@@ -22,7 +22,7 @@ public class PosicionGlobal {
 	private By opcionComboAccesoPopUp = By.id("addShortcutSelectBoxIt");
 	private By opcionConsultarPINPopUp=By.xpath("//*[@id='addShortcutSelectBoxItOptions']/*[@data-id='0']");
 	//private By opcionConsultarPINPopUp = By.xpath("//a[contains(text(),'Consultar PIN')]");
-	private By btnAnadirOtroAccesoDirectoPopUp = By.id("button_a�adir");
+	private By btnAnadirOtroAccesoDirectoPopUp = By.id("button_añadir");
 	
 	private By btnAspaRojarAccesoDirectoPopUp = By.xpath("//*[@id='listaEnlaces']/li[1]/button");
 	private By btnEliminarAccesoDirectoPopUp = By.xpath("//button[text()='ELIMINAR']");
@@ -35,14 +35,28 @@ public class PosicionGlobal {
 	 * @return
 	 * 
 	 */
-	 public boolean checkFavoritos() throws Exception {
-		try {
-			boolean resultado = false;
+	 public void checkFavoritos() throws Exception {
+	
 
-			// 1.3 En el apartado de Accesos directos pulsar sobre A�adir
+			// 1.3 En el apartado de Accesos directos pulsar sobre Añadir
 			Browser.clickElementSyncro(btnAnadirAccesoDirecto);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'A�adir Acceso Directo'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo'");
 			
+
+						
+			// 1.4 Se pulsa Añadir
+			Browser.clickElementSyncro(btnAnadirAccesoDirectoPopUp);
+			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo PopUp'");
+			
+			// 1.5 Seleccionar el Acceso: Consultar PIN y pulsar Añadir
+			Browser.waitExt(1);
+			Browser.clickElementSyncro(opcionComboAccesoPopUp);
+			Browser.waitExt(1);
+			Browser.clickElementSyncro(opcionConsultarPINPopUp);
+			Browser.clickElementSyncro(btnAnadirOtroAccesoDirectoPopUp);
+			Reporting.reportOK("OK - Se selecciona en el combo la opcion 'Consultar PIN'");
+			
+			// 1.6 Seleccionar uno de los accesos directos creados y pulsar el icono X para eliminarlo:
 			JavascriptExecutor  js = (JavascriptExecutor ) driver;
 			if (Browser.checkObjeto(btnEliminarAccesoDirectoPopUp)) {
 				try {
@@ -52,46 +66,21 @@ public class PosicionGlobal {
 					Reporting.reportKO("KO - No existe el Boton Eliminar Favoritos");
 				}
 			}
-						
-			// 1.4 Se pulsa A�adir
-			Browser.clickElementSyncro(btnAnadirAccesoDirectoPopUp);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'A�adir Acceso Directo PopUp'");
-			
-			// 1.5 Seleccionar el Acceso: Consultar PIN y pulsar A�adir
-			Browser.waitExt(1);
-			Browser.clickElementSyncro(opcionComboAccesoPopUp);
-			Browser.waitExt(1);
-			Browser.clickElementSyncro(opcionConsultarPINPopUp);
-			Browser.clickElementSyncro(btnAnadirOtroAccesoDirectoPopUp);
-			Reporting.reportOK("OK - Se selecciona en el combo la opcion 'Consultar PIN'");
-			
-			// 1.6 Seleccionar uno de los accesos directos creados y pulsar el icono X para eliminarlo:
 			js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
 			Reporting.reportOK("OK - Se pulsa en el aspa Roja para eliminar el Acceso Directo creado anteriormente");
 			
 			// 1.7 Se pulsa eliminar
 			Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 			Browser.waitExt(3);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Eliminar'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Eliminar'");
 						
 			// Validamos que el Aspa Roja del Acceso directo no existe
-			resultado = (Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp));
-			if (resultado) {
-				Reporting.reportOK("OK - Se valida se ha eliminado el Acceso Directo creado");
-			} else {
-				Reporting.reportKO("KO - NO se valida se ha eliminado el Acceso Directo creado");
-			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportKO("KO - No se valida se ha eliminado el Acceso Directo creado");
-			e.printStackTrace();
-			throw new Exception("KO - No se valida se ha eliminado el Acceso Directo creado " + e.toString());
-		}
+			Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp);
+			Reporting.reportOK("OK - Se valida se ha eliminado el Acceso Directo creado");
 
 	}
 	/**
-	 * Metodo para a�adir los Favoritos
+	 * Metodo para añadir los Favoritos
 	 * 
 	 * @return
 	 * 
@@ -152,13 +141,12 @@ public class PosicionGlobal {
 	 * @return
 	 * 
 	 */
-	public boolean checkEliminarFavoritos() throws Exception {
-		try {
-			boolean resultado = false;
+	/**public void checkEliminarFavoritos() throws Exception {
+		
 			
-			//1.3 En el apartado de Accesos directos pulsar sobre A�adir
+			//1.3 En el apartado de Accesos directos pulsar sobre añadir
 			Browser.clickElementSyncro(btnAnadirAccesoDirecto);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'A�adir Acceso Directo'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo'");
 			
 			JavascriptExecutor  js = (JavascriptExecutor ) driver;
 			js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
@@ -171,24 +159,13 @@ public class PosicionGlobal {
 			// 1.7 Se pulsa eliminar
 			Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 			//Funciones.waitExt(3);
-			Reporting.reportOK("OK - Se pulsa en el bot�n 'Eliminar'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Eliminar'");
 						
 			// Validamos que el Aspa Roja del Acceso directo no existe
-			Browser.waitForElement(btnAnadirAccesoDirectoPopUp, 2, "Volviendo a a�adir");
-			resultado = (Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp));
-			if (resultado) {
-				Reporting.reportOK("OK - Se valida se ha eliminado el Acceso Directo creado");
-			} else {
-				Reporting.reportKO("KO - NO se valida se ha eliminado el Acceso Directo creado");
-			}
-			return resultado;
+			Browser.waitForElement(btnAnadirAccesoDirectoPopUp, 2, "Volviendo a añadir");
+			Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp);
+		
 
-		} catch (Exception e) {
-			Reporting.reportKO("KO - No se valida se ha eliminado el Acceso Directo creado");
-			e.printStackTrace();
-			throw new Exception("KO - No se valida se ha eliminado el Acceso Directo creado " + e.toString());
-		}
-
-	}
+	}**/
 
 }

@@ -31,6 +31,7 @@ public class WZ_TC_0016 {
 
 		try {
 
+
 			// We launch the Test case
 			Reporting.initializeReporting(codeTC);
 			Reporting.reportOK("*** EJECUCIÓN PRUEBA: " + codeTC + " ***");
@@ -60,7 +61,9 @@ public class WZ_TC_0016 {
 			
 			login.doLoginUsuarioPassword(userName, pass);
 			
+			Reporting.reportOK("El login se ha realizado de manera correcta");
 			areaPersonal.checkDocumentacion();
+			
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

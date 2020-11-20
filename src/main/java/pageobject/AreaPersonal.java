@@ -93,7 +93,7 @@ public class AreaPersonal  {
 	private By checkGenerales = By.xpath("//h4[text()='Generales']");
 	private By checkCredito = By.xpath("//h4[text()='Crédito']");
 	
-	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[text()='Terminos y Condiciones General']");
+	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[text()='Marketplace - Términos y condiciones de uso']");
 	private By btnContratoMulticanal = By.xpath("//a/p[text()='OLB - Contrato Multicanal']");
 	
 	
@@ -157,38 +157,36 @@ public class AreaPersonal  {
 	 * @return
 	 * 
 	 */
-	public boolean checkDocumentacion() throws Exception {
+	public void  checkDocumentacion() throws Exception{
 		
-			try {
+		
 				Browser.waitExt(1);
-				boolean resultado = false;
-
+				
 				Browser.clickElementSyncro(btnAreaPersonal);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
 				Browser.waitExt(5);
 				Browser.clickElementSyncro(btnDocumentacion);
+				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Documentacion'");
 				
-				// 1.4 Se pulsa sobre la opcin Documentacin y se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito.
-				resultado = (Browser.checkObjeto(checkGenerales) && Browser.checkObjeto(checkCredito));
-				if (resultado) {
-					//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito", "");
-					Reporting.reportOK("Se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito");
-				} else {
-					//egea.reportaTraza(testCase, "ERROR", "KO", "NO se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito", "");
-					Reporting.reportKO("KO - NO se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito");
-				}
+				// 1.4 Se pulsa sobre la opcin Documentación y se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito.
+				Browser.checkObjeto(checkGenerales);
+				Browser.checkObjeto(checkCredito);
 				
+				//report
+				Reporting.reportOK("Se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crédito");
+				
+					
 				Properties datosConfig = PropertyControl.getProperties("config");
-				String entorno = datosConfig.getProperty("entorno");
+				String entorno = datosConfig.getProperty("actualEnv");
 				
 				String ruta = "";
 				File fichero;
 				switch (entorno) {
-				case "DES":
-					// DES
+				case "PRE":
+					// PRE
 					// Borramos antes el fichero si existe y luego descargamos
 					ruta = Browser.rutaPath + File.separator + "properties" + File.separator + "Terminos y Condiciones General.pdf";
 					fichero = new File(ruta);
@@ -198,11 +196,11 @@ public class AreaPersonal  {
 					
 					// 1.5	Se pulsa sobre el enlace Contrato multicanal
 					Browser.clickElementSyncro(btnTerminosYCondicionesGeneral);
-					//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'", "");
+					//report
 					Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
 					break;
-				case "PRE":
-					// PRE
+				case "PRO":
+					// PRO
 					// Borramos antes el fichero si existe y luego descargamos
 					ruta = Browser.rutaPath + File.separator + "properties" + File.separator + "OLB - Contrato Multicanal.pdf";
 					fichero = new File(ruta);
@@ -225,21 +223,10 @@ public class AreaPersonal  {
 				
 				// Validamos que se ha descargado el Fichero PDF
 				fichero = new File(ruta);
-				resultado = fichero.exists();
-				if (resultado) {
-					//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha descargado el Fichero PDF", "");
-					Reporting.reportOK("OK - Validamos que se ha descargado el Fichero PDF");
-				} else {
-					//egea.reportaTraza(testCase, "ERROR", "KO", "NO se valida que se ha descargado el Fichero PDF", "");
-					Reporting.reportKO("KO - NO se valida que se ha descargado el Fichero PDF");
-				}
 				
-				return resultado;
-			} catch (Exception e) {
-				Reporting.reportKO("KO - NO se valida que se ha descargado el Fichero PDF");
-				e.printStackTrace();
-				throw new Exception("KO - NO se valida que se ha descargado el Fichero PDF " + e.toString());
-			}
+
+				
+			
 
 
 	}

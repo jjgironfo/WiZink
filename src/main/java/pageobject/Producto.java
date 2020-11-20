@@ -103,49 +103,31 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean checkProductoOpciones() throws Exception {
-		try {
-			boolean resultado = false;
+	public void checkProductoOpciones() throws Exception {
+		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente", "");
+			
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
 			
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona del men de la izquierda la opcin 'Opciones'", "");
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
 			// Las opciones pueden ser: cambiar forma de pago, cambiar la cuenta de domiciliacin, 
 			// consultar pin, consultar num y cvv de la tarjeta, bloquear tarjeta, reclamar un cargo no reconocido, 
 			// pedir reenvo de tarjeta, informarme sobre wizink pay, solicitar una tarjeta adicional
 			Browser.waitExt(1);
-			/*resultado = (Browser.checkObjeto(btnCambiarFormaPagoOpcionesProducto) && Browser.checkObjeto(btnCambiarCuentaDomiciliacionOpcionesProducto) 
-					&& Browser.checkObjeto(btnHacerUnIngresoOpcionesProducto) && Browser.checkObjeto(btnConsultaPINOpcionesProducto) 
-					&& Browser.checkObjeto(btnConsultarNumCVVOpcionesProducto) && Browser.checkObjeto(btnCargoNoReconocidoOpcionesProducto) &&
-					Browser.checkObjeto(btnInformacionWizinkPayOpcionesProducto) && Browser.checkObjeto(btnDesactivarWizinkPayOpcionesProducto));
-			*/
-			resultado = (Browser.checkObjeto(btnCambiarFormaPagoOpcionesProducto) && Browser.checkObjeto(btnCambiarCuentaDomiciliacionOpcionesProducto) 
-					&& Browser.checkObjeto(btnHacerUnIngresoOpcionesProducto) && Browser.checkObjeto(btnConsultarNumCVVOpcionesProducto) 
-					&& Browser.checkObjeto(btnCargoNoReconocidoOpcionesProducto) && Browser.checkObjeto(btnInformacionWizinkPayOpcionesProducto)
-					&& Browser.checkObjeto(btnDesactivarWizinkPayOpcionesProducto));
-			
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional", "");
-				Reporting.reportOK("OK - Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "No se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional", "");
-				Reporting.reportKO("KO - No se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional");
-			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportOK("KO - No se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional");
-			e.printStackTrace();
-			throw new Exception("KO - No se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional " + e.toString());
-		}
+			if (Browser.checkObjeto(btnCambiarFormaPagoOpcionesProducto) && Browser.checkObjeto(btnCambiarCuentaDomiciliacionOpcionesProducto) 
+						&& Browser.checkObjeto(btnHacerUnIngresoOpcionesProducto) && Browser.checkObjeto(btnConsultarNumCVVOpcionesProducto) 
+						&& Browser.checkObjeto(btnCargoNoReconocidoOpcionesProducto) && Browser.checkObjeto(btnInformacionWizinkPayOpcionesProducto)
+						&& Browser.checkObjeto(btnDesactivarWizinkPayOpcionesProducto)) {
+							//egea.reportaTraza(testCase, "INFO", "OK", "Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional", "");
+						Reporting.reportOK("OK - Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional");
+					}
+	
 
 	}
 	
@@ -155,9 +137,8 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean checkProductoMovimientosHoy() throws Exception {
-		try {
-			boolean resultado = false;
+	public void checkProductoMovimientosHoy() throws Exception {
+		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
@@ -165,24 +146,9 @@ public class Producto {
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
 			
 			// 1.4 Se visualizan los movimientos realizados el da de la prueba Con ttulo "Hoy,."
-//			resultado = (Browser.checkObjeto(checkHoyProducto) && Browser.checkObjeto(checkSituacionActualProducto));
-			resultado = (Browser.checkObjeto(checkSituacionActualProducto));
+			Browser.checkObjeto(checkSituacionActualProducto);
+			Reporting.reportOK("OK - Se visualizan los movimientos de la tarjeta de la prueha");
 			
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "Se visualizan los movimientos realizados el da de la prueba", "");
-				Reporting.reportOK("OK - Se visualizan los movimientos realizados el da de la prueba");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "No se visualizan los movimientos realizados el da de la prueba", "");
-				Reporting.reportKO("KO - No se visualizan los movimientos realizados el da de la prueba");
-			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportKO("KO - No se visualizan los movimientos realizados el da de la prueba");
-			e.printStackTrace();
-			throw new Exception("KO - No se visualizan los movimientos realizados el da de la prueba " + e.toString());
-		}
-
 	}
 	
 	
@@ -192,9 +158,8 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean checkProductoExtractos() throws Exception {
-		try {
-			boolean resultado = false;
+	public void checkProductoExtractos() throws Exception {
+		
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.clickElementSyncro(btnDetalleProducto);
@@ -210,25 +175,18 @@ public class Producto {
 			// 1.5 Se seleacciona el Mes anterior al actual y se muestran los movimientos de la tarjeta correspondientes a ese mes
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnExtractosMesAnterior);
+			Browser.clickElementSyncro(btnExtractosMesAnterior);
+			
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se seleacciona el Mes anterior al actual", "");
 			Reporting.reportOK("OK - Se seleacciona el Mes anterior al actual");
 
 			Browser.waitExt(1);
-			resultado = (Browser.checkObjeto(checkOperacionesMesProducto));
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "Se muestran los movimientos de la tarjeta correspondientes al mes seleccionado", "");
-				Reporting.reportOK("OK - Se muestran los movimientos de la tarjeta correspondientes al mes seleccionado");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se muestran los movimientos de la tarjeta correspondientes al mes seleccionado", "");
-				Reporting.reportKO("KO - NO se muestran los movimientos de la tarjeta correspondientes al mes seleccionado");
-			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportKO("KO - NO se muestran los movimientos de la tarjeta correspondientes al mes seleccionado");
-			e.printStackTrace();
-			throw new Exception("KO - NO se muestran los movimientos de la tarjeta correspondientes al mes seleccionado " + e.toString());
-		}
+			Browser.checkObjeto(checkOperacionesMesProducto);
+			
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se muestran los movimientos de la tarjeta correspondientes al mes seleccionado", "");
+			Reporting.reportOK("OK - Se muestran los movimientos de la tarjeta correspondientes al mes seleccionado");
+			
+			
 
 	}
 	
@@ -239,9 +197,45 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean checkProductoExtractosGraficos() throws Exception {
-		try {
-			boolean resultado = false;
+	public void checkProductoExtractosGraficos() throws Exception {
+		
+
+			// 1.3 Pulsar sobre la informacin de la tarjeta
+			Browser.waitExt(1);
+			Browser.clickElementSyncro(btnDetalleProducto);
+			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
+			
+			// 1.4 Pulsar sobre extractos
+			Browser.waitExt(1);
+			Browser.clickElementSyncro(btnExtractosDetalleProducto);
+			Reporting.reportOK("OK - Se pulsa sobre extractos");
+			
+			// 1.5 Se seleacciona el Mes anterior al actual y se muestran los movimientos de la tarjeta correspondientes a ese mes
+			Browser.waitExt(1);
+			Browser.clickElementSyncro(btnExtractosMesAnterior);
+			Browser.clickElementSyncro(btnExtractosMesAnterior);	
+			
+	
+			// 1.6 Pulsar en el botn "Mostrar Grficos" de los movimientos y se muestra un diagrama con las operaciones del mes
+			Browser.waitExt(2);
+			Browser.clickElementSyncro(btnGraficosOperacionesMes);
+			Reporting.reportOK("OK - Se pulsa en el botn 'Mostrar Gráficos' de los movimientos");
+			
+			Browser.waitExt(2);
+			Browser.checkObjeto(graficosOperacionesMes);
+			Reporting.reportOK("OK - Se muestra un diagrama con las operaciones del mes"); 
+
+	}
+	
+	
+	/**
+	 * Metodo para validar Opciones del Producto
+	 * 
+	 * @return
+	 * 
+	 */
+	public void checkProductoExtractosXLS() throws Exception {
+	
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(1);
@@ -255,61 +249,12 @@ public class Producto {
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre extractos", "");
 			Reporting.reportOK("OK - Se pulsa sobre extractos");
 			
-			Browser.waitExt(6);
-			Browser.checkObjeto(btnGraficosOperacionesMes);
+			// 1.5 Se seleacciona el Mes anterior al actual y se muestran los movimientos de la tarjeta correspondientes a ese mes
 			Browser.waitExt(1);
-			Browser.scrollNavegadorVertical("ABAJO");			
+			Browser.clickElementSyncro(btnExtractosMesAnterior);
+			Browser.clickElementSyncro(btnExtractosMesAnterior);
 			
-			// 1.5 Pulsar en el botn "Mostrar Grficos" de los movimientos y se muestra un diagrama con las operaciones del mes
-			Browser.waitExt(2);
-			Browser.clickElementSyncro(btnGraficosOperacionesMes);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Mostrar Grficos' de los movimientos", "");
-			Reporting.reportOK("OK - Se pulsa en el botn 'Mostrar Grficos' de los movimientos");
-			
-			Browser.waitExt(2);
-			resultado = (Browser.checkObjeto(graficosOperacionesMes));
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra un diagrama con las operaciones del mes", "");
-				Reporting.reportOK("OK - Se muestra un diagrama con las operaciones del mes");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se muestra un diagrama con las operaciones del mes", "");
-				Reporting.reportKO("KO - NO se muestra un diagrama con las operaciones del mes");
-			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportKO("KO - NO se muestra un diagrama con las operaciones del mes");
-			e.printStackTrace();
-			throw new Exception("KO - NO se muestra un diagrama con las operaciones del mes " + e.toString());
-		}
-
-	}
-	
-	
-	/**
-	 * Metodo para validar Opciones del Producto
-	 * 
-	 * @return
-	 * 
-	 */
-	public boolean checkProductoExtractosXLS() throws Exception {
-		try {
-			boolean resultado = false;
-
-			// 1.3 Pulsar sobre la informacin de la tarjeta
-			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
-			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
-			
-			// 1.4 Pulsar sobre extractos
-			Browser.clickElementSyncro(btnExtractosDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre extractos", "");
-			Reporting.reportOK("OK - Se pulsa sobre extractos");
-			
-			Browser.waitExt(4);
-			Browser.checkObjeto(btnXLSOperacionesMes);
-			Browser.scrollNavegadorVertical("ABAJO");			
-			
+			//1.6 descargamos los excel
 			// Borramos antes el fichero si existe y luego descargamos
 			String ruta = Browser.rutaPath + File.separator + "properties" + File.separator + "movimientosExtracto.xls";
 			File fichero = new File(ruta);
@@ -317,29 +262,15 @@ public class Producto {
 				fichero.delete();
 			}
 
-			// 1.5 Pulsar en el botn descargar XLS y se descarga un documento XLS
+			Browser.waitExt(4);
+			Browser.checkObjeto(btnXLSOperacionesMes);	
 			Browser.clickElementSyncro(btnXLSOperacionesMes);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Descarga XLS' de los movimientos", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Descarga XLS' de los movimientos");
-			
-			// Validamos que se ha descargado el Fichero XLS
-			Browser.waitExt(5);
-			fichero = new File(ruta);
-			resultado = fichero.exists();
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha descargado el Fichero XLS", "");
-				Reporting.reportOK("OK - Validamos que se ha descargado el Fichero XLS");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se valida que se ha descargado el Fichero XLS", "");
-				Reporting.reportKO("KO - NO se valida que se ha descargado el Fichero XLS");
-			}
-			return resultado;
 
-		} catch (Exception e) {
-			Reporting.reportOK("KO - NO se valida que se ha descargado el Fichero XLS");
-			e.printStackTrace();
-			throw new Exception("KO - NO se valida que se ha descargado el Fichero XLS " + e.toString());
-		}
+			//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha descargado el Fichero XLS", "");
+			Reporting.reportOK("OK - Validamos que se ha descargado el Fichero XLS");
+			
 
 	}
 	
@@ -349,9 +280,8 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean modificarTipoExtracto() throws Exception {
-		try {
-			boolean resultado = false;
+	public void modificarTipoExtracto() throws Exception {
+	
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.clickElementSyncro(btnDetalleProducto);
@@ -390,15 +320,9 @@ public class Producto {
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botn 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botn 'Seguir'");
 
-			// Validacion Final
-			resultado = (Browser.checkObjeto(checkCambiarExtracto));
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha cambiado el Tipo de Extracto", "");
-				Reporting.reportOK("OK - Validamos que se ha cambiado el Tipo de Extracto");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se valida que se haya cambiado el Tipo de Extracto", "");
-				Reporting.reportKO("KO - NO se valida que se haya cambiado el Tipo de Extracto");
-			}
+			Browser.checkObjeto(checkCambiarExtracto);
+			Reporting.reportOK("OK - Validamos que se ha cambiado el Tipo de Extracto");
+		
 			
 	// VOLVEMOS EL DATO A SU ESTADO INICIAL - PARA FUTURAS EJECUCIONES
 			Reporting.reportOK("INFO - VOLVEMOS EL DATO A SU ESTADO INICIAL - PARA FUTURAS EJECUCIONES");
@@ -423,13 +347,6 @@ public class Producto {
 			Browser.checkObjeto(checkCambiarExtracto);
 			Reporting.reportOK("OK - Se valida que el dato ha regresado a su estado inicial");
 			
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportOK("KO - NO se valida que se haya cambiado el Tipo de Extracto");
-			e.printStackTrace();
-			throw new Exception("KO - NO se valida que se haya cambiado el Tipo de Extracto " + e.toString());
-		}
 
 	}
 	

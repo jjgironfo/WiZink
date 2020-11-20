@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="21.Visualizar gráfica">
+	<test name="Visualizar gráfica">
+		<parameter name ="browserName" value = "CHROME" />
+	  	<classes>  
+	        <class name="Test.WZ_TC_0021"/>
+	   	</classes>
+	</test>
+</suite> 
