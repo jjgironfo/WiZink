@@ -62,6 +62,7 @@ public class WZ_TC_0025 {
 			
 			login.doLoginUsuarioPassword(userName, pass);
 		
+			
 			producto.cambiarFormaPago();
 			Reporting.reportResultOK();
 

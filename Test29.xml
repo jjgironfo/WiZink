@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="29.Establecer Pin">
+	<test name="Establecer Pin">
+		<parameter name ="browserName" value = "CHROME" />
+	  	<classes>  
+	        <class name="Test.WZ_TC_0029"/>
+	   	</classes>
+	</test>
+</suite> 

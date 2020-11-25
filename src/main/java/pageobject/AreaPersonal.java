@@ -196,6 +196,7 @@ public class AreaPersonal  {
 					
 					// 1.5	Se pulsa sobre el enlace Contrato multicanal
 					Browser.clickElementSyncro(btnTerminosYCondicionesGeneral);
+					
 					//report
 					Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
 					break;
@@ -210,7 +211,8 @@ public class AreaPersonal  {
 					
 					// 1.5	Se pulsa sobre el enlace Contrato multicanal
 					Browser.clickElementSyncro(btnContratoMulticanal);
-					//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'", "");
+					
+					//Report
 					Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
 					break;
 				default:

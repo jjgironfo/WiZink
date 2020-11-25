@@ -13,15 +13,16 @@ public class Producto {
 
 	// Objetos Producto
 	private By btnDetalleProducto = By.xpath("//div[contains(@class, 'c-card--ps')]/a");
+	//private By btnOpcionesDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/ul/li[4]");
 	private By btnOpcionesDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/descendant::a[text()='Opciones']");
 	private By btnExtractosDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/descendant::a[text()='Extractos']");
 	
-	private By btnCambiarFormaPagoOpcionesProducto = By.xpath("//span[text()='Cambiar la forma de pago']");
-	private By btnCambiarCuentaDomiciliacionOpcionesProducto = By.xpath("//span[text()='Cambiar la cuenta de domiciliacin']");
-	private By btnHacerUnIngresoOpcionesProducto = By.xpath("//span[text()='Hacer un ingreso']");
-	private By btnConsultaPINOpcionesProducto = By.xpath("//a[@id='sec_changepin' and text()='Consultar PIN']");
+	private By btnCambiarFormaPagoOpcionesProducto = By.id("changePaymentOptionYourCard");
+	private By btnCambiarCuentaDomiciliacionOpcionesProducto =  By.id("changePayAccount");
+	private By btnHacerUnIngresoOpcionesProducto = By.id("paymentSummaryLink");
+	private By btnConsultaPINOpcionesProducto = By.id("sec_changepin");
 	private By btnConsultarNumCVVOpcionesProducto = By.id("consultCVV");
-	private By btnCargoNoReconocidoOpcionesProducto = By.xpath("//span[contains(text(),'no reconocido')]");
+	private By btnCargoNoReconocidoOpcionesProducto = By.id("reclaimMovementLink");
 	private By btnInformacionWizinkPayOpcionesProducto = By.id("wizinkPayLink");
 	private By btnDesactivarWizinkPayOpcionesProducto = By.id("sec_wizinkPay");
 	
@@ -59,8 +60,9 @@ public class Producto {
 	private By imagenPIN = By.id("pinImg");
 	
 	// Bloquear Tarjeta
-	private By btnBloquearTarjeta = By.id("sec_blockCard_AT");
+	private By btnBloquearTarjeta = By.id("sec_blockCard");
 	private By radioMeHanRobadoTarjeta = By.xpath("//label[@for='motive-stolen']");
+	private By btnSeguirBloqueo = By.id("continueButton");
 	
 	// Resumen
 //	private By checkHoyProducto = By.xpath("//h2[contains(text(), 'Hoy,')]");
@@ -108,13 +110,12 @@ public class Producto {
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
 			
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
-			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
+			
 			
 			// Las opciones pueden ser: cambiar forma de pago, cambiar la cuenta de domiciliacin, 
 			// consultar pin, consultar num y cvv de la tarjeta, bloquear tarjeta, reclamar un cargo no reconocido, 
@@ -124,15 +125,16 @@ public class Producto {
 						&& Browser.checkObjeto(btnHacerUnIngresoOpcionesProducto) && Browser.checkObjeto(btnConsultarNumCVVOpcionesProducto) 
 						&& Browser.checkObjeto(btnCargoNoReconocidoOpcionesProducto) && Browser.checkObjeto(btnInformacionWizinkPayOpcionesProducto)
 						&& Browser.checkObjeto(btnDesactivarWizinkPayOpcionesProducto)) {
-							//egea.reportaTraza(testCase, "INFO", "OK", "Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional", "");
-						Reporting.reportOK("OK - Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional");
+							
+				Reporting.reportOK("OK - Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional");
 					}
+		
 	
 
 	}
 	
 	/**
-	 * Metodo para validar Opciones del Producto
+	 * Metodo para validar los movimientos de hoy
 	 * 
 	 * @return
 	 * 
@@ -153,9 +155,8 @@ public class Producto {
 	
 	
 	/**
-	 * Metodo para validar Opciones del Producto
+	 * Extractos
 	 * 
-	 * @return
 	 * 
 	 */
 	public void checkProductoExtractos() throws Exception {
@@ -169,7 +170,8 @@ public class Producto {
 			// 1.4 Pulsar sobre extractos
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre extractos", "");
+			
+			//Report
 			Reporting.reportOK("OK - Se pulsa sobre extractos");
 			
 			// 1.5 Se seleacciona el Mes anterior al actual y se muestran los movimientos de la tarjeta correspondientes a ese mes
@@ -177,13 +179,13 @@ public class Producto {
 			Browser.clickElementSyncro(btnExtractosMesAnterior);
 			Browser.clickElementSyncro(btnExtractosMesAnterior);
 			
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se seleacciona el Mes anterior al actual", "");
+			//reoirt
 			Reporting.reportOK("OK - Se seleacciona el Mes anterior al actual");
 
 			Browser.waitExt(1);
 			Browser.checkObjeto(checkOperacionesMesProducto);
 			
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se muestran los movimientos de la tarjeta correspondientes al mes seleccionado", "");
+			//Report
 			Reporting.reportOK("OK - Se muestran los movimientos de la tarjeta correspondientes al mes seleccionado");
 			
 			
@@ -192,9 +194,7 @@ public class Producto {
 	
 	
 	/**
-	 * Metodo para validar Opciones del Producto
-	 * 
-	 * @return
+	 * MMostrar las gráficas
 	 * 
 	 */
 	public void checkProductoExtractosGraficos() throws Exception {
@@ -229,9 +229,7 @@ public class Producto {
 	
 	
 	/**
-	 * Metodo para validar Opciones del Producto
-	 * 
-	 * @return
+	 * Acceder al extracto de la tarjeta
 	 * 
 	 */
 	public void checkProductoExtractosXLS() throws Exception {
@@ -357,53 +355,35 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean cambiarFormaPago() throws Exception {
-		try {
-			boolean resultado = false;
-
+	public void cambiarFormaPago() throws Exception {
+	
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
-			
+					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona del men de la izquierda la opcin 'Opciones'", "");
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
-			
-			// Pulsar en 'Cambiar forma de pago'
+		
+			// 1.5 Pulsar en 'Cambiar forma de pago'
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnCambiarFormaPagoOpcionesProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Cambiar forma de pago'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Cambiar forma de pago'");
 			
 			// Seleccionar 'Pago mnimo' y Pulsar en 'SEGUIR'
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(radioPagoMinimoCambiarFormaPago);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona 'Pago mnimo' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se selecciona 'Pago mnimo' y posteriormente en 'Seguir'");
 			Browser.clickElementSyncro(btnSeguirCambiarFormaPago);
 			
 			// Introducir el OTP y Pulsar en "SEGUIR"
-			Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
+			Browser.waitExt(2);
+			Browser.introduceCodigoOTPCFP(txtCodigoOTPCambiarFormaPago, "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			
 			Browser.clickElementSyncro(btnSeguirCambiarFormaPago);
-			
-			
-			
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				Reporting.reportOK("OK - TEXTO OK");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				Reporting.reportKO("KO - TEXTO OK");
-			}
-			return resultado;
 
-		} catch (Exception e) {
-			Reporting.reportKO("KO - TEXTO KO");
-			e.printStackTrace();
-			throw new Exception("KO - TEXTO KO " + e.toString());
-		}
 
 	}
 	
@@ -414,24 +394,23 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean cambiarCuentaCargo() throws Exception {
-		try {
-			boolean resultado = false;
+	public void  cambiarCuentaCargo() throws Exception {
+		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
-			
+					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona del men de la izquierda la opcin 'Opciones'", "");
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
+				
 			
-			// Pulsar en "Cambiar Cuenta de domiciliacin"
+			// 1.5 Pulsar en "Cambiar Cuenta de domiciliación"
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnCambiarCuentaDomiciliacionOpcionesProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Cambiar Cuenta de domiciliacin'", "");
-			Reporting.reportOK("OK - Se pulsa en el botn 'Cambiar Cuenta de domiciliacin'");
+			Reporting.reportOK("OK - Se pulsa en el botn 'Cambiar Cuenta de domiciliación'");
 			
 			// Introducir un IBAN y pulsar en "SEGUIR"
 			String nuevoIBAN = "ES2001499948810144233424";
@@ -441,31 +420,14 @@ public class Producto {
 			Browser.clickElementSyncro(btnSeguirCambiarCuentaCargo);
 			
 			// Introducir el OTP y pulsar en "SEGUIR"
+			Browser.waitExt(2);
 			Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			Browser.clickElementSyncro(btnSeguirCambiarCuentaCargo);
 			
-			
-			
-			
-			
-			
-			
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				Reporting.reportOK("OK - TEXTO OK");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				Reporting.reportKO("KO - TEXTO OK");
-			}
-			return resultado;
 
-		} catch (Exception e) {
-			Reporting.reportKO("KO - TEXTO KO");
-			e.printStackTrace();
-			throw new Exception("KO - TEXTO KO " + e.toString());
-		}
+			Reporting.reportOK("OK - TEXTO OK");
 
 	}
 	
@@ -475,33 +437,21 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean hacerIngreso() throws Exception {
-		try {
-			boolean resultado = false;
+	public void hacerIngreso() throws Exception {
 
-			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
-			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
-			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
-			
-			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
-			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona del men de la izquierda la opcin 'Opciones'", "");
-			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
 			// Pulsar en 'Hacer un Ingreso'
+		
 			Browser.clickElementSyncro(btnHacerUnIngresoOpcionesProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Hacer un Ingreso'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Hacer un Ingreso'");
 			
 			//Pulsar en 'Hacer pago online'
+			
 			Browser.clickElementSyncro(btnAccederPagoOnline);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Accede a pago Online'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Accede a pago Online'");
 			
 			//Pulsar en 'otro importe'
-			Browser.clickElementSyncro(chkOtroImporte);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Accede a pago Online'", "");
+			//Browser.clickElementSyncro(chkOtroImporte);
 			Reporting.reportOK("OK - Se pulsa en el botn 'Accede a pago Online'");
 			
 			// Introducir los datos de la tarjeta 'importe' 'Nombre' 'Cvv' 'Fecha Caducidad' 'Numero Tarjeta'
@@ -517,8 +467,6 @@ public class Producto {
 			Browser.writeTextSyncro(txtCvv, cvv);
 			Browser.writeTextSyncro(txtFechaCaducidad, fechaCaducidad);
 			
-			//Seleccionar el check soy titular
-			Browser.clickElementSyncro(chkOtroImporte);
 			
 			//Hacer click en el botn realizar pagos
 			Browser.clickElementSyncro(btnRealizarPago);
@@ -526,52 +474,37 @@ public class Producto {
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introducen los datos de forma correcta y pulsamos el botn 'Realizar pago'", "");
 			Reporting.reportOK("OK - Se introducen los datos de forma correcta y pulsamos el botn 'Realizar pago'");
 			
-			
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				Reporting.reportOK("OK - TEXTO OK");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				Reporting.reportKO("KO - TEXTO OK");
-			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportKO("KO - TEXTO KO");
-			e.printStackTrace();
-			throw new Exception("KO - TEXTO KO " + e.toString());
-		}
+			//Reporting.reportOK("OK - TEXTO OK");
+	
 	}
 	
 	
 	/**
-	 * Metodo para Hacer Ingreso
+	 * Metodo para ver cvv
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean verNumCVVTarjeta() throws Exception {
-		try {
-			boolean resultado = false;
+	public void verNumCVVTarjeta() throws Exception {
 
+		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
-			
+					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona del men de la izquierda la opcin 'Opciones'", "");
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
-			// Pulsar en "Ver nmero y CVV de mi tarjeta"
+			// 1.5 Pulsar en "Ver nmero y CVV de mi tarjeta"
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnConsultarNumCVVOpcionesProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en 'Ver nmero y CVV de mi tarjeta'", "");
 			Reporting.reportOK("OK - Se pulsa en 'Ver nmero y CVV de mi tarjeta'");
 			
-			// Introducir el OTP y pulsamos en "SEGUIR"
+			// Introducir el OTP y pulsamos en "SEGUIR"	
+			Browser.waitExt(2);
 			Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			Browser.clickElementSyncro(btnSeguirVerNumCVVTarjeta);
 			
@@ -595,19 +528,12 @@ public class Producto {
 			if (check1 && check2) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra tanto el 'Nmero y CVV' de mi tarjeta", "");
 				Reporting.reportOK("OK - Se muestra tanto el 'Nmero y CVV' de mi tarjeta");
-				resultado = true;
+				
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "No se muestra tanto el 'Nmero y CVV' de mi tarjeta", "");
 				Reporting.reportKO("KO - No se muestra tanto el 'Nmero y CVV' de mi tarjeta");
-				resultado = false;
+				
 			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportKO("KO - No se muestra tanto el 'Nmero y CVV' de mi tarjeta");
-			e.printStackTrace();
-			throw new Exception("KO - No se muestra tanto el 'Nmero y CVV' de mi tarjeta " + e.toString());
-		}
 
 	}
 	
@@ -618,26 +544,24 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean consultarPIN() throws Exception {
-		try {
-			boolean resultado = false;
-
+	public void consultarPIN() throws Exception {
+		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
 			
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona del men de la izquierda la opcin 'Opciones'", "");
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
-			
+		
 			// Pulsar en "Consultar PIN"
 			Browser.clickElementSyncro(btnConsultaPINOpcionesProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en 'Consultar PIN'", "");
 			Reporting.reportOK("OK - Se pulsa en 'Consultar PIN'");
 			
 			// Introducir el OTP y pulsamos en "SEGUIR"
+			Browser.waitExt(2);
 			Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
@@ -650,21 +574,13 @@ public class Producto {
 			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Mostrar el Pin de tu Tarjeta'", "");
 			Reporting.reportOK("OK - Pulsamos en 'Mostrar el Pin de tu Tarjeta'");
 			
-			resultado = Browser.checkObjeto(imagenPIN);		
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra el PIN de la Tarjeta", "");
+			
+			if (Browser.checkObjeto(imagenPIN)	) {
 				Reporting.reportOK("OK - Se muestra el PIN de la Tarjeta");
 			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "No se muestra el PIN de la Tarjeta", "");
 				Reporting.reportKO("KO - No se muestra el PIN de la Tarjeta");
 			}
-			return resultado;
-
-		} catch (Exception e) {
-			Reporting.reportKO("KO - TEXTO KO");
-			e.printStackTrace();
-			throw new Exception("KO - TEXTO KO " + e.toString());
-		}
+			
 
 	}
 	
@@ -676,50 +592,37 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean bloquearTarjeta() throws Exception {
-		try {
-			boolean resultado = false;
+	public void bloquearTarjeta() throws Exception {
+		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+					
+			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
+			Browser.waitExt(2);
+			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
+			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
-			// Pulsar en "Bloquear la tarjeta"
+			//1.5 Pulsar en "Bloquear la tarjeta"
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnBloquearTarjeta);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Bloquear la tarjeta'", "");
 			Reporting.reportOK("OK - Pulsamos en 'Bloquear la tarjeta'");
 			
 			// Seleccionar 'Me la han robado'
-			Browser.clickElementSyncro(radioMeHanRobadoTarjeta);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se selecciona la opcion 'Me la han robado'", "");
-			Reporting.reportOK("OK - Se selecciona la opcion 'Me la han robado'");
+			//Browser.clickElementSyncro(radioMeHanRobadoTarjeta);
+			//Reporting.reportOK("OK - Se selecciona la opcion 'Me la han robado'");
 			
 			// Pulsar en "Seguir"
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnSeguir);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Seguir'", "");
 			Reporting.reportOK("OK - Pulsamos en 'Seguir'");
 			
 			// Pulsar en "ACEPTAR"
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnSeguir);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Aceptar'", "");
-			Reporting.reportOK("OK - Pulsamos en 'Aceptar'");
-			
-				
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				Reporting.reportOK("OK - TEXTO OK");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				Reporting.reportKO("KO - TEXTO OK");
-			}
-			return resultado;
+			Reporting.reportOK("OK - Pulsamos en 'Aceptar para finalizar el envio'");
 
-		} catch (Exception e) {
-			Reporting.reportKO("KO - TEXTO KO");
-			e.printStackTrace();
-			throw new Exception("KO - TEXTO KO " + e.toString());
-		}
 
 	}
 	/**
@@ -728,45 +631,35 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public boolean reenviarTarjeta() throws Exception {
-		try {
-			boolean resultado = false;
+	public void reenviarTarjeta() throws Exception {
+		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+					
+			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
+			Browser.waitExt(2);
+			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
+			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
-			// Pulsar en "Reenvo de tarjeta"
+			// 1.5 iniciamos el proceso de "Reenvío de tarjeta"
+			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnReenvioTarjeta);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Bloquear la tarjeta'", "");
-			Reporting.reportOK("OK - Pulsamos en 'Bloquear la tarjeta'");
+			Reporting.reportOK("OK - Pulsamos en 'Reenviar la tarjeta'");
 			
 			// Pulsar en "seguir"
 			Browser.clickElementSyncro(btnSeguirReenvio);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Seguir'", "");
 			Reporting.reportOK("OK - Pulsamos en 'Seguir'");
 			
-			Browser.checkObjeto(txtOTPDatosPersonales);
 			// Introducir OTP y Pulsar en "SEGUIR"
+			Browser.checkObjeto(txtOTPDatosPersonales);		
+			Browser.waitExt(2);
+			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			
-			
-			if (resultado) {
-				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
-				Reporting.reportOK("OK - TEXTO OK");
-			} else {
-				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
-				Reporting.reportKO("KO - TEXTO KO");
-			}
-			return resultado;
 
-		} catch (Exception e) {
-			Reporting.reportKO("KO - TEXTO KO");
-			e.printStackTrace();
-			throw new Exception("KO - TEXTO KO " + e.toString());
-		}
 
 	}
 

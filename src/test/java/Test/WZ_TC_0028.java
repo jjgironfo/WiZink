@@ -61,7 +61,7 @@ public class WZ_TC_0028 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			
+
 			producto.consultarPIN();
 			Reporting.reportResultOK();
 

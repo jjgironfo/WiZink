@@ -565,6 +565,32 @@ public class Browser {
      * @return 
    	 * 
    	 */
+    
+    /**
+   	 * Metodo Introducir el Codigo OTP
+   	 * 
+   	 */
+    public static void introduceCodigoOTPCFP(By elemento, String codigoOTP) throws Exception {
+	   Browser.waitExt(2);
+	   if (codigoOTP == "") {
+			// Codigo Automatico
+			//codigoOTP = "123456";
+			List<LogEntry> listaConsole = Browser.driver.manage().logs().get(LogType.BROWSER).getAll();
+			codigoOTP = listaConsole.toString().substring(listaConsole.toString().indexOf("VM328:1 Codigo SMS:") + 3, listaConsole.toString().indexOf("VM328:1 Codigo SMS:") +18 );
+			System.out.println("Código OTP: "+ codigoOTP);
+			Browser.writeTextSyncro(elemento, codigoOTP);
+    	} else {
+    		// Codigo Pasado por Parametro
+    		Browser.writeTextSyncro(elemento, codigoOTP);
+    	}
+    }
+
+    /**
+   	 * Metodo para validar que elemento no existe y devuelve booleano
+     * @return 
+   	 * 
+   	 */
+    
     public static boolean checkObjetoNoExiste(By elemento) throws Exception {
 	   boolean resultado = false;
 	   if (driver.findElements(elemento).size() == 0) {

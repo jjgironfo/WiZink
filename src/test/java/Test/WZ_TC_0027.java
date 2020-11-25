@@ -61,7 +61,8 @@ public class WZ_TC_0027 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass);
-			
+
+			producto.checkProductoOpciones();
 			producto.hacerIngreso();
 			Reporting.reportResultOK();
 

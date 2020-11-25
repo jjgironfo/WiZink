@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="25- Cambiar forma de pago">
+	<test name="Cambiar forma de pagos">
+		<parameter name ="browserName" value = "CHROME" />
+	  	<classes>  
+	        <class name="Test.WZ_TC_0025"/>
+	   	</classes>
+	</test>
+</suite> 

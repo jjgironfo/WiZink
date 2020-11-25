@@ -62,6 +62,7 @@ public class WZ_TC_0026 {
 			
 			login.doLoginUsuarioPassword(userName, pass);
 			
+	
 			producto.cambiarCuentaCargo();
 			Reporting.reportResultOK();
 
