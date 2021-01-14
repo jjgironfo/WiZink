@@ -74,12 +74,12 @@ public class Producto {
 	private By checkOperacionesMesProducto = By.xpath("//*[@class='card-movement-detail'][1]");
 	
 	private By btnCambiarInscritoExtracto = By.id("enrollmentToPaperLink");
-	private By checkCambiarExtractoPapel = By.xpath("//*[@id=\"unsubscribe\"]");
+	private By checkCambiarExtractoPapel = By.xpath("//*[@id=\"statementEnrollmentProcessForm\"]/div[2]/div/div[2]/div/div/div[2]/label");
 	private By checkCambiarExtractoElectronico = By.xpath("//label[@for='reminder-available']");
 	
 	private By btnSeguir = By.id("enrollmentToModal");
 	private By txtOTPDatosPersonales = By.id("verify-code");
-	
+	private By confirmar = By.id("continueButton");
 	private By checkCambiarExtracto = By.xpath("//header[@class='bypass']");
 	
 	private By btnVolverExtractos = By.id("returnPageFunction");
@@ -322,15 +322,23 @@ public class Producto {
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Seguir'");
 			
 			Browser.waitExt(10);
+			Browser.clickElementSyncro(confirmar);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Confirmar cambios'", "");
+			Reporting.reportOK("OK - Se pulsa sobre el botón 'Confirmar cambios'");
+			
+			
+			
+			Browser.waitExt(10);
 			Browser.checkObjeto(txtOTPDatosPersonales);
 			// Introducir OTP y Pulsar en "SEGUIR"
 			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
 			
-			Browser.clickElementSyncro(btnSeguir);
-			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botn 'Seguir'", "");
-			Reporting.reportOK("OK - Se pulsa sobre el botn 'Seguir'");
+			Browser.waitExt(10);
+			Browser.clickElementSyncro(confirmar);
+			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Seguir'", "");
+			Reporting.reportOK("OK - Se pulsa sobre el botón 'Seguir'");
 
 			Browser.checkObjeto(checkCambiarExtracto);
 			Reporting.reportOK("OK - Validamos que se ha cambiado el Tipo de Extracto");
@@ -620,16 +628,17 @@ public class Producto {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
+			Browser.waitExt(20);	
 			Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
 					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
-			Browser.waitExt(2);
+			Browser.waitExt(20);	
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
 			//1.5 Pulsar en "Bloquear la tarjeta"
-			Browser.waitExt(2);
+			Browser.waitExt(10);	
 			Browser.clickElementSyncro(btnBloquearTarjeta);
 			Reporting.reportOK("OK - Pulsamos en 'Bloquear la tarjeta'");
 			
@@ -638,12 +647,12 @@ public class Producto {
 			//Reporting.reportOK("OK - Se selecciona la opcion 'Me la han robado'");
 			
 			// Pulsar en "Seguir"
-			Browser.waitExt(2);
+			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnSeguir);
 			Reporting.reportOK("OK - Pulsamos en 'Seguir'");
 			
 			// Pulsar en "ACEPTAR"
-			Browser.waitExt(2);
+			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnSeguir);
 			Reporting.reportOK("OK - Pulsamos en 'Aceptar para finalizar el envio'");
 
