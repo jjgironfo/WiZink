@@ -113,7 +113,7 @@ public class Mensajes {
 			//Funciones.waitForElement(btnMsgRedactar,4,"no se carga la pantalla");
 			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnMsgRedactar);
-			Reporting.reportOK("OK - Se Muestra la página de creaci�n de mensajes");
+			Reporting.reportOK("OK - Se Muestra la página de creación de mensajes");
 			
 			//Escribimos un mensaje para asegurar mensajes en  bandeja salida
 			Browser.waitExt(4);

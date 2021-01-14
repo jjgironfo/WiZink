@@ -19,8 +19,8 @@ public class PosicionGlobal {
 	// PopUP Accesos Directos
 	private By btnAnadirAccesoDirectoPopUp = By.id("addShortcutButton");
 	
-	private By opcionComboAccesoPopUp = By.id("addShortcutSelectBoxIt");
-	private By opcionConsultarPINPopUp=By.xpath("//*[@id='addShortcutSelectBoxItOptions']/*[@data-id='0']");
+	//private By opcionComboAccesoPopUp = By.id("addShortcutSelectBoxIt");
+	private By opcionConsultarPINPopUp= By.id("Consultar PIN ");
 	//private By opcionConsultarPINPopUp = By.xpath("//a[contains(text(),'Consultar PIN')]");
 	private By btnAnadirOtroAccesoDirectoPopUp = By.id("button_añadir");
 	
@@ -50,7 +50,7 @@ public class PosicionGlobal {
 			
 			// 1.5 Seleccionar el Acceso: Consultar PIN y pulsar Añadir
 			Browser.waitExt(1);
-			Browser.clickElementSyncro(opcionComboAccesoPopUp);
+			//Browser.clickElementSyncro(opcionComboAccesoPopUp);
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(opcionConsultarPINPopUp);
 			Browser.clickElementSyncro(btnAnadirOtroAccesoDirectoPopUp);

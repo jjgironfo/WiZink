@@ -36,7 +36,8 @@ public class AreaPersonal  {
 	private By fotoPerfil = By.id("imgProfileCustomerData");
 	private By direccion = By.xpath("//h4[text()='Dirección']");
 	private By email = By.xpath("//h4[text()='Email']");
-	private By telefono = By.id("phone");
+	private By telefono = By.xpath("//h4[text()='Nombre y apellidos']");
+	private By telefonoField = By.id("phone");
 	private By btnCambiarMiUsuario = By.id("cambiarUsername");
 	private By btnCambiarMiPassword = By.id("cambiarContrasena");
 	private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
@@ -93,7 +94,7 @@ public class AreaPersonal  {
 	private By checkGenerales = By.xpath("//h4[text()='Generales']");
 	private By checkCredito = By.xpath("//h4[text()='Crédito']");
 	
-	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[text()='Marketplace - Términos y condiciones de uso']");
+	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[text()='T&C Marketplace']");
 	private By btnContratoMulticanal = By.xpath("//a/p[text()='OLB - Contrato Multicanal']");
 	
 	
@@ -117,8 +118,8 @@ public class AreaPersonal  {
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
-				// 1.3 Se pulsa Ir a �rea Personal y se visualizan los datos personales, demogr�ficos,
-				// foto de perfil y opciones de cambiar estos, el usuario y la contrase�a.
+				// 1.3 Se pulsa Ir a Área Personal y se visualizan los datos personales, demográficos,
+				// foto de perfil y opciones de cambiar estos, el usuario y la contraseña.
 				Browser.checkFieldText(btnCambiarMiUsuario, "Cambiar mi usuario");
 				
 				// Validamos la pantalla de �rea Personal
@@ -451,8 +452,13 @@ public class AreaPersonal  {
 						// 1.5 Introducir el nuevo usuario y la clave actual
 						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, usuario);
 						Browser.writeTextSyncro(txtPasswordCambiarUsuario, password);
-						//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el nuevo Usuario y contrasea", "");
+						//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el nuevo Usuario y contraseña", "");
 						Reporting.reportOK("OK - Se escribe el nuevo Usuario y contrasea");
+						
+						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
+						Browser.clickElementSyncro(btnSeguirDatosPersonales);
+						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
+						Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
 						
 						
@@ -520,6 +526,7 @@ public class AreaPersonal  {
 	    //Press Enter key to close the Goto window and Upload window
 	    robot.keyPress(KeyEvent.VK_ENTER);
 	    robot.keyRelease(KeyEvent.VK_ENTER);
+	    
 	    robot.delay(500);
 	}
 	
@@ -559,8 +566,8 @@ public class AreaPersonal  {
 			
 			// Modificar el telfono y Pulsar en "COMPLETAR"
 			
-			Browser.clickElementSyncro(this.telefono);
-			Browser.writeTextSyncro(this.telefono, telefono);
+			Browser.clickElementSyncro(this.telefonoField);
+			Browser.writeTextSyncro(this.telefonoField, telefono);
 			
 			//Guardar los cambios
 			Browser.clickElementSyncro(btnGuardarCambiosMiPass);
