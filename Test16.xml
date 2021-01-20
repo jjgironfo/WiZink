@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="16.Mostrar documentacion">
-	<test name="Mostrar Documentacion">
+<suite name="13.ModificarFotoPerfil">
+	<test name="ModificarFotoPerfil">
 		<parameter name ="browserName" value = "CHROME" />
 	  	<classes>  
-	        <class name="Test.WZ_TC_0016"/>
+	        <class name="Test.WZ_TC_0013"/>
 	   	</classes>
 	</test>
 </suite> 
