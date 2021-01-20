@@ -118,23 +118,23 @@
 	
 					<configuration>
 						<suiteXmlFiles>
-							<!-- <suiteXmlFile>${suiteName}</suiteXmlFile> -->
-							<!-- <suiteXmlFile>testNGAllTest.xml</suiteXmlFile> -->						
-							<!-- <suiteXmlFile>testNGTestUnitary.xml</suiteXmlFile> -->
-							<!-- suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>	-->
+							<!-- <suiteXmlFile>${suiteName}</suiteXmlFile>
+							<suiteXmlFile>testNGAllTest.xml</suiteXmlFile>						
+							<suiteXmlFile>testNGTestUnitary.xml</suiteXmlFile>
+							<suiteXmlFile>testSuiteGRID.xml</suiteXmlFile>
 							<suiteXmlFile>Test2.xml</suiteXmlFile>		
-							-<suiteXmlFile>Test3.xml</suiteXmlFile> 	
-							<suiteXmlFile>Test4.xml</suiteXmlFile>	
+							<suiteXmlFile>Test3.xml</suiteXmlFile> 	
+							<suiteXmlFile>Test4.xml</suiteXmlFile>
 							<suiteXmlFile>Test5.xml</suiteXmlFile> 
-							<!--<suiteXmlFile>Test6.xml</suiteXmlFile>-->
+							<suiteXmlFile>Test6.xml</suiteXmlFile>
 							<suiteXmlFile>Test7.xml</suiteXmlFile>
 							<suiteXmlFile>Test8.xml</suiteXmlFile>
 							<suiteXmlFile>Test9.xml</suiteXmlFile>
 							<suiteXmlFile>Test10.xml</suiteXmlFile>
 							<suiteXmlFile>Test11.xml</suiteXmlFile>
-							<suiteXmlFile>Test12.xml</suiteXmlFile> 
+							<suiteXmlFile>Test12.xml</suiteXmlFile> -->
 							<suiteXmlFile>Test13.xml</suiteXmlFile>
-							<suiteXmlFile>Test14.xml</suiteXmlFile>
+							<!--<suiteXmlFile>Test14.xml</suiteXmlFile>
 							<suiteXmlFile>Test15.xml</suiteXmlFile> 
 							<suiteXmlFile>Test16.xml</suiteXmlFile>
 							<suiteXmlFile>Test17.xml</suiteXmlFile>
@@ -152,7 +152,7 @@
 							<suiteXmlFile>Test29.xml</suiteXmlFile>
 							<suiteXmlFile>Test30.xml</suiteXmlFile> 
 							<suiteXmlFile>Test31.xml</suiteXmlFile>
-							<suiteXmlFile>Test32.xml</suiteXmlFile>
+							<suiteXmlFile>Test32.xml</suiteXmlFile>-->
 										
 										
 						</suiteXmlFiles>
