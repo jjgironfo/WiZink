@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="30.consultar cvv">
-	<test name="consultar cvv">
+<suite name="30.ConsultarCVV">
+	<test name="ConsultarCVV">
 		<parameter name ="browserName" value = "CHROME" />
 	  	<classes>  
 	        <class name="Test.WZ_TC_0030"/>

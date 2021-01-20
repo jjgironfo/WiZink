@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="17.Resumen movimientos Tarjeta">
-	<test name="Resumen movimientos TarjetaS">
+<suite name="19.ResumenMovimientosTarjeta">
+	<test name="ResumenMovimientosTarjetaS">
 		<parameter name ="browserName" value = "CHROME" />
 	  	<classes>  
 	        <class name="Test.WZ_TC_0019"/>
