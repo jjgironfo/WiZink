@@ -2,8 +2,12 @@ package general;
 
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.logging.Level;
@@ -59,6 +63,7 @@ public class Browser {
 		usedNav = PropertyControl.getConfProperty("navUsed");
 		headless = Boolean.parseBoolean(PropertyControl.getConfProperty("headlessMode"));
 		actualEnv = PropertyControl.getConfProperty("actualEnv");
+		
 		rutaPath = PathControl.getRootPath();
 		
 		// disable selenium log output 
@@ -634,7 +639,19 @@ public class Browser {
 		driver.findElement(elemento).click();
     }
 
+    public Properties loadPropertiesFile(String filePath) {
 
+        Properties prop = new Properties();
+
+        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
+            prop.load(resourceAsStream);
+        } catch (IOException e) {
+            System.err.println("Unable to load properties file : " + filePath);
+        }
+
+        return prop;
+
+    }
 
 
 }

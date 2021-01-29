@@ -139,7 +139,8 @@ public class AreaPersonal  {
 				Browser.checkFieldText(telefono,"Telófono"); 
 				Browser.checkFieldText(btnCambiarMiUsuario,"Cambiar mi usuario");
 				Browser.checkFieldText(btnCambiarMiPassword,"Cambiar mi contrase�a");
-				Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
+				//No se valida el botón de actualizar DNI
+				//Browser.checkFieldText(btnActualizarDocumentoIdentidad,"ACTUALIZAR DOCUMENTO DE IDENTIDAD");
 				Browser.checkFieldText(btnCambiarDatosAreaPersonal,"personalDataChangeLink") ;
 				Browser.checkFieldText(btnCambiarDatoFoto,"changePhoto");
 				Browser.checkFieldText(btnCambiarDatoDemografico,"demographicDataChangeLink");
@@ -173,8 +174,7 @@ public class AreaPersonal  {
 				Reporting.reportOK("OK - Se pulsa en el botón 'Documentacion'");
 				
 				// 1.4 Se pulsa sobre la opcin Documentación y se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito.
-				Browser.checkObjeto(checkGenerales);
-				Browser.checkObjeto(checkCredito);
+				Browser.checkObjeto(btnTerminosYCondicionesGeneral);
 				
 				//report
 				Reporting.reportOK("Se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crédito");
@@ -196,10 +196,10 @@ public class AreaPersonal  {
 					}
 					
 					// 1.5	Se pulsa sobre el enlace Contrato multicanal
-					Browser.clickElementSyncro(btnTerminosYCondicionesGeneral);
-					
+					//No se comprueba descargar documento ya que pide código OTP
+					//Browser.clickElementSyncro(btnTerminosYCondicionesGeneral);
 					//report
-					Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
+					//Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
 					break;
 				case "PRO":
 					// PRO
@@ -211,10 +211,12 @@ public class AreaPersonal  {
 					}
 					
 					// 1.5	Se pulsa sobre el enlace Contrato multicanal
-					Browser.clickElementSyncro(btnContratoMulticanal);
+					//No se comprueba descargar documento ya que pide código OTP
+					//Browser.clickElementSyncro(btnTerminosYCondicionesGeneral);
+					//Browser.clickElementSyncro(btnContratoMulticanal);
 					
 					//Report
-					Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
+					//Reporting.reportOK("OK - Se pulsa sobre el enlace 'Contrato multicanal' - 'Terminos y Condiciones General'");
 					break;
 				default:
 					Reporting.reportKO("No se ha indicado un entorno valido");
