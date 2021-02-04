@@ -1,11 +1,15 @@
 package pageobject;
 
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import general.Browser;
 import general.ProjectPaths;
+import general.PropertyControl;
 import general.Reporting;
+import general.Utilidades;
 
 public class NumeroTarjeta  {
 
@@ -44,7 +48,28 @@ public class NumeroTarjeta  {
 			
 			// Introducir el OTP
 			Browser.checkObjeto(btnVerDatosTarjeta);
-			Browser.introduceCodigoOTP(btnOTPTarjeta, "");
+			
+			
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(btnOTPTarjeta, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(btnOTPTarjeta, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
+			
+			
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
 			

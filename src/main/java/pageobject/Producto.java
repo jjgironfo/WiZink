@@ -1,12 +1,14 @@
 package pageobject;
 
 import java.io.File;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 
 import general.Browser;
 import general.PropertyControl;
 import general.Reporting;
+import general.Utilidades;
 
 public class Producto {
 
@@ -401,7 +403,24 @@ public class Producto {
 			
 			// Introducir el OTP y Pulsar en "SEGUIR"
 			Browser.waitExt(2);
-			Browser.introduceCodigoOTPCFP(txtCodigoOTPCambiarFormaPago, "");
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			
 			Browser.clickElementSyncro(btnSeguirCambiarFormaPago);
@@ -445,7 +464,24 @@ public class Producto {
 			
 			// Introducir el OTP y pulsar en "SEGUIR"
 			Browser.waitExt(5);
-			Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			Browser.clickElementSyncro(btnSeguirCambiarCuentaCargo);
@@ -531,7 +567,24 @@ public class Producto {
 			
 			// Introducir el OTP y pulsamos en "SEGUIR"	
 			Browser.waitExt(10);
-			Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			Browser.clickElementSyncro(btnSeguirVerNumCVVTarjeta);
 			
@@ -594,7 +647,24 @@ public class Producto {
 			
 			// Introducir el OTP y pulsamos en "SEGUIR"
 			Browser.waitExt(10);
-			Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			Browser.clickElementSyncro(btnSeguirConsultarPIN);

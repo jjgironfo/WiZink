@@ -18,6 +18,7 @@ import general.Final;
 import general.PathControl;
 import general.PropertyControl;
 import general.Reporting;
+import general.Utilidades;
 
 
 public class AreaPersonal  {
@@ -557,7 +558,24 @@ public class AreaPersonal  {
 
 			// Se introduce el otp recibido por sms y se pulsa en seguir
 			Browser.checkObjeto(btnSeguirDatosPersonales);
-			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
 			
@@ -620,7 +638,24 @@ public class AreaPersonal  {
 
 			// Se introduce el otp recibido por sms y se pulsa en seguir
 			Browser.checkObjeto(btnSeguirDatosPersonales);
-			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
 			
