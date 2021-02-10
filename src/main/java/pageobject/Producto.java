@@ -761,8 +761,25 @@ public class Producto {
 			// Introducir OTP y Pulsar en "SEGUIR"
 			Browser.checkObjeto(txtOTPDatosPersonales);		
 			Browser.waitExt(10);
+			Properties datosConfig = PropertyControl.getProperties("config");
+			String entorno = datosConfig.getProperty("actualEnv");
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
-			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			
 
