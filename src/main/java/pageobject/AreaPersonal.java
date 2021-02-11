@@ -531,6 +531,9 @@ public class AreaPersonal  {
 	    robot.keyRelease(KeyEvent.VK_ENTER);
 	    
 	    robot.delay(500);
+	    
+	    robot.keyPress(KeyEvent.VK_ENTER);
+	    robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 	
 	/**
