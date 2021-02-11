@@ -195,7 +195,7 @@
 							<suiteXmlFile>Test32.xml</suiteXmlFile>  -->
 							
 							<!-- PRO -->
-							<suiteXmlFile>Test2.xml</suiteXmlFile>		
+							<!-- <suiteXmlFile>Test2.xml</suiteXmlFile>		
 							<suiteXmlFile>Test3.xml</suiteXmlFile> 	
 							<suiteXmlFile>Test4.xml</suiteXmlFile>
 							<suiteXmlFile>Test5.xml</suiteXmlFile>
@@ -218,7 +218,7 @@
 							<suiteXmlFile>Test26.xml</suiteXmlFile>
 							<suiteXmlFile>Test28.xml</suiteXmlFile> 
 							<suiteXmlFile>Test29.xml</suiteXmlFile>
-							<suiteXmlFile>Test30.xml</suiteXmlFile> 
+							<suiteXmlFile>Test30.xml</suiteXmlFile>  -->
 							<suiteXmlFile>Test32.xml</suiteXmlFile>
 										
 										

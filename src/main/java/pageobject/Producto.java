@@ -3,6 +3,7 @@ package pageobject;
 import java.io.File;
 import java.util.Properties;
 
+import org.apache.velocity.runtime.parser.node.GetExecutor;
 import org.openqa.selenium.By;
 
 import general.Browser;
@@ -95,6 +96,7 @@ public class Producto {
 	private By btnReenvioTarjeta = By.xpath("//*[@id='sec_renoveCard']");
 	private By btnSeguirReenvio = By.xpath("//*[@id='seguirButton']");
 	private By btnRenovarTarjeta = By.xpath("/html/body/main/div[1]/div[1]/div[1]/section/div/div/div/form/div[2]/div/div");
+	private By txtDirecciónEnvio = By.xpath("//*/address");
 		
 	
 	public Producto(String testCase) {
@@ -755,31 +757,58 @@ public class Producto {
 			// Pulsar en "seguir"
 			Browser.waitExt(10);
 
-			Browser.clickElementSyncro(btnSeguirReenvio);
-			Reporting.reportOK("OK - Pulsamos en 'Seguir'");
-			
-			// Introducir OTP y Pulsar en "SEGUIR"
-			Browser.checkObjeto(txtOTPDatosPersonales);		
-			Browser.waitExt(10);
 			Properties datosConfig = PropertyControl.getProperties("config");
 			String entorno = datosConfig.getProperty("actualEnv");
+			boolean direccion = false;
 			switch (entorno) {
 			case "DES":
 				
 				break;
 			case "PRE":
-				Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+
 				break;
 			case "PRO":
-				Thread.sleep(8000);
-				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
-				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
+				direccion = Browser.checkFieldText(txtDirecciónEnvio, "PR TESTPRUEBA123PRUEBA123PRUEBA123PRUEBA123PRUEBA123 1, B 8 3 A\n" + 
+						"09007 BURGOS\n" + 
+						"BURGOS - ESP");
+				if(direccion) {
+					Reporting.reportOK("OK - Verificamos la dirección de envío");
+				} else {
+					Reporting.reportKO("KO - Verificamos la dirección de envío");
+				}
 				break;
 			default:
 				System.out.println("No se ha indicado un entorno valido");
 				break;
 			}
-			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			
+			
+			
+			
+
+			switch (entorno) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.clickElementSyncro(btnSeguirReenvio);
+				Reporting.reportOK("OK - Pulsamos en 'Seguir'");
+				// Introducir OTP y Pulsar en "SEGUIR"
+				Browser.checkObjeto(txtOTPDatosPersonales);		
+				Browser.waitExt(10);
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+				break;
+			case "PRO":
+				//En PRO no introducimos el código OTP
+				//Thread.sleep(8000);
+				//Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				//Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
+			//Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			
 
