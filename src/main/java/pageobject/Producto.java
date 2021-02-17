@@ -14,7 +14,7 @@ import general.Utilidades;
 public class Producto {
 
 	String testCase;
-	private static String actualEnv;
+	private static String actualEnv = System.getProperty("entorno");
 	// Objetos Producto
 	private By btnDetalleProducto = By.xpath("//div[contains(@class, 'c-card--ps')]/a");
 	//private By btnOpcionesDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/ul/li[4]");
@@ -208,8 +208,6 @@ public class Producto {
 	 */
 	public void checkProductoExtractosGraficos() throws Exception {
 		
-			//actualEnv = PropertyControl.getConfProperty("actualEnv");
-			actualEnv = System.getProperty("entorno");
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnDetalleProducto);
@@ -407,8 +405,7 @@ public class Producto {
 			// Introducir el OTP y Pulsar en "SEGUIR"
 			Browser.waitExt(2);
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;
@@ -468,8 +465,7 @@ public class Producto {
 			// Introducir el OTP y pulsar en "SEGUIR"
 			Browser.waitExt(5);
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;
@@ -571,8 +567,7 @@ public class Producto {
 			// Introducir el OTP y pulsamos en "SEGUIR"	
 			Browser.waitExt(10);
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;
@@ -651,8 +646,7 @@ public class Producto {
 			// Introducir el OTP y pulsamos en "SEGUIR"
 			Browser.waitExt(10);
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;
@@ -759,9 +753,8 @@ public class Producto {
 			Browser.waitExt(10);
 
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
 			boolean direccion = false;
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;
@@ -787,7 +780,7 @@ public class Producto {
 			
 			
 
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;

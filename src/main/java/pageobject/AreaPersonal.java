@@ -24,7 +24,7 @@ import general.Utilidades;
 public class AreaPersonal  {
 
 	String testCase;
-	private static String actualEnv;
+	private static String actualEnv = System.getProperty("entorno");;
 
 	// Objetos Area Personal
 	private By btnAreaPersonal = By.id("userDataHeaderLink");
@@ -182,11 +182,10 @@ public class AreaPersonal  {
 				
 					
 				Properties datosConfig = PropertyControl.getProperties("config");
-				String entorno = datosConfig.getProperty("actualEnv");
 				
 				String ruta = "";
 				File fichero;
-				switch (entorno) {
+				switch (actualEnv) {
 				case "PRE":
 					// PRE
 					// Borramos antes el fichero si existe y luego descargamos
@@ -336,8 +335,7 @@ public class AreaPersonal  {
 			Properties datosConfig = PropertyControl.getProperties("config");
 			Properties datosLogin = PropertyControl.getProperties("login");
 
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				password = datosLogin.getProperty("password_DES");
 				break;
@@ -407,8 +405,7 @@ public class AreaPersonal  {
 			Properties datosConfig = PropertyControl.getProperties("config");
 			Properties datosLogin = PropertyControl.getProperties("login");
 
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				usuario = datosLogin.getProperty("usuario_DES");
 				password = datosLogin.getProperty("password_DES");
@@ -545,8 +542,6 @@ public class AreaPersonal  {
 	public boolean cambiarDatosPersonales(String telefono) throws Exception {
 		try {
 			boolean resultado = false;
-			//actualEnv = PropertyControl.getConfProperty("actualEnv");
-			actualEnv = System.getProperty("entorno");
 			telefono = PropertyControl.getLogProperty("telefono_" + actualEnv);
 			// 1.3 Se pulsa Ir a rea Personal
 			Browser.waitExt(5);
@@ -563,8 +558,7 @@ public class AreaPersonal  {
 			// Se introduce el otp recibido por sms y se pulsa en seguir
 			Browser.checkObjeto(btnSeguirDatosPersonales);
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;
@@ -643,8 +637,7 @@ public class AreaPersonal  {
 			// Se introduce el otp recibido por sms y se pulsa en seguir
 			Browser.checkObjeto(btnSeguirDatosPersonales);
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;

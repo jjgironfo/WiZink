@@ -14,7 +14,7 @@ import general.Utilidades;
 public class NumeroTarjeta  {
 
 	String testCase;
-
+	private static String actualEnv = System.getProperty("entorno");
 
 	// Objetos Numero Tarjeta
 	private By btnNumeroTarjeta = By.id("MaskUnmaskDataHeaderLinkShow");
@@ -51,8 +51,7 @@ public class NumeroTarjeta  {
 			
 			
 			Properties datosConfig = PropertyControl.getProperties("config");
-			String entorno = datosConfig.getProperty("actualEnv");
-			switch (entorno) {
+			switch (actualEnv) {
 			case "DES":
 				
 				break;

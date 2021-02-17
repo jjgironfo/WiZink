@@ -19,7 +19,7 @@ import general.Utilidades;
 public class Login extends Utilidades{
 
 	String testCase;
-	private static String actualEnv;
+	private static String actualEnv = System.getProperty("entorno");
  //pre
 	private By btnAreaCliente =  By.id("btnLogin");
 
@@ -102,8 +102,6 @@ public class Login extends Utilidades{
 	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia) throws Exception {
 		
 			//boolean isDisabled = false;
-		//actualEnv = PropertyControl.getConfProperty("actualEnv");
-		actualEnv = System.getProperty("entorno");
 		
 		nombreUsuario = PropertyControl.getLogProperty("usuario_" + actualEnv);
 		contrasenia = PropertyControl.getLogProperty("password_" + actualEnv);
