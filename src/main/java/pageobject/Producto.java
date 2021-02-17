@@ -768,7 +768,7 @@ public class Producto {
 
 				break;
 			case "PRO":
-				direccion = Browser.checkFieldText(txtDirecciónEnvio, "PR TESTPRUEBA123PRUEBA123PRUEBA123PRUEBA123PRUEBA123PRUEBA123 1, B 8 3 A\n" + 
+				direccion = Browser.checkFieldText(txtDirecciónEnvio, "Prueba123 1, B 8 3 A\n" + 
 						"09007 BURGOS\n" + 
 						"BURGOS - ESP");
 				if(direccion) {

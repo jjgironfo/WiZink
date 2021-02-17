@@ -668,7 +668,7 @@ public class AreaPersonal  {
 			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
 			
 			// Modifcar la direccin 
-			
+			Browser.getWebElement(txtNombreVia).clear();
 			Browser.writeTextSyncro(txtNombreVia, nombreVia);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la direccion", "");
 			Reporting.reportOK("OK - Se escribe la direccion");

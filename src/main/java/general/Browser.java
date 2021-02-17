@@ -62,7 +62,9 @@ public class Browser {
 		// intialize nav vars
 		usedNav = PropertyControl.getConfProperty("navUsed");
 		headless = Boolean.parseBoolean(PropertyControl.getConfProperty("headlessMode"));
-		actualEnv = PropertyControl.getConfProperty("actualEnv");
+		//actualEnv = PropertyControl.getConfProperty("actualEnv");
+		actualEnv = System.getProperty("entorno");
+		System.out.println("actualEnv:" + actualEnv);
 		
 		rutaPath = PathControl.getRootPath();
 		
