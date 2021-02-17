@@ -208,7 +208,8 @@ public class Producto {
 	 */
 	public void checkProductoExtractosGraficos() throws Exception {
 		
-			actualEnv = PropertyControl.getConfProperty("actualEnv");
+			//actualEnv = PropertyControl.getConfProperty("actualEnv");
+			actualEnv = System.getProperty("entorno");
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnDetalleProducto);

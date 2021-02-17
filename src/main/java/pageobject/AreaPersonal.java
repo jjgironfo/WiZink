@@ -545,7 +545,8 @@ public class AreaPersonal  {
 	public boolean cambiarDatosPersonales(String telefono) throws Exception {
 		try {
 			boolean resultado = false;
-			actualEnv = PropertyControl.getConfProperty("actualEnv");
+			//actualEnv = PropertyControl.getConfProperty("actualEnv");
+			actualEnv = System.getProperty("entorno");
 			telefono = PropertyControl.getLogProperty("telefono_" + actualEnv);
 			// 1.3 Se pulsa Ir a rea Personal
 			Browser.waitExt(5);
