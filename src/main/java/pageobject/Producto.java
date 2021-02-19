@@ -19,7 +19,7 @@ public class Producto {
 	private By btnDetalleProducto = By.xpath("//div[contains(@class, 'c-card--ps')]/a");
 	//private By btnOpcionesDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/ul/li[4]");
 	private By btnOpcionesDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/descendant::a[text()='Opciones']");
-	private By btnExtractosDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/descendant::a[text()='Extractos']");
+	private By btnExtractosDetalleProducto = By.xpath("//*[@class='layout-content user_titular']/descendant::a[contains(.,'Extracto')]");
 
 	private By btnCambiarFormaPagoOpcionesProducto = By.id("changePaymentOptionYourCard");
 	private By btnCambiarCuentaDomiciliacionOpcionesProducto =  By.id("changePayAccount");
