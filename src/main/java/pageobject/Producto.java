@@ -333,8 +333,26 @@ public class Producto {
 			
 			Browser.waitExt(10);
 			Browser.checkObjeto(txtOTPDatosPersonales);
-			// Introducir OTP y Pulsar en "SEGUIR"
-			Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+			// Introducir OTP y Pulsar en "SEGUIR"	
+			Browser.waitExt(2);
+			Properties datosConfig = PropertyControl.getProperties("config");
+			switch (actualEnv) {
+			case "DES":
+				
+				break;
+			case "PRE":
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");
+				break;
+			case "PRO":
+				Thread.sleep(8000);
+				Reporting.reportOK("Código OTP (PRO):" + Utilidades.getOTP(Utilidades.readEmail()));
+				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
+				break;
+			default:
+				System.out.println("No se ha indicado un entorno valido");
+				break;
+			}
+			
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
 			
@@ -363,7 +381,7 @@ public class Producto {
 			Reporting.reportOK("OK - Se pulsa sobre el check 'Cambiar a extracto Electronico'");
 			
 			Browser.waitExt(10);
-			Browser.clickElementSyncro(btnSeguir);
+			Browser.clickElementSyncro(confirmar);
 			Reporting.reportOK("OK - Se pulsa sobre el botn 'Seguir'");
 			
 			Browser.waitExt(10);
