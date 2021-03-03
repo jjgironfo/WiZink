@@ -24,7 +24,7 @@ import general.Utilidades;
 public class AreaPersonal  {
 
 	String testCase;
-	private static String actualEnv = System.getProperty("entorno");;
+	private static String actualEnv = System.getProperty("entorno");
 
 	// Objetos Area Personal
 	private By btnAreaPersonal = By.id("userDataHeaderLink");

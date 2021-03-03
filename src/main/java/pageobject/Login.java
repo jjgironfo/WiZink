@@ -7,8 +7,9 @@ import static general.Browser.driver;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 
 import general.Browser;
 import general.Log;
@@ -31,6 +32,9 @@ public class Login extends Utilidades{
 	private By btnPrivacidadLogin = By.id("consent_prompt_submit");
 	
 	private By enlaceHome = By.id("enlaceHomepage");
+	private By botonCondiciones = By.id("showModal1");
+	private By pag3Condiciones = By.xpath("//*[@id='id3_3']/p");
+	private By botonSiCondiciones = By.id("acepto1");
 
 	// Check Pantalla Posicion Global
 	private By logoWizink = By.id("enlaceHomepage");
@@ -125,13 +129,21 @@ public class Login extends Utilidades{
 				Browser.writeTextSyncro(txtUsuario, nombreUsuario);
 				Browser.clickElementSyncro(txtPassword);
 				Browser.writeTextSyncro(txtPassword, contrasenia);
-				try {
-					this.takeRemoteScreenshot(driver);
-				}
-				catch(Exception e){
-					e.printStackTrace();
-				}
+				/*
+				 * try { this.takeRemoteScreenshot(driver); } catch(Exception e){
+				 * e.printStackTrace(); }
+				 */
+				//Se comprueba si aparece la pantalla de aceptar condiciones
 				Browser.clickElementSyncro(btnAccesoClientes);
+				//Se comprueba si aparece la pantalla de aceptar condiciones
+				//https://wizinkprees/clientes/contrato_login"
+				if(Browser.checkObjeto(botonCondiciones)) {
+					Browser.clickElementSyncro(botonCondiciones);
+					Browser.waitForElementScreen(pag3Condiciones);
+					WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"id3_3\"]/p"));
+					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", targetElement);
+					Browser.clickElementSyncro(botonSiCondiciones);
+				}
 			//}
 			
 	}
