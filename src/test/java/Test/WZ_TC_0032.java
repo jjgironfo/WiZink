@@ -25,7 +25,7 @@ import general.Reporting;
 public class WZ_TC_0032 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Solicitar reenvío de tarjeta")
 	@Description("Solicitar reenvío de tarjeta")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

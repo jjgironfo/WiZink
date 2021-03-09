@@ -187,7 +187,7 @@ public class Mensajes extends Utilidades{
 	 * @return
 	 * 
 	 */
-	@Step("redactarMsg")
+	@Step("Redactar Mensaje")
 	public boolean redactarMsg(String codeTC) throws Exception {
 		try {
 

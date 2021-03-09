@@ -25,7 +25,7 @@ import general.Reporting;
 public class WZ_TC_0023 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Modificar tipo de extracto")
 	@Description("Modificar tipo del extracto")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

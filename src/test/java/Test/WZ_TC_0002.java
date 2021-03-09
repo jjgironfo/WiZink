@@ -23,7 +23,7 @@ import general.Utilidades;
 public class WZ_TC_0002 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Login en wizink")
 	@Description("Login en wizink")
 	
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {

@@ -19,7 +19,7 @@ import pageobject.Login;
 public class WZ_TC_0003 {
 
 	@Parameters({ "browserName","userName","password" })
-	@Test
+	@Test (priority = 1, description="Recordar usuario")
 	@Description("Recordar usuario")
 	public static void recordarUsuario(@Optional String url, @Optional String nombreUsuario, @Optional String contrasenia) throws Exception {
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());

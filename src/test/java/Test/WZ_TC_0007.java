@@ -22,7 +22,7 @@ import general.Reporting;
 public class WZ_TC_0007 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Mostrar Mensajes Enviados")
 	@Description("Mostrar Mensajes Enviados")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

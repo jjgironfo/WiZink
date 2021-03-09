@@ -13,13 +13,15 @@ import general.Final;
 import general.Log;
 import general.ProjectPaths;
 import general.Reporting;
+import io.qameta.allure.Description;
 import pageobject.Login;
 
 
 public class WZ_TC_0004{
 
 	@Parameters({ "browserName","userName","password" })
-	@Test (description = "Recordar Contraseña")
+	@Test (priority = 1, description="Recordar contraseña")
+	@Description("Recordar contraseña")
 	public static void recuperarUsuario(@Optional String url, @Optional String nombreUsuario, @Optional String contrasenia) throws Exception {
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 

@@ -21,7 +21,7 @@ import general.Reporting;
 public class WZ_TC_0001 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Registro en la web")
 	@Description("Registro en la web")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

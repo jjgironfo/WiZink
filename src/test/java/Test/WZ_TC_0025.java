@@ -25,7 +25,7 @@ import general.Reporting;
 public class WZ_TC_0025 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Cambiar forma de pago")
 	@Description("Cambiar forma de pago")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

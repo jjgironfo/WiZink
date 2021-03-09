@@ -25,7 +25,7 @@ import general.Reporting;
 public class WZ_TC_0030 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Consultar Número y CVV de mi tarjeta")
 	@Description("Consultar Número y CVV de mi tarjeta")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

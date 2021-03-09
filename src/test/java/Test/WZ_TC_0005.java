@@ -22,7 +22,7 @@ import general.Reporting;
 public class WZ_TC_0005 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Mostrar número tarjeta")
 	@Description("Mostrar número tarjeta")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

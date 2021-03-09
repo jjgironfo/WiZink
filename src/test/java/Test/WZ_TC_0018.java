@@ -24,7 +24,7 @@ import general.Reporting;
 public class WZ_TC_0018 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Eliminar Favoritos")
 	@Description("Eliminar Favoritos")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

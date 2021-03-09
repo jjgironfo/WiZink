@@ -25,7 +25,7 @@ import general.Reporting;
 public class WZ_TC_0021 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Visualizar Gráfica de gastos del mes")
 	@Description("Visualizar Gráfica de gastos del mes")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

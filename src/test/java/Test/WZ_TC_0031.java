@@ -25,7 +25,7 @@ import general.Reporting;
 public class WZ_TC_0031 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Bloquear tarjeta")
 	@Description("Bloquear tarjeta")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 

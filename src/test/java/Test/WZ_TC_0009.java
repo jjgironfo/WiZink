@@ -22,7 +22,7 @@ import general.Reporting;
 public class WZ_TC_0009 {
 	
 	@Parameters({ "browserName","userName","password"})
-	@Test()
+	@Test(priority = 1, description="Borrar Mensaje")
 	@Description("Borrar Mensaje")
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 
