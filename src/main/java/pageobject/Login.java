@@ -17,6 +17,7 @@ import general.Log;
 import general.PropertyControl;
 import general.Reporting;
 import general.Utilidades;
+import io.qameta.allure.Description;
 
 public class Login extends Utilidades{
 
@@ -104,6 +105,7 @@ public class Login extends Utilidades{
 	 * @return
 	 * 
 	 */
+	@Description("doLoginUsuarioPassword")
 	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia, String codeTC) throws Exception {
 		
 			//boolean isDisabled = false;
@@ -130,12 +132,16 @@ public class Login extends Utilidades{
 				Browser.writeTextSyncro(txtUsuario, nombreUsuario);
 				Browser.clickElementSyncro(txtPassword);
 				Browser.writeTextSyncro(txtPassword, contrasenia);
+				Reporting.reportOK("OK - Escribirmos usuarios y contraseña");
 				
 				  try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 				 
 				//Se comprueba si aparece la pantalla de aceptar condiciones
 				Browser.clickElementSyncro(btnAccesoClientes);
+				Reporting.reportOK("OK - Pulasmos en acceder");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.waitForElementScreen(logoWizink);
 				 try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
@@ -146,9 +152,10 @@ public class Login extends Utilidades{
 					Browser.waitForElementScreen(pag3Condiciones);
 					WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"id3_3\"]/p"));
 					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", targetElement);
-					 try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-						  e.printStackTrace(); }
 					Browser.clickElementSyncro(botonSiCondiciones);
+					Reporting.reportOK("OK - Aceptamos las condiciones de uso");
+					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+						  e.printStackTrace(); }
 				}
 			//}
 			
