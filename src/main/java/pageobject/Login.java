@@ -18,6 +18,7 @@ import general.PropertyControl;
 import general.Reporting;
 import general.Utilidades;
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 
 public class Login extends Utilidades{
 
@@ -105,7 +106,7 @@ public class Login extends Utilidades{
 	 * @return
 	 * 
 	 */
-	@Description("doLoginUsuarioPassword")
+	@Step("doLoginUsuarioPassword")
 	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia, String codeTC) throws Exception {
 		
 			//boolean isDisabled = false;

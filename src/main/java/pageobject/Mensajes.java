@@ -10,6 +10,7 @@ import general.ProjectPaths;
 import general.Reporting;
 import general.Utilidades;
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 
 public class Mensajes extends Utilidades{
 
@@ -186,7 +187,7 @@ public class Mensajes extends Utilidades{
 	 * @return
 	 * 
 	 */
-	@Description("redactarMsg")
+	@Step("redactarMsg")
 	public boolean redactarMsg(String codeTC) throws Exception {
 		try {
 
