@@ -154,6 +154,26 @@ public class Utilidades {
 	@Attachment(value = "Screenshot jpg attachment", type = "image/jpg")
     @Step("Taking a screenshot from Assert")
 	
+	public static byte[] takeRemoteScreenshot(WebDriver driver, String nomCaso) throws URISyntaxException, IOException {
+		
+
+		
+		try {
+               String filename = generateRandomFilename();
+               WebDriver augmentedDriver = new Augmenter().augment(driver);
+               File screenshot = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);
+               FileUtils.copyFile(screenshot, new File(reportsDir + SLASH + nomCaso + SLASH + filename));
+               return Files.readAllBytes(Paths.get(screenshot.toURI()));
+        } catch (IOException e) {
+               System.out.println("We have a problem: Error in screenshot");
+               System.out.println(e);
+        }
+        return null;
+  }
+	
+	@Attachment(value = "Screenshot jpg attachment", type = "image/jpg")
+    @Step("Taking a screenshot from Assert")
+	
 	public static byte[] takeRemoteScreenshot(WebDriver driver) throws URISyntaxException, IOException {
 		
 
@@ -162,7 +182,7 @@ public class Utilidades {
                String filename = generateRandomFilename();
                WebDriver augmentedDriver = new Augmenter().augment(driver);
                File screenshot = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);
-               FileUtils.copyFile(screenshot, new File(reportsDir + SLASH + "2" + filename));
+               FileUtils.copyFile(screenshot, new File(reportsDir + SLASH + filename));
                return Files.readAllBytes(Paths.get(screenshot.toURI()));
         } catch (IOException e) {
                System.out.println("We have a problem: Error in screenshot");

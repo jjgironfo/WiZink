@@ -60,9 +60,9 @@ public class WZ_TC_0032 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName, pass);
+			login.doLoginUsuarioPassword(userName, pass, codeTC);
 		
-			producto.reenviarTarjeta();
+			producto.reenviarTarjeta(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

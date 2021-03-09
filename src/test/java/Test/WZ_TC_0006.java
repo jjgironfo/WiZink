@@ -57,9 +57,9 @@ public class WZ_TC_0006 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName, pass);
+			login.doLoginUsuarioPassword(userName, pass,codeTC);
 			
-			mensajes.checkMsgRecibidos();
+			mensajes.checkMsgRecibidos(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

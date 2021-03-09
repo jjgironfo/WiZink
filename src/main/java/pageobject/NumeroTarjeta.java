@@ -1,8 +1,11 @@
 package pageobject;
 
+import static general.Browser.driver;
+
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import general.Browser;
@@ -11,7 +14,7 @@ import general.PropertyControl;
 import general.Reporting;
 import general.Utilidades;
 
-public class NumeroTarjeta  {
+public class NumeroTarjeta extends Utilidades {
 
 	String testCase;
 	private static String actualEnv = System.getProperty("entorno");
@@ -37,7 +40,7 @@ public class NumeroTarjeta  {
 	 * @return
 	 * 
 	 */
-	public boolean mostrarNumeroTarjeta() throws Exception {
+	public boolean mostrarNumeroTarjeta(String codeTC) throws Exception {
 		try {
 			boolean resultado = false;
 
@@ -45,10 +48,11 @@ public class NumeroTarjeta  {
 			Browser.clickElementSyncro(btnNumeroTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Nmero tarjeta'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Nmero tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Introducir el OTP
 			Browser.checkObjeto(btnVerDatosTarjeta);
-			
 			
 			Properties datosConfig = PropertyControl.getProperties("config");
 			switch (actualEnv) {
@@ -65,26 +69,36 @@ public class NumeroTarjeta  {
 				break;
 			default:
 				System.out.println("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
 			
 			
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Pulsar en "VER DATOS"
 			Browser.clickElementSyncro(btnVerDatosTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Ver Datos'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Ver Datos'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Validamos Que se muestra el mensaje Final
 			resultado = (Browser.checkObjeto(checkMostrarNumeroTarjeta));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'", "");
 				Reporting.reportOK("OK - Se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'", "");
 				Reporting.reportKO("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 			}
 			return resultado;
 

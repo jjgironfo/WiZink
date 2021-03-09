@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import general.Browser;
+import general.Final;
 import general.Log;
 import general.PropertyControl;
 import general.Reporting;
@@ -103,6 +104,62 @@ public class Login extends Utilidades{
 	 * @return
 	 * 
 	 */
+	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia, String codeTC) throws Exception {
+		
+			//boolean isDisabled = false;
+		
+		nombreUsuario = PropertyControl.getLogProperty("usuario_" + actualEnv);
+		contrasenia = PropertyControl.getLogProperty("password_" + actualEnv);
+		Browser.clickElementSyncro(btnPrivacidadLogin);
+		Browser.clickElementSyncro(btnAreaCliente);
+			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
+		//if (Browser.checkFieldDisabled(btnPrivacidadLogin,"login") {
+					//try {
+				//Browser.clickElementSyncro(btnPrivacidadLogin);
+		
+		//Browser.clickElementSyncro(btnPrivacidadLogin);
+					//} catch (Exception e) {
+						//System.out.println("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
+					//}
+				//}
+			
+			//Browser.waitExt(20);
+			//if (Browser.checkFieldDisabled(btnAccesoClientes, "Acceso clientes", isDisabled)) {
+				
+				Browser.clickElementSyncro(txtUsuario);
+				Browser.writeTextSyncro(txtUsuario, nombreUsuario);
+				Browser.clickElementSyncro(txtPassword);
+				Browser.writeTextSyncro(txtPassword, contrasenia);
+				
+				  try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
+				 
+				//Se comprueba si aparece la pantalla de aceptar condiciones
+				Browser.clickElementSyncro(btnAccesoClientes);
+				Browser.waitForElementScreen(logoWizink);
+				 try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
+				//Se comprueba si aparece la pantalla de aceptar condiciones
+				//https://wizinkprees/clientes/contrato_login"
+				if(Browser.checkObjeto(botonCondiciones)) {
+					Browser.clickElementSyncro(botonCondiciones);
+					Browser.waitForElementScreen(pag3Condiciones);
+					WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"id3_3\"]/p"));
+					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", targetElement);
+					 try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+						  e.printStackTrace(); }
+					Browser.clickElementSyncro(botonSiCondiciones);
+				}
+			//}
+			
+	}
+	
+	/**
+	 * Metodo para realizar login en la aplicacion - Introduciendo Usuario y Password
+	 * 
+	 * @return
+	 * 
+	 */
 	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia) throws Exception {
 		
 			//boolean isDisabled = false;
@@ -129,10 +186,10 @@ public class Login extends Utilidades{
 				Browser.writeTextSyncro(txtUsuario, nombreUsuario);
 				Browser.clickElementSyncro(txtPassword);
 				Browser.writeTextSyncro(txtPassword, contrasenia);
-				/*
-				 * try { this.takeRemoteScreenshot(driver); } catch(Exception e){
-				 * e.printStackTrace(); }
-				 */
+				
+				  try { this.takeRemoteScreenshot(driver); } catch(Exception e){
+				  e.printStackTrace(); }
+				 
 				//Se comprueba si aparece la pantalla de aceptar condiciones
 				Browser.clickElementSyncro(btnAccesoClientes);
 				//Se comprueba si aparece la pantalla de aceptar condiciones
@@ -154,21 +211,60 @@ public class Login extends Utilidades{
 	 * @return
 	 * 
 	 */
-	public void recordarUsuario() throws Exception {
+	public void recordarUsuario(String codeTC) throws Exception {
+		
+		Browser.waitForElementScreen(btnPrivacidadLogin);
+
+		
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
 		
 		Browser.clickElementSyncro(btnPrivacidadLogin);
+		
+		Browser.waitForElementScreen(btnAreaCliente);
+
+		 try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
+		
 		Browser.clickElementSyncro(btnAreaCliente);
+		
+		Browser.waitForElementScreen(btnRecordarUsuario);
+
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
+		
+		
 		Browser.clickElementSyncro(btnRecordarUsuario);
+		
+		Browser.waitForElementScreen(titleRecordarUsuario);
+
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
 		Browser.checkFieldText(titleRecordarUsuario, "¿Has olvidado tu usuario?");
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
 			
 			
 	}
-	public void recordarPassword() throws Exception {
+	public void recordarPassword(String codeTC) throws Exception {
 		
 		Browser.clickElementSyncro(btnPrivacidadLogin);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
+		
 		Browser.clickElementSyncro(btnAreaCliente);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
+		
+		
 		Browser.clickElementSyncro(btnRecordarPassword);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
+		
+		
 		Browser.checkFieldText(titleRecordarPassword, "Accede a WiZink Online");
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
 			
 			
 	}
@@ -238,7 +334,7 @@ public class Login extends Utilidades{
 	 * @return
 	 * 
 	 */
-	public boolean doRegistro() throws Exception {
+	public boolean doRegistro(String codeTC) throws Exception {
 		try {
 			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
 			if (Browser.checkObjeto(btnPrivacidadLogin)) {
@@ -246,6 +342,8 @@ public class Login extends Utilidades{
 					driver.findElement(btnPrivacidadLogin).click();
 				} catch (Exception e) {
 					Reporting.reportKO("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
+					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e1){
+						  e.printStackTrace(); }
 				}
 			}
 
@@ -256,25 +354,35 @@ public class Login extends Utilidades{
 			Browser.clickElementSyncro(btnRegistrateAhora);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Regstrate Ahora'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Regstrate Ahora'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Introducir el nif y la fecha de nacimiento y pulsar en el botn "seguir"
 			Browser.sincronizaObjetoSoloClick(radioNIF);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
 			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			String Nif = Utilidades.generaNif("1");
 			Browser.writeTextSyncro(txtNif, Nif);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
 			Reporting.reportOK("OK - Se escribe el 'NIF'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			String fechaNacimiento = "01/01/1990";
 			Browser.writeTextSyncro(txtFechaNacimiento, fechaNacimiento);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
 			Reporting.reportOK("OK - Se escribe la 'Fecha de Nacimiento'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.clickElementSyncro(btnSeguir);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			
 	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
@@ -289,9 +397,13 @@ public class Login extends Utilidades{
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
 				Reporting.reportOK("OK - TEXTO OK");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "TEXTO KO", "");
 				Reporting.reportKO("KO - TEXTO KO");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 			}		
 			return resultado;
 

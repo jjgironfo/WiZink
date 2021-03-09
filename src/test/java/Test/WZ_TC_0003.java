@@ -53,7 +53,7 @@ public class WZ_TC_0003 {
 			 * Start test
 			 */
 			
-			login.recordarUsuario();
+			login.recordarUsuario(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

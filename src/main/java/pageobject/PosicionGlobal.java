@@ -8,8 +8,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import general.Browser;
 import general.ProjectPaths;
 import general.Reporting;
+import general.Utilidades;
 
-public class PosicionGlobal {
+public class PosicionGlobal extends Utilidades{
 
 	String testCase;
 
@@ -35,18 +36,22 @@ public class PosicionGlobal {
 	 * @return
 	 * 
 	 */
-	 public void checkFavoritos() throws Exception {
+	 public void checkFavoritos(String codeTC) throws Exception {
 	
 
 			// 1.3 En el apartado de Accesos directos pulsar sobre Añadir
 			Browser.clickElementSyncro(btnAnadirAccesoDirecto);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 
 						
 			// 1.4 Se pulsa Añadir
 			Browser.clickElementSyncro(btnAnadirAccesoDirectoPopUp);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo PopUp'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.5 Seleccionar el Acceso: Consultar PIN y pulsar Añadir
 			Browser.waitExt(1);
@@ -55,6 +60,8 @@ public class PosicionGlobal {
 			Browser.clickElementSyncro(opcionConsultarPINPopUp);
 			Browser.clickElementSyncro(btnAnadirOtroAccesoDirectoPopUp);
 			Reporting.reportOK("OK - Se selecciona en el combo la opcion 'Consultar PIN'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.6 Seleccionar uno de los accesos directos creados y pulsar el icono X para eliminarlo:
 			JavascriptExecutor  js = (JavascriptExecutor ) driver;
@@ -64,19 +71,27 @@ public class PosicionGlobal {
 					Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 				} catch (Exception e) {
 					Reporting.reportKO("KO - No existe el Boton Eliminar Favoritos");
+					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e1){
+						  e.printStackTrace(); }
 				}
 			}
 			js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
 			Reporting.reportOK("OK - Se pulsa en el aspa Roja para eliminar el Acceso Directo creado anteriormente");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.7 Se pulsa eliminar
 			Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 			Browser.waitExt(3);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Eliminar'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 						
 			// Validamos que el Aspa Roja del Acceso directo no existe
 			Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp);
 			Reporting.reportOK("OK - Se valida se ha eliminado el Acceso Directo creado");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 
 	}
 	/**

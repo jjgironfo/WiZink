@@ -56,7 +56,7 @@ public class WZ_TC_0001 {
 			 * Start test
 			 */
 			
-			login.doRegistro();
+			login.doRegistro(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

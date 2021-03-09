@@ -58,9 +58,9 @@ public class WZ_TC_0014 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName, pass);
+			login.doLoginUsuarioPassword(userName, pass, codeTC);
 			
-			areaPersonal.cambiarUsuarioPerfilAreaPersonal(userName, pass);
+			areaPersonal.cambiarUsuarioPerfilAreaPersonal(userName, pass, codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

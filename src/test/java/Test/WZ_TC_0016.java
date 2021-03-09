@@ -59,10 +59,10 @@ public class WZ_TC_0016 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName, pass);
+			login.doLoginUsuarioPassword(userName, pass, codeTC);
 			
 			Reporting.reportOK("El login se ha realizado de manera correcta");
-			areaPersonal.checkDocumentacion();
+			areaPersonal.checkDocumentacion(codeTC);
 			
 			Reporting.reportResultOK();
 

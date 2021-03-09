@@ -59,8 +59,8 @@ public class WZ_TC_0017 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName, pass);
-			posicionGlobal.checkFavoritos();
+			login.doLoginUsuarioPassword(userName, pass, codeTC);
+			posicionGlobal.checkFavoritos(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

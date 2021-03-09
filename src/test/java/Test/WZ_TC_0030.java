@@ -60,9 +60,9 @@ public class WZ_TC_0030 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName, pass);
+			login.doLoginUsuarioPassword(userName, pass, codeTC);
 		
-			producto.verNumCVVTarjeta();
+			producto.verNumCVVTarjeta(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

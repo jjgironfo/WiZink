@@ -1,5 +1,7 @@
 package pageobject;
 
+import static general.Browser.driver;
+
 import java.io.File;
 import java.util.Properties;
 
@@ -11,7 +13,7 @@ import general.PropertyControl;
 import general.Reporting;
 import general.Utilidades;
 
-public class Producto {
+public class Producto extends Utilidades{
 
 	String testCase;
 	private static String actualEnv = System.getProperty("entorno");
@@ -110,7 +112,7 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void checkProductoOpciones() throws Exception {
+	public void checkProductoOpciones(String codeTC) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
@@ -118,6 +120,8 @@ public class Producto {
 			Browser.waitExt(20);
 			Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(20);
@@ -134,6 +138,8 @@ public class Producto {
 						&& Browser.checkObjeto(btnDesactivarWizinkPayOpcionesProducto)) {
 							
 				Reporting.reportOK("OK - Se valida que las opciones sean: Cambiar forma de pago, Cambiar la cuenta de domiciliacin, Consultar pin, Consultar num y cvv de la tarjeta, Bloquear tarjeta, Reclamar un cargo no reconocido, Pedir reenvo de tarjeta, Informarme sobre wizink pay, Solicitar una tarjeta adicional");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 					}
 		
 	
@@ -146,17 +152,21 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void checkProductoMovimientosHoy() throws Exception {
+	public void checkProductoMovimientosHoy(String codeTC) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.4 Se visualizan los movimientos realizados el da de la prueba Con ttulo "Hoy,."
 			Browser.checkObjeto(checkSituacionActualProducto);
 			Reporting.reportOK("OK - Se visualizan los movimientos de la tarjeta de la prueha");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 	}
 	
@@ -166,22 +176,28 @@ public class Producto {
 	 * 
 	 * 
 	 */
-	public void checkProductoExtractos() throws Exception {
+	public void checkProductoExtractos(String codeTC) throws Exception {
 		
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.clickElementSyncro(btnDetalleProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.4 Pulsar sobre extractos
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
-			Reporting.reportOK("OK - Se pulsa sobre extractos");	
+			Reporting.reportOK("OK - Se pulsa sobre extractos");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			
 			//Report
 			Reporting.reportOK("OK - Se pulsa sobre extractos");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.5 Se seleacciona el Mes anterior al actual y se muestran los movimientos de la tarjeta correspondientes a ese mes
 			Browser.waitExt(1);
@@ -190,13 +206,16 @@ public class Producto {
 			
 			//reoirt
 			Reporting.reportOK("OK - Se seleacciona el Mes anterior al actual");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 
 			Browser.waitExt(1);
 			Browser.checkObjeto(checkOperacionesMesProducto);
 			
 			//Report
 			Reporting.reportOK("OK - Se muestran los movimientos de la tarjeta correspondientes al mes seleccionado");
-			
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 
 	}
@@ -206,17 +225,21 @@ public class Producto {
 	 * MMostrar las gráficas
 	 * 
 	 */
-	public void checkProductoExtractosGraficos() throws Exception {
+	public void checkProductoExtractosGraficos(String codeTC) throws Exception {
 		
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.4 Pulsar sobre extractos
 			Browser.waitExt(1);
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
-			Reporting.reportOK("OK - Se pulsa sobre extractos");	
+			Reporting.reportOK("OK - Se pulsa sobre extractos");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 				
 			// 1.5 Se seleacciona el Mes anterior al actual y se muestran los movimientos de la tarjeta correspondientes a ese mes
 			Browser.waitExt(1);
@@ -228,10 +251,14 @@ public class Producto {
 			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnGraficosOperacionesMes);
 			Reporting.reportOK("OK - Se pulsa en el botn 'Mostrar Gráficos' de los movimientos");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(2);
 			Browser.checkObjeto(graficosOperacionesMes);
-			Reporting.reportOK("OK - Se muestra un diagrama con las operaciones del mes"); 
+			Reporting.reportOK("OK - Se muestra un diagrama con las operaciones del mes");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 
 	}
 	
@@ -240,7 +267,7 @@ public class Producto {
 	 * Acceder al extracto de la tarjeta
 	 * 
 	 */
-	public void checkProductoExtractosXLS() throws Exception {
+	public void checkProductoExtractosXLS(String codeTC) throws Exception {
 	
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
@@ -248,13 +275,17 @@ public class Producto {
 			Browser.clickElementSyncro(btnDetalleProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.4 Pulsar sobre extractos
 			Browser.waitExt(5);
 			
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
 			
-			Reporting.reportOK("OK - Se pulsa sobre extractos");	
+			Reporting.reportOK("OK - Se pulsa sobre extractos");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 		
 			
 			// 1.5 Se seleacciona el Mes anterior al actual y se muestran los movimientos de la tarjeta correspondientes a ese mes
@@ -275,9 +306,13 @@ public class Producto {
 			Browser.clickElementSyncro(btnXLSOperacionesMes);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Descarga XLS' de los movimientos", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Descarga XLS' de los movimientos");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 
 			//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se ha descargado el Fichero XLS", "");
 			Reporting.reportOK("OK - Validamos que se ha descargado el Fichero XLS");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 
 	}
@@ -288,7 +323,7 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void modificarTipoExtracto() throws Exception {
+	public void modificarTipoExtracto(String codeTC) throws Exception {
 	
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
@@ -296,11 +331,15 @@ public class Producto {
 			Browser.clickElementSyncro(btnDetalleProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente Visa Oro", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.4 Pulsar sobre extractos
 			Browser.waitExt(20);
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
-			Reporting.reportOK("OK - Se pulsa sobre extractos");	
+			Reporting.reportOK("OK - Se pulsa sobre extractos");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			
 			
@@ -311,6 +350,8 @@ public class Producto {
 			Browser.clickElementSyncro(btnCambiarInscritoExtracto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Cambiar'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Cambiar'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 
@@ -318,16 +359,22 @@ public class Producto {
 			Browser.clickElementSyncro(checkCambiarExtractoPapel);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el check 'Cambiar a extracto en Papel'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el check 'Cambiar a extracto en Papel'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnSeguir);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(confirmar);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Confirmar cambios'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Confirmar cambios'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			
 			
@@ -349,12 +396,16 @@ public class Producto {
 				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
 			
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(confirmar);
@@ -367,26 +418,38 @@ public class Producto {
 			
 	// VOLVEMOS EL DATO A SU ESTADO INICIAL - PARA FUTURAS EJECUCIONES
 			Reporting.reportOK("INFO - VOLVEMOS EL DATO A SU ESTADO INICIAL - PARA FUTURAS EJECUCIONES");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnVolverExtractos);
 			Reporting.reportOK("OK - Se pulsa sobre el botn 'Volver a Extractos'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnCambiarInscritoExtracto);
 			Reporting.reportOK("OK - Se pulsa sobre el botn 'Cambiar a Extracto Electronico'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(checkCambiarExtractoElectronico);
 			Reporting.reportOK("OK - Se pulsa sobre el check 'Cambiar a extracto Electronico'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(confirmar);
 			Reporting.reportOK("OK - Se pulsa sobre el botn 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.waitExt(10);
 			Browser.checkObjeto(checkCambiarExtracto);
 			Reporting.reportOK("OK - Se valida que el dato ha regresado a su estado inicial");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 
 	}
@@ -398,26 +461,34 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void cambiarFormaPago() throws Exception {
+	public void cambiarFormaPago(String codeTC) throws Exception {
 	
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 		
 			// 1.5 Pulsar en 'Cambiar forma de pago'
 			Browser.waitExt(2);
 			Browser.clickElementSyncro(btnCambiarFormaPagoOpcionesProducto);
 			Reporting.reportOK("OK - Se pulsa en el botn 'Cambiar forma de pago'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Seleccionar 'Pago mnimo' y Pulsar en 'SEGUIR'
 			Browser.waitExt(2);
 			Browser.clickElementSyncro(radioPagoMinimoCambiarFormaPago);
 			Reporting.reportOK("OK - Se selecciona 'Pago mnimo' y posteriormente en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirCambiarFormaPago);
 			
 			// Introducir el OTP y Pulsar en "SEGUIR"
@@ -436,12 +507,19 @@ public class Producto {
 				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			Browser.clickElementSyncro(btnSeguirCambiarFormaPago);
+			Reporting.reportOK("OK - Se pulsa cambiar forma de pago");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 
 
 	}
@@ -453,24 +531,30 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void  cambiarCuentaCargo() throws Exception {
+	public void  cambiarCuentaCargo(String codeTC) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitExt(5);		
 			Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(20);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del panel de la izquierda la opción 'Opciones'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 				
 			
 			// 1.5 Pulsar en "Cambiar Cuenta de domiciliación"
 			Browser.waitExt(5);
 			Browser.clickElementSyncro(btnCambiarCuentaDomiciliacionOpcionesProducto);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Cambiar Cuenta de domiciliación'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Introducir un IBAN y pulsar en "SEGUIR"
 			Browser.waitExt(5);
@@ -478,6 +562,8 @@ public class Producto {
 			Browser.writeTextSyncro(txtIBANCambiarCuentaCargo, nuevoIBAN);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el nuevo Código IBAN y posteriormente se pulsa en 'Seguir'", "");
 			Reporting.reportOK("OK - Se introduce el nuevo Cdigo IBAN y posteriormente se pulsa en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirCambiarCuentaCargo);
 			
 			// Introducir el OTP y pulsar en "SEGUIR"
@@ -496,15 +582,21 @@ public class Producto {
 				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirCambiarCuentaCargo);
 			
 
 			Reporting.reportOK("OK - TEXTO OK");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 
 	}
 	
@@ -564,23 +656,29 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void verNumCVVTarjeta() throws Exception {
+	public void verNumCVVTarjeta(String codeTC) throws Exception {
 
 		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 		Browser.waitExt(20);	
 		Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(20);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.5 Pulsar en "Ver nmero y CVV de mi tarjeta"
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnConsultarNumCVVOpcionesProducto);
 			Reporting.reportOK("OK - Se pulsa en 'Ver nmero y CVV de mi tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Introducir el OTP y pulsamos en "SEGUIR"	
 			Browser.waitExt(10);
@@ -598,10 +696,14 @@ public class Producto {
 				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirVerNumCVVTarjeta);
 			
 			// Se valida que se muestra el Num de Tarjeta
@@ -609,6 +711,8 @@ public class Producto {
 			boolean check1 = Browser.checkObjeto(checkNumTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra el Nm de mi tarjeta'", "");
 			Reporting.reportOK("OK - Se muestra el Nm de mi tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Pulsamos en Mas Info para ver el CVV de la Tarjeta
 			
@@ -616,20 +720,28 @@ public class Producto {
 			Browser.clickElementSyncro(btnMasInfoCVV);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en 'Ms Info' para ver CVV de mi tarjeta'", "");
 			Reporting.reportOK("OK - Se pulsa en 'Ms Info' para ver CVV de mi tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Se valida que se muestra el CVV de Tarjeta
 			Browser.waitExt(10);
 			boolean check2 = Browser.checkObjeto(checkCVVTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra el Nm de mi tarjeta'", "");
 			Reporting.reportOK("OK - Se muestra el Nm de mi tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			if (check1 && check2) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra tanto el 'Nmero y CVV' de mi tarjeta", "");
 				Reporting.reportOK("OK - Se muestra tanto el 'Nmero y CVV' de mi tarjeta");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "No se muestra tanto el 'Nmero y CVV' de mi tarjeta", "");
 				Reporting.reportKO("KO - No se muestra tanto el 'Nmero y CVV' de mi tarjeta");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				
 			}
 
@@ -642,17 +754,21 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void consultarPIN() throws Exception {
+	public void consultarPIN(String codeTC) throws Exception {
 		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitExt(20);	
 			Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(20);
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 		
 			// Pulsar en "Consultar PIN"
 			
@@ -660,6 +776,8 @@ public class Producto {
 			Browser.clickElementSyncro(btnConsultaPINOpcionesProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en 'Consultar PIN'", "");
 			Reporting.reportOK("OK - Se pulsa en 'Consultar PIN'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Introducir el OTP y pulsamos en "SEGUIR"
 			Browser.waitExt(10);
@@ -677,11 +795,15 @@ public class Producto {
 				Browser.introduceCodigoOTP(txtCodigoOTPCambiarFormaPago, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'", "");
 			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirConsultarPIN);
 			
 			// Pulsamos en 'Mostrar el Pin de tu Tarjeta'
@@ -690,12 +812,18 @@ public class Producto {
 			Browser.clickElementSyncro(btnMostrarPIN);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Mostrar el Pin de tu Tarjeta'", "");
 			Reporting.reportOK("OK - Pulsamos en 'Mostrar el Pin de tu Tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			
 			if (Browser.checkObjeto(imagenPIN)	) {
 				Reporting.reportOK("OK - Se muestra el PIN de la Tarjeta");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 			} else {
 				Reporting.reportKO("KO - No se muestra el PIN de la Tarjeta");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 			}
 			
 
@@ -709,23 +837,29 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void bloquearTarjeta() throws Exception {
+	public void bloquearTarjeta(String codeTC) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitExt(20);	
 			Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(20);	
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			//1.5 Pulsar en "Bloquear la tarjeta"
 			Browser.waitExt(10);	
 			Browser.clickElementSyncro(btnBloquearTarjeta);
 			Reporting.reportOK("OK - Pulsamos en 'Bloquear la tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Seleccionar 'Me la han robado'
 			//Browser.clickElementSyncro(radioMeHanRobadoTarjeta);
@@ -735,11 +869,15 @@ public class Producto {
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnSeguir);
 			Reporting.reportOK("OK - Pulsamos en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Pulsar en "ACEPTAR"
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnSeguir);
 			Reporting.reportOK("OK - Pulsamos en 'Aceptar para finalizar el envio'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 
 
 	}
@@ -749,23 +887,29 @@ public class Producto {
 	 * @return
 	 * 
 	 */
-	public void reenviarTarjeta() throws Exception {
+	public void reenviarTarjeta(String codeTC) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 		Browser.waitExt(20);	
 		Browser.clickElementSyncro(btnDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente Visa Oro");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 					
 			// 1.4 Se selecciona del men de la izquierda la opcin 'Opciones' 
 			Browser.waitExt(20);	
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// 1.5 iniciamos el proceso de "Reenvío de tarjeta"
 			Browser.waitExt(10);
 			Browser.clickElementSyncro(btnReenvioTarjeta);
 			Reporting.reportOK("OK - Pulsamos en 'Reenviar la tarjeta'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			
 			// Pulsar en "seguir"
 			Browser.waitExt(10);
@@ -785,12 +929,18 @@ public class Producto {
 						"BURGOS - ESP");
 				if(direccion) {
 					Reporting.reportOK("OK - Verificamos la dirección de envío");
+					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+						  e.printStackTrace(); }
 				} else {
 					Reporting.reportKO("KO - Verificamos la dirección de envío");
+					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+						  e.printStackTrace(); }
 				}
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
 			
@@ -817,10 +967,14 @@ public class Producto {
 				//Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				break;
 			}
-			//Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			Reporting.reportOK("OK - Se informa el 'Cdigo OTP' y posteriormente en 'Seguir'");
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			
 

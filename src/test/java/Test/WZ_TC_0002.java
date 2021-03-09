@@ -60,7 +60,7 @@ public class WZ_TC_0002 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName,pass);
+			login.doLoginUsuarioPassword(userName,pass, codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

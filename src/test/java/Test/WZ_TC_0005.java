@@ -58,8 +58,8 @@ public class WZ_TC_0005 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName,pass);
-			numeroTarjeta.mostrarNumeroTarjeta();
+			login.doLoginUsuarioPassword(userName,pass,codeTC);
+			numeroTarjeta.mostrarNumeroTarjeta(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

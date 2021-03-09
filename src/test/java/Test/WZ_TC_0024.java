@@ -60,9 +60,9 @@ public class WZ_TC_0024 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName, pass);
+			login.doLoginUsuarioPassword(userName, pass, codeTC);
 			
-			producto.checkProductoOpciones();
+			producto.checkProductoOpciones(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

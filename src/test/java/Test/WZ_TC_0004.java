@@ -52,7 +52,7 @@ public class WZ_TC_0004{
 			 * Start test
 			 */
 			
-			login.recordarPassword();
+			login.recordarPassword(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
