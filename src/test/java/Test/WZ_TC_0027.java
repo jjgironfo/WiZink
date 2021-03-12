@@ -63,7 +63,7 @@ public class WZ_TC_0027 {
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
 
 			producto.checkProductoOpciones(codeTC);
-			producto.hacerIngreso();
+			producto.hacerIngreso(codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

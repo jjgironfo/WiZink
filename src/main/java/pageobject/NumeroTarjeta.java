@@ -45,13 +45,17 @@ public class NumeroTarjeta extends Utilidades {
 			boolean resultado = false;
 
 			// Pulsar sobre botn "Numero tarjeta" situado en la barra
+			Browser.waitForElementScreen(btnNumeroTarjeta);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnNumeroTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Nmero tarjeta'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Nmero tarjeta'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Introducir el OTP
+			Browser.waitForElementScreen(btnVerDatosTarjeta);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.checkObjeto(btnVerDatosTarjeta);
 			
 			Properties datosConfig = PropertyControl.getProperties("config");
@@ -68,37 +72,33 @@ public class NumeroTarjeta extends Utilidades {
 				Browser.introduceCodigoOTP(btnOTPTarjeta, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
+				Reporting.reportKO("No se ha indicado un entorno valido");
 				break;
 			}
 			
 			
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Pulsar en "VER DATOS"
+			Browser.waitForElementScreen(btnVerDatosTarjeta);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnVerDatosTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Ver Datos'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Ver Datos'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Validamos Que se muestra el mensaje Final
+			Browser.waitForElementScreen(checkMostrarNumeroTarjeta);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			resultado = (Browser.checkObjeto(checkMostrarNumeroTarjeta));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'", "");
 				Reporting.reportOK("OK - Se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'", "");
 				Reporting.reportKO("KO - No se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			}
 			return resultado;
 

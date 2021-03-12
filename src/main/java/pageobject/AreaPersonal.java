@@ -117,14 +117,19 @@ public class AreaPersonal extends Utilidades {
 				boolean NIE = false;
 
 				Browser.waitExt(5);
+				
+				Browser.waitForElementScreen(btnAreaPersonal);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.clickElementSyncro(btnAreaPersonal);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 
 				// 1.3 Se pulsa Ir a Área Personal y se visualizan los datos personales, demográficos,
 				// foto de perfil y opciones de cambiar estos, el usuario y la contraseña.
+				Browser.waitForElementScreen(btnCambiarMiUsuario);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.checkFieldText(btnCambiarMiUsuario, "Cambiar mi usuario");
 				
 				// Validamos la pantalla de �rea Personal
@@ -152,8 +157,6 @@ public class AreaPersonal extends Utilidades {
 				
 				// report 
 				Reporting.reportOK("Estamos en el área personal");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			
 			
 
@@ -171,26 +174,29 @@ public class AreaPersonal extends Utilidades {
 		
 				Browser.waitExt(1);
 				
+				Browser.waitForElementScreen(btnAreaPersonal);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.clickElementSyncro(btnAreaPersonal);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 
 				Browser.waitExt(5);
+				Browser.waitForElementScreen(btnDocumentacion);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.clickElementSyncro(btnDocumentacion);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Documentacion'");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 				
 				// 1.4 Se pulsa sobre la opcin Documentación y se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crdito.
+				Browser.waitForElementScreen(btnTerminosYCondicionesGeneral);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.checkObjeto(btnTerminosYCondicionesGeneral);
 				
 				//report
 				Reporting.reportOK("Se muestra la documentacin disponible divida en bloques: Generales, Ahorro y Crédito");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 				
 					
 				Properties datosConfig = PropertyControl.getProperties("config");
@@ -232,8 +238,6 @@ public class AreaPersonal extends Utilidades {
 					break;
 				default:
 					Reporting.reportKO("No se ha indicado un entorno valido");
-					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-						  e.printStackTrace(); }
 					break;
 				}
 
@@ -262,23 +266,26 @@ public class AreaPersonal extends Utilidades {
 			boolean isDisabled = true;
 
 			// 1.3 Se pulsa Ir a Área Personal
+			Browser.waitForElementScreen(btnAreaPersonal);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// 1.4 Pulsar sobre el link 'Cambiar' de la Foto de Perfil
-			Browser.clickElementSyncro(btnCambiarDatoFoto);
-			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar' de la Foto de Perfil");
+			Browser.waitForElementScreen(btnCambiarDatoFoto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Browser.clickElementSyncro(btnCambiarDatoFoto);
+			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar' de la Foto de Perfil");
 
 			// 1.5 Pulsar sobre la foto y se muestran las fotos disponibles para seleccionar
+			Browser.waitForElementScreen(btnImagenCambioFoto);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnImagenCambioFoto);
 			
 			Reporting.reportOK("OK - Se pulsa sobre la foto y se muestran las fotos disponibles para seleccionar");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Realizamos la subida del Fichero
 			Browser.waitExt(1);
@@ -287,52 +294,56 @@ public class AreaPersonal extends Utilidades {
 			//File file = new File("/Users/cexmobile/git/wizink_testng/IMAGEN.png");
 			//StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
 			//Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+			Browser.waitExt(1);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			uploadMediaByRobot("IMAGEN.png");
 
-
+			Browser.waitExt(1);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Reporting.reportOK("Fin Subir Imagen");
 			Browser.waitExt(1);
 			
 			// 1.6 Seleccionar foto y pulsar en ok. La foto seleccionada se muestra como la del perfil
+			Browser.waitForElementScreen(btnGuardarCambiosImagenCambioFoto);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.waitForElementSyncro(btnGuardarCambiosImagenCambioFoto);
 			Browser.scrollNavegadorVertical("ABAJO");
 			Browser.clickElementSyncro(btnGuardarCambiosImagenCambioFoto);
 			
 			Reporting.reportOK("OK - Seleccionar foto y pulsar en ok. La foto seleccionada se muestra como la del perfil");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			Browser.waitExt(1);
 			Browser.cargarSpinner();
 			Browser.waitExt(1);
 			
 			// Nos volvemos para verificar que se ha incluido el cambio de la Imagen -- Boton Volver
+			Browser.waitForElementScreen(btnVolverImagenCambioFoto);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.waitForElementSyncro(btnVolverImagenCambioFoto);
 			Browser.clickElementSyncro(btnVolverImagenCambioFoto);
 			
 			Reporting.reportOK("OK - Nos volvemos para verificar que se ha incluido el cambio de la Imagen");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Validamos que se muestra el boton Eliminar (Significa que se ha incluido anteriormente)
 			//Este método no se encuentra en el código antiguo
 			//Browser.checkFieldDisabled(btnEliminarImagenCambioFoto, "delete", isDisabled);
 						
 			// Borramos la Imagen para futuras ejecuciones de la prueba
-			Browser.clickElementSyncro(btnEliminarImagenCambioFoto);
-			Reporting.reportOK("OK - Eliminamos la Imagen");
+			Browser.waitForElementScreen(btnEliminarImagenCambioFoto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Browser.clickElementSyncro(btnEliminarImagenCambioFoto);
+			Reporting.reportOK("OK - Eliminamos la Imagen");
 			
 			//Browser.checkObjetoNoExiste(btnEliminarImagenCambioFoto);
 			Reporting.reportOK("OK - El boton Eliminar no existe");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// report 
 			Reporting.reportOK("El botón eliminar no existe");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 
 
@@ -350,19 +361,21 @@ public class AreaPersonal extends Utilidades {
 			boolean resultado = false;
 
 			// 1.3 Se pulsa Ir a rea Personal
+			Browser.waitForElementScreen(btnAreaPersonal);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// 1.4 Pulsar el botn "CAMBIAR MI CONTRASEA"
 			Browser.waitExt(1);
+			Browser.waitForElementScreen(btnCambiarMiPassword);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnCambiarMiPassword);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi Contrasea'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi Contraseña'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// 1.5 Introducir la contrasea antigua, y la nueva en los campos contrasea y repetir contrasea
 			String password = "";
@@ -381,34 +394,42 @@ public class AreaPersonal extends Utilidades {
 				break;
 			default:
 				Reporting.reportKO("No se ha indicado un entorno valido");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 				break;
 			}
-			
+			Browser.waitForElementScreen(txtPassActualMiPass);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.writeTextSyncro(txtPassActualMiPass, password);
+			
+			Browser.waitForElementScreen(txtPassCrea1MiPass);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.writeTextSyncro(txtPassCrea1MiPass, password);
+			
+			Browser.waitForElementScreen(txtPassCrea2MiPass);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.writeTextSyncro(txtPassCrea2MiPass, password);
 			
 			// 1.6 Pulsar en el botn "GUARDAR CAMBIOS". Los cambios se guardan de manera correcta
+			Browser.waitForElementScreen(btnGuardarCambiosMiPass);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnGuardarCambiosMiPass);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Guardar Cambios'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Guardar Cambios'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Validamos que se guarda la Nueva Contrasea indicada
+			Browser.waitForElementScreen(checkCambioPass);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			resultado = (Browser.checkObjeto(checkCambioPass));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
 				Reporting.reportOK("OK - Validamos que se guarda la Nueva Contrasea indicada");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrasea indicada", "");
 				Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			}
 			
 			return resultado;
@@ -433,18 +454,20 @@ public class AreaPersonal extends Utilidades {
 			boolean resultado = false;
 
 			// 1.3 Se pulsa Ir a rea Personal
+			Browser.waitForElementScreen(btnAreaPersonal);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn Área Personal'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// 1.4 Pulsar el botn "CAMBIAR MI USUARIO"
+			Browser.waitForElementScreen(btnCambiarMiUsuario);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnCambiarMiUsuario);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi usuario'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi usuario'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			String usuario = "";
 			String password = "";
@@ -466,84 +489,97 @@ public class AreaPersonal extends Utilidades {
 				break;
 			default:
 				Reporting.reportKO("No se ha indicado un entorno valido");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 				break;
 			}
 
 			// 1.5 Introducir el nuevo usuario y la clave actual
+						Browser.waitForElementScreen(txtUsuarioCambiarUsuario);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, "digesp066");
+						
+						Browser.waitForElementScreen(txtPasswordCambiarUsuario);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.writeTextSyncro(txtPasswordCambiarUsuario, password);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el nuevo Usuario y contrasea", "");
 						Reporting.reportOK("OK - Se escribe el nuevo Usuario y contrasea");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 						
 						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
+						Browser.waitForElementScreen(btnSeguirDatosPersonales);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.clickElementSyncro(btnSeguirDatosPersonales);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 						Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 						
 						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
+						Browser.waitForElementScreen(volverInicio);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.clickElementSyncro(volverInicio);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 						Reporting.reportOK("OK - Se pulsa en el botón 'Volver al inicio'");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 				
 						// 1.3 Se pulsa Ir a rea Personal para volver al usuario antiguo
+						Browser.waitForElementScreen(btnAreaPersonal);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.clickElementSyncro(btnAreaPersonal);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 						Reporting.reportOK("OK - Se pulsa en el botn 'Área Personal'");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 
 						// 1.4 Pulsar el botn "CAMBIAR MI USUARIO" 
+						Browser.waitForElementScreen(btnCambiarMiUsuario);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.clickElementSyncro(btnCambiarMiUsuario);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi usuario'", "");
 						Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi usuario'");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 						
 						// 1.5 Introducir el nuevo usuario y la clave actual
+						Browser.waitForElementScreen(txtUsuarioCambiarUsuario);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, usuario);
+						
+						Browser.waitForElementScreen(txtPasswordCambiarUsuario);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.writeTextSyncro(txtPasswordCambiarUsuario, password);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el nuevo Usuario y contraseña", "");
 						Reporting.reportOK("OK - Se escribe el nuevo Usuario y contrasea");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 						
 						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
+						Browser.waitForElementScreen(btnSeguirDatosPersonales);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.clickElementSyncro(btnSeguirDatosPersonales);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 						Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 			
 						
 						
 						// Validamos que se guarda el nuevo usuario
+						Browser.waitForElementScreen(checkcambioUsuario);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						resultado = (Browser.checkObjeto(checkcambioUsuario));
 						if (resultado) {
 							//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda el nuevo Usuario indicado", "");
 							Reporting.reportOK("OK - Validamos que se guarda el nuevo Usuario indicado");
-							try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-								  e.printStackTrace(); }
 						} else {
 							//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda el nuevo Usuario indicado", "");
 							Reporting.reportKO("KO - NO se guarda el nuevo Usuario indicadoa");
-							try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-								  e.printStackTrace(); }
 						}
 						
 						// 1.6 Pulsar en el botn "Seguir". Los cambios se guardan de manera correcta
+						Browser.waitForElementScreen(volverInicio);
+						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+							  e.printStackTrace(); }
 						Browser.clickElementSyncro(volverInicio);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 						Reporting.reportOK("OK - Se pulsa en el botón 'Volver al inicio'");
-						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-							  e.printStackTrace(); }
 						
 						return resultado;
 
@@ -613,21 +649,27 @@ public class AreaPersonal extends Utilidades {
 			telefono = PropertyControl.getLogProperty("telefono_" + actualEnv);
 			// 1.3 Se pulsa Ir a rea Personal
 			Browser.waitExt(5);
+			
+			Browser.waitForElementScreen(btnAreaPersonal);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// 1.4 Pulsar el botn Cambiar Datos Personales
 			
+			Browser.waitForElementScreen(btnCambiarDatoDemografico);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnCambiarDatoDemografico);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Personales'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Personales'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// Se introduce el otp recibido por sms y se pulsa en seguir
+			Browser.waitForElementScreen(btnSeguirDatosPersonales);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.checkObjeto(btnSeguirDatosPersonales);
 			Properties datosConfig = PropertyControl.getProperties("config");
 			switch (actualEnv) {
@@ -643,42 +685,46 @@ public class AreaPersonal extends Utilidades {
 				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
 				break;
 			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Pulsamos en Seguir
+			Browser.waitForElementScreen(btnSeguirDatosPersonales);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirDatosPersonales);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa en el botón 'Seguir'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Modificar el telfono y Pulsar en "COMPLETAR"
 			
+			Browser.waitForElementScreen(telefonoField);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(this.telefonoField);
 			Browser.writeTextSyncro(this.telefonoField, telefono);
 			
 			//Guardar los cambios
+			Browser.waitForElementScreen(btnGuardarCambiosMiPass);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnGuardarCambiosMiPass);
 			
 			// Validamos que se guarda la Nueva Contrasea indicada
+			Browser.waitForElementScreen(checkCambiarDatosPersonales);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			resultado = (Browser.checkObjeto(checkCambiarDatosPersonales));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
 				Reporting.reportOK("OK - Validamos que se guarda la Nueva Contrasea indicada");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrasea indicada", "");
 				
 				Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			}
 			
 			return resultado;
@@ -705,20 +751,25 @@ public class AreaPersonal extends Utilidades {
 			String nombreVia = "Prueba123";
 			
 			// 1.3 Se pulsa Ir a rea Personal
+			Browser.waitForElementScreen(btnAreaPersonal);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// 1.4 Pulsar el botn Cambiar Datos Demogrficos
+			Browser.waitForElementScreen(btnCambiarDatoDemografico);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnCambiarDatoDemografico);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Demogrficos'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Demogrficos'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 
 			// Se introduce el otp recibido por sms y se pulsa en seguir
+			Browser.waitForElementScreen(btnSeguirDatosPersonales);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.checkObjeto(btnSeguirDatosPersonales);
 			Properties datosConfig = PropertyControl.getProperties("config");
 			switch (actualEnv) {
@@ -734,48 +785,48 @@ public class AreaPersonal extends Utilidades {
 				Browser.introduceCodigoOTP(txtOTPDatosPersonales, Utilidades.getOTP(Utilidades.readEmail()));
 				break;
 			default:
-				System.out.println("No se ha indicado un entorno valido");
+				Reporting.reportKO("No se ha indicado un entorno valido");
 				break;
 			}
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se introduce el OTP", "");
 			Reporting.reportOK("OK - Se introduce el OTP");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Pulsamos en Seguir
+			Browser.waitForElementScreen(btnSeguirDatosPersonales);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirDatosPersonales);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 			
 			// Modifcar la direccin 
+			Browser.waitForElementScreen(txtNombreVia);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.getWebElement(txtNombreVia).clear();
 			Browser.writeTextSyncro(txtNombreVia, nombreVia);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la direccion", "");
 			Reporting.reportOK("OK - Se escribe la direccion");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 		
 			// Pulsamos en Seguir
+			Browser.waitForElementScreen(btnSeguirDatosPersonales);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnSeguirDatosPersonales);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 		
 			// Validamos que se guarda la Nueva Contrasea indicada
+			Browser.waitForElementScreen(checkCambiarDireccion);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
 			resultado = (Browser.checkObjeto(checkCambiarDireccion));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");
 				Reporting.reportOK("OK - TEXTO OK");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			} else {
 				//egea.reportaTraza(testCase, "ERROR", "KO", "NO se guarda la Nueva Contrasea indicada", "");
 				Reporting.reportKO("KO - NO se guarda la Nueva Contrasea indicada");
-				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
 			}
 			
 			return resultado;

@@ -113,7 +113,15 @@ public class Login extends Utilidades{
 		
 		nombreUsuario = PropertyControl.getLogProperty("usuario_" + actualEnv);
 		contrasenia = PropertyControl.getLogProperty("password_" + actualEnv);
+		
+		Browser.waitForElementScreen(btnPrivacidadLogin);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
 		Browser.clickElementSyncro(btnPrivacidadLogin);
+		
+		Browser.waitForElementScreen(btnAreaCliente);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
 		Browser.clickElementSyncro(btnAreaCliente);
 			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
 		//if (Browser.checkFieldDisabled(btnPrivacidadLogin,"login") {
@@ -129,23 +137,41 @@ public class Login extends Utilidades{
 			//Browser.waitExt(20);
 			//if (Browser.checkFieldDisabled(btnAccesoClientes, "Acceso clientes", isDisabled)) {
 				
+				Browser.waitForElementScreen(txtUsuario);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					e.printStackTrace(); }
 				Browser.clickElementSyncro(txtUsuario);
+				
+				Browser.waitForElementScreen(txtUsuario);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.writeTextSyncro(txtUsuario, nombreUsuario);
+				
+				Browser.waitForElementScreen(txtPassword);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.clickElementSyncro(txtPassword);
+				
+				Browser.waitForElementScreen(txtPassword);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.writeTextSyncro(txtPassword, contrasenia);
+				
 				Reporting.reportOK("OK - Escribirmos usuarios y contraseña");
 				
-				  try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
 				 
 				//Se comprueba si aparece la pantalla de aceptar condiciones
+				Browser.waitForElementScreen(btnAccesoClientes);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
 				Browser.clickElementSyncro(btnAccesoClientes);
 				Reporting.reportOK("OK - Pulasmos en acceder");
+
+				Browser.waitForElementScreen(logoWizink);
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
 				Browser.waitForElementScreen(logoWizink);
-				 try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-					  e.printStackTrace(); }
+
 				//Se comprueba si aparece la pantalla de aceptar condiciones
 				//https://wizinkprees/clientes/contrato_login"
 				if(Browser.checkObjeto(botonCondiciones)) {
@@ -155,8 +181,6 @@ public class Login extends Utilidades{
 					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", targetElement);
 					Browser.clickElementSyncro(botonSiCondiciones);
 					Reporting.reportOK("OK - Aceptamos las condiciones de uso");
-					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-						  e.printStackTrace(); }
 				}
 			//}
 			
@@ -255,29 +279,30 @@ public class Login extends Utilidades{
 			
 	}
 	public void recordarPassword(String codeTC) throws Exception {
-		
+		Browser.waitForElementScreen(btnPrivacidadLogin);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
 		Browser.clickElementSyncro(btnPrivacidadLogin);
+		
+		Browser.waitForElementScreen(btnAreaCliente);
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }
-		
 		Browser.clickElementSyncro(btnAreaCliente);
+		
+		Browser.waitForElementScreen(btnRecordarPassword);
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }
-		
-		
 		Browser.clickElementSyncro(btnRecordarPassword);
+		
+		Browser.waitForElementScreen(titleRecordarPassword);
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }
-		
-		
 		Browser.checkFieldText(titleRecordarPassword, "Accede a WiZink Online");
-		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-			  e.printStackTrace(); }
-			
 			
 	}
 		public void checkLog() throws Exception {
 				
+			
 				Browser.checkFieldText(enlaceHome, "Home");
 				Reporting.reportOK("Se inicia sesión en la aplicación");
 			}
@@ -344,6 +369,10 @@ public class Login extends Utilidades{
 	 */
 	public boolean doRegistro(String codeTC) throws Exception {
 		try {
+			Browser.waitForElementScreen(btnPrivacidadLogin);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
+			
 			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
 			if (Browser.checkObjeto(btnPrivacidadLogin)) {
 				try {
@@ -359,38 +388,52 @@ public class Login extends Utilidades{
 			boolean resultado = false;
 			
 			// Pulsar el botn 'Regstrate Ahora'
+			Browser.waitForElementScreen(btnRegistrateAhora);
+			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+				  e.printStackTrace(); }
+			
 			Browser.clickElementSyncro(btnRegistrateAhora);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Regstrate Ahora'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Regstrate Ahora'");
+			
+			
+			// Introducir el nif y la fecha de nacimiento y pulsar en el botn "seguir"
+			Browser.waitForElementScreen(radioNIF);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			
-			// Introducir el nif y la fecha de nacimiento y pulsar en el botn "seguir"
 			Browser.sincronizaObjetoSoloClick(radioNIF);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el radio 'NIF'", "");
 			Reporting.reportOK("OK - Se pulsa en el radio 'NIF'");
+			
+			
+			String Nif = Utilidades.generaNif("1");
+			Browser.waitForElementScreen(txtNif);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			
-			String Nif = Utilidades.generaNif("1");
 			Browser.writeTextSyncro(txtNif, Nif);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe el 'NIF'", "");
 			Reporting.reportOK("OK - Se escribe el 'NIF'");
+			
+			
+			String fechaNacimiento = "01/01/1990";
+			Browser.waitForElementScreen(txtFechaNacimiento);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			
-			String fechaNacimiento = "01/01/1990";
 			Browser.writeTextSyncro(txtFechaNacimiento, fechaNacimiento);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la 'Fecha de Nacimiento'", "");
 			Reporting.reportOK("OK - Se escribe la 'Fecha de Nacimiento'");
+			
+			Browser.waitForElementScreen(btnSeguir);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			
 			Browser.clickElementSyncro(btnSeguir);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
-			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
-				  e.printStackTrace(); }
+			
 			
 			
 	// FALTARIA POR DESARROLLAR A PARTIR DE AQUI
