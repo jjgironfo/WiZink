@@ -21,7 +21,7 @@ public class PosicionGlobal extends Utilidades{
 	private By btnAnadirAccesoDirectoPopUp = By.id("addShortcutButton");
 	
 	private By opcionComboAccesoPopUp = By.id("addShortcutSelectBoxIt");
-	private By opcionConsultarPINPopUp= By.id("Consultar PIN ");
+	private By opcionConsultarPINPopUp= By.id("addShortcutSelectBoxItText");
 	//private By opcionConsultarPINPopUp = By.xpath("//a[contains(text(),'Consultar PIN')]");
 	private By btnAnadirOtroAccesoDirectoPopUp = By.id("button_añadir");
 	
@@ -47,19 +47,20 @@ public class PosicionGlobal extends Utilidades{
 			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo'");
 			
 
-						
+			Browser.waitExt(1);			
 			// 1.4 Se pulsa Añadir
 			Browser.waitForElementScreen(btnAnadirAccesoDirectoPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAnadirAccesoDirectoPopUp);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo PopUp'");
+			Browser.waitExt(3);
 			
 			// 1.5 Seleccionar el Acceso: Consultar PIN y pulsar Añadir
-			Browser.waitExt(1);
+			//Browser.waitExt(1);
 			//Browser.clickElementSyncro(opcionComboAccesoPopUp);
 			Browser.waitExt(1);
-			//Browser.waitForElementScreen(opcionConsultarPINPopUp);
+			Browser.waitForElementScreen(opcionConsultarPINPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(opcionConsultarPINPopUp);
@@ -67,6 +68,7 @@ public class PosicionGlobal extends Utilidades{
 			Browser.waitForElementScreen(btnAnadirOtroAccesoDirectoPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Browser.waitExt(3);
 			Browser.clickElementSyncro(btnAnadirOtroAccesoDirectoPopUp);
 			Reporting.reportOK("OK - Se selecciona en el combo la opcion 'Consultar PIN'");
 			
@@ -83,19 +85,19 @@ public class PosicionGlobal extends Utilidades{
 					Reporting.reportKO("KO - No existe el Boton Eliminar Favoritos");
 				}
 			}
-			js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
+			//js.executeScript("window.document.getElementsByClassName('c-shortcuts__item-close js-remove-shortcut wzicon wzicon-menu_close')[0].click();");
 			Reporting.reportOK("OK - Se pulsa en el aspa Roja para eliminar el Acceso Directo creado anteriormente");
 			
 			// 1.7 Se pulsa eliminar
-			Browser.waitForElementScreen(btnEliminarAccesoDirectoPopUp);
+			/*Browser.waitForElementScreen(btnEliminarAccesoDirectoPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 			Browser.waitExt(3);
-			Reporting.reportOK("OK - Se pulsa en el botón 'Eliminar'");
+			Reporting.reportOK("OK - Se pulsa en el botón 'Eliminar'");*/
 						
 			// Validamos que el Aspa Roja del Acceso directo no existe
-			Browser.waitForElementScreen(btnAspaRojarAccesoDirectoPopUp);
+			//Browser.waitForElementScreen(btnAspaRojarAccesoDirectoPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp);
