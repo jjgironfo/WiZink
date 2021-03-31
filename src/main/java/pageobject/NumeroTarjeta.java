@@ -4,6 +4,7 @@ import static general.Browser.driver;
 
 import java.util.Properties;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -36,11 +37,12 @@ public class NumeroTarjeta extends Utilidades {
 
 	/**
 	 * Metodo para Mostrar el Numero de Tarjeta
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean mostrarNumeroTarjeta(String codeTC) throws Exception {
+	public boolean mostrarNumeroTarjeta(String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			boolean resultado = false;
 
@@ -84,6 +86,7 @@ public class NumeroTarjeta extends Utilidades {
 			Browser.waitForElementScreen(btnVerDatosTarjeta);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnVerDatosTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Ver Datos'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn 'Ver Datos'");
@@ -92,6 +95,7 @@ public class NumeroTarjeta extends Utilidades {
 			Browser.waitForElementScreen(checkMostrarNumeroTarjeta);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = (Browser.checkObjeto(checkMostrarNumeroTarjeta));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Se valida el mensaje: 'Ahora puedes ver toda la numeracin de tus tarjetas y tus productos de ahorro.'", "");

@@ -2,6 +2,7 @@ package pageobject;
 
 import static general.Browser.driver;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -48,11 +49,12 @@ public class Mensajes extends Utilidades{
 
 	/**
 	 * Metodo para Validar los Mensajes Recibidos
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean checkMsgRecibidos(String codeTC) throws Exception {
+	public boolean checkMsgRecibidos(String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			Browser.waitExt(1);	
 			boolean resultado = false;
@@ -67,6 +69,7 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(btnMsgRecibidos);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.isElementDisplayed(btnMsgRecibidos);
 			Browser.clickElementSyncro(btnMsgRecibidos);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes Recibidos'");
@@ -75,6 +78,7 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(listaMensajesBandeja);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = Browser.checkObjeto(listaMensajesBandeja);
 			if (resultado) {
 				Browser.clickElementSyncro(listaMensajesBandeja);
@@ -88,6 +92,7 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(detalleMensajesBandeja);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = Browser.checkObjeto(detalleMensajesBandeja);
 			if (resultado) {
 				Reporting.reportOK("OK - Se abre el Mensaje Recibido y se valida la pantalla");
@@ -119,11 +124,12 @@ public class Mensajes extends Utilidades{
 	
 	/**
 	 * Metodo para Validar los Mensajes Enviados
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean checkMsgEnviados(String codeTC) throws Exception {
+	public boolean checkMsgEnviados(String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			boolean resultado = false;
 			
@@ -166,6 +172,7 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(btnEnviarMsg);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnEnviarMsg);
 			
 			Browser.waitExt(4);
@@ -173,6 +180,7 @@ public class Mensajes extends Utilidades{
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnMsgEnviados);
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Reporting.reportOK("OK - Se pulsa en el botón 'Mensajes Enviados'");
 			
 			//Funciones.waitForElement(listaMensajesBandeja, 5, "Esperando a carga bandeja entrada");
@@ -189,6 +197,7 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(btnBorrarMsg);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = Browser.isElementDisplayed(btnBorrarMsg);
 			if (resultado) {
 				Reporting.reportOK("OK -  Validamos que se muestra el mensaje Enviado");
@@ -208,12 +217,13 @@ public class Mensajes extends Utilidades{
 	
 	/**
 	 * Metodo para Redactar Mensajes
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
 	@Step("Redactar Mensaje")
-	public boolean redactarMsg(String codeTC) throws Exception {
+	public boolean redactarMsg(String codeTC, XWPFDocument doc) throws Exception {
 		try {
 
 			boolean resultado = false;
@@ -251,6 +261,7 @@ public class Mensajes extends Utilidades{
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnEnviarMsg);
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Reporting.reportOK("OK - Se pulsa en el botón 'Enviar'");
 			
 			
@@ -258,6 +269,7 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(checkMensajeEnvioMsg);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = (Browser.checkObjeto(checkMensajeEnvioMsg));
 			if (resultado) {
 				Reporting.reportOK("OK - Se valida que el Mensaje ha sido enviado puesto que se muestra el PopUp");
@@ -276,11 +288,12 @@ public class Mensajes extends Utilidades{
 	
 	/**
 	 * Metodo XXXXXXXXX
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean borrarMensajes(String codeTC) throws Exception {
+	public boolean borrarMensajes(String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			boolean resultado = false;
 			
@@ -307,12 +320,14 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(btnBorrarMsg);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnBorrarMsg);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Borrar Mensaje'");
 			
 			Browser.waitForElementScreen(btnBorrarSIMsgPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnBorrarSIMsgPopUp);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Si' para borrar el Mensaje");
 			
@@ -320,6 +335,7 @@ public class Mensajes extends Utilidades{
 			Browser.waitForElementScreen(checkMensajeBorrarMsg);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = (Browser.checkObjeto(checkMensajeBorrarMsg));
 			if (resultado) {
 				Reporting.reportOK("OK - Se muestra el mensaje informativo 'Mensaje borrado'");

@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import javax.swing.ImageIcon;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.By;
 
 import general.Browser;
@@ -104,11 +105,12 @@ public class AreaPersonal extends Utilidades {
 
 	/**
 	 * Metodo para Validar el Area Personal
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void checkAreaPersonal(String codeTC) throws Exception {
+	public void checkAreaPersonal(String codeTC, XWPFDocument doc) throws Exception {
 
 			
 				
@@ -130,6 +132,7 @@ public class AreaPersonal extends Utilidades {
 				Browser.waitForElementScreen(btnCambiarMiUsuario);
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				Browser.checkFieldText(btnCambiarMiUsuario, "Cambiar mi usuario");
 				
 				// Validamos la pantalla de �rea Personal
@@ -156,6 +159,7 @@ public class AreaPersonal extends Utilidades {
 				Browser.checkFieldText(btnCambiarDatoDemografico,"demographicDataChangeLink");
 				
 				// report 
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				Reporting.reportOK("Estamos en el área personal");
 			
 			
@@ -165,11 +169,12 @@ public class AreaPersonal extends Utilidades {
 	
 	/**
 	 * Metodo para Validar la pantalla Documentacion
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void  checkDocumentacion(String codeTC) throws Exception{
+	public void  checkDocumentacion(String codeTC, XWPFDocument doc) throws Exception{
 		
 		
 				Browser.waitExt(1);
@@ -185,6 +190,7 @@ public class AreaPersonal extends Utilidades {
 				Browser.waitForElementScreen(btnDocumentacion);
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				Browser.clickElementSyncro(btnDocumentacion);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Documentacion'");
@@ -193,6 +199,7 @@ public class AreaPersonal extends Utilidades {
 				Browser.waitForElementScreen(btnTerminosYCondicionesGeneral);
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				Browser.checkObjeto(btnTerminosYCondicionesGeneral);
 				
 				//report
@@ -257,11 +264,12 @@ public class AreaPersonal extends Utilidades {
 	
 	/**
 	 * Metodo para Validar el Area Personal
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void cambiarFotoPerfilAreaPersonal(String codeTC) throws Exception {
+	public void cambiarFotoPerfilAreaPersonal(String codeTC, XWPFDocument doc) throws Exception {
 		
 			boolean isDisabled = true;
 
@@ -277,12 +285,14 @@ public class AreaPersonal extends Utilidades {
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnCambiarDatoFoto);
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar' de la Foto de Perfil");
 
 			// 1.5 Pulsar sobre la foto y se muestran las fotos disponibles para seleccionar
 			Browser.waitForElementScreen(btnImagenCambioFoto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnImagenCambioFoto);
 			
 			Reporting.reportOK("OK - Se pulsa sobre la foto y se muestran las fotos disponibles para seleccionar");
@@ -309,6 +319,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(btnGuardarCambiosImagenCambioFoto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.waitForElementSyncro(btnGuardarCambiosImagenCambioFoto);
 			Browser.scrollNavegadorVertical("ABAJO");
 			Browser.clickElementSyncro(btnGuardarCambiosImagenCambioFoto);
@@ -351,11 +362,12 @@ public class AreaPersonal extends Utilidades {
 	
 	/**
 	 * Metodo para Validar el Area Personal
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean cambiarPasswordPerfilAreaPersonal(String contrasenia, String codeTC) throws Exception {
+	public boolean cambiarPasswordPerfilAreaPersonal(String contrasenia, String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			Browser.waitExt(1);
 			boolean resultado = false;
@@ -374,6 +386,7 @@ public class AreaPersonal extends Utilidades {
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnCambiarMiPassword);
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi Contrasea'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi Contraseña'");
 
@@ -415,6 +428,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(btnGuardarCambiosMiPass);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnGuardarCambiosMiPass);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Guardar Cambios'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Guardar Cambios'");
@@ -423,6 +437,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(checkCambioPass);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = (Browser.checkObjeto(checkCambioPass));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
@@ -445,11 +460,12 @@ public class AreaPersonal extends Utilidades {
 	
 	/**
 	 * Metodo para Validar el Area Personal
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean cambiarUsuarioPerfilAreaPersonal(String nombreUsuario, String contrasenia, String codeTC) throws Exception {
+	public boolean cambiarUsuarioPerfilAreaPersonal(String nombreUsuario, String contrasenia, String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			boolean resultado = false;
 
@@ -465,6 +481,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(btnCambiarMiUsuario);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnCambiarMiUsuario);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Mi usuario'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Mi usuario'");
@@ -509,6 +526,7 @@ public class AreaPersonal extends Utilidades {
 						Browser.waitForElementScreen(btnSeguirDatosPersonales);
 						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 							  e.printStackTrace(); }
+						Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 						Browser.clickElementSyncro(btnSeguirDatosPersonales);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 						Reporting.reportOK("OK - Se pulsa en el botn 'Seguir'");
@@ -517,6 +535,7 @@ public class AreaPersonal extends Utilidades {
 						Browser.waitForElementScreen(volverInicio);
 						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 							  e.printStackTrace(); }
+						Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 						Browser.clickElementSyncro(volverInicio);
 						//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Seguir'", "");
 						Reporting.reportOK("OK - Se pulsa en el botón 'Volver al inicio'");
@@ -639,11 +658,12 @@ public class AreaPersonal extends Utilidades {
 	
 	/**
 	 * Metodo para Cambiar Datos Personales
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean cambiarDatosPersonales(String telefono, String codeTC) throws Exception {
+	public boolean cambiarDatosPersonales(String telefono, String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			boolean resultado = false;
 			telefono = PropertyControl.getLogProperty("telefono_" + actualEnv);
@@ -662,6 +682,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(btnCambiarDatoDemografico);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnCambiarDatoDemografico);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Personales'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Personales'");
@@ -711,12 +732,14 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(btnGuardarCambiosMiPass);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnGuardarCambiosMiPass);
 			
 			// Validamos que se guarda la Nueva Contrasea indicada
 			Browser.waitForElementScreen(checkCambiarDatosPersonales);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = (Browser.checkObjeto(checkCambiarDatosPersonales));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "Validamos que se guarda la Nueva Contrasea indicada", "");
@@ -741,11 +764,12 @@ public class AreaPersonal extends Utilidades {
 	
 	/**
 	 * Metodo para Cambiar Datos Demograficos
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public boolean cambiarDatosDemograficos(String codeTC) throws Exception {
+	public boolean cambiarDatosDemograficos(String codeTC, XWPFDocument doc) throws Exception {
 		try {
 			boolean resultado = false;
 			String nombreVia = "Prueba123";
@@ -762,6 +786,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(btnCambiarDatoDemografico);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnCambiarDatoDemografico);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Demogrficos'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Demogrficos'");
@@ -806,6 +831,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.getWebElement(txtNombreVia).clear();
 			Browser.writeTextSyncro(txtNombreVia, nombreVia);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se escribe la direccion", "");
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Reporting.reportOK("OK - Se escribe la direccion");
 		
 			// Pulsamos en Seguir
@@ -820,6 +846,7 @@ public class AreaPersonal extends Utilidades {
 			Browser.waitForElementScreen(checkCambiarDireccion);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			resultado = (Browser.checkObjeto(checkCambiarDireccion));
 			if (resultado) {
 				//egea.reportaTraza(testCase, "INFO", "OK", "TEXTO OK", "");

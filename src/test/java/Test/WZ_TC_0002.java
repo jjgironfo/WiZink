@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Optional;
 
@@ -30,6 +31,7 @@ public class WZ_TC_0002 {
 		Utilidades utilidades = null;
 		WebDriver driver = null;
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
+		XWPFDocument doc = null;
 
 		try {
 
@@ -60,7 +62,8 @@ public class WZ_TC_0002 {
 			 * Start test
 			 */
 			
-			login.doLoginUsuarioPassword(userName,pass, codeTC);
+			doc = Utilidades.createWordDocument(codeTC);
+			login.doLoginUsuarioPassword(userName,pass, codeTC, doc);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
@@ -68,6 +71,7 @@ public class WZ_TC_0002 {
 			Log.info(e);
 			
 		} finally {
+			Utilidades.closeWordDocument(doc, codeTC);
 			Browser.stopDriver();
 			Log.info("Cerramos el navegador");
 		}

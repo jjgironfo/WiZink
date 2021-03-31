@@ -5,6 +5,7 @@ import static general.Browser.driver;
 import java.io.File;
 import java.util.Properties;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.velocity.runtime.parser.node.GetExecutor;
 import org.openqa.selenium.By;
 
@@ -108,11 +109,12 @@ public class Producto extends Utilidades{
 
 	/**
 	 * Metodo para validar Opciones del Producto
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void checkProductoOpciones(String codeTC) throws Exception {
+	public void checkProductoOpciones(String codeTC, XWPFDocument doc) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
@@ -129,6 +131,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnOpcionesDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			
 			
@@ -139,6 +142,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnCambiarFormaPagoOpcionesProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			if (Browser.checkObjeto(btnCambiarFormaPagoOpcionesProducto) && Browser.checkObjeto(btnCambiarCuentaDomiciliacionOpcionesProducto) 
 						&& Browser.checkObjeto(btnHacerUnIngresoOpcionesProducto) && Browser.checkObjeto(btnConsultarNumCVVOpcionesProducto) 
 						&& Browser.checkObjeto(btnCargoNoReconocidoOpcionesProducto) && Browser.checkObjeto(btnInformacionWizinkPayOpcionesProducto)
@@ -153,17 +157,19 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Metodo para validar los movimientos de hoy
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void checkProductoMovimientosHoy(String codeTC) throws Exception {
+	public void checkProductoMovimientosHoy(String codeTC, XWPFDocument doc) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitForElementScreen(btnDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnDetalleProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el producto asociado al cliente", "");
 			Reporting.reportOK("OK - Se pulsa sobre el producto asociado al cliente");
@@ -172,6 +178,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(checkSituacionActualProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.checkObjeto(checkSituacionActualProducto);
 			Reporting.reportOK("OK - Se visualizan los movimientos de la tarjeta de la prueha");
 			
@@ -180,10 +187,11 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Extractos
+	 * @param doc 
 	 * 
 	 * 
 	 */
-	public void checkProductoExtractos(String codeTC) throws Exception {
+	public void checkProductoExtractos(String codeTC, XWPFDocument doc) throws Exception {
 		
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
@@ -199,6 +207,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnExtractosDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre extractos");
 			
@@ -216,6 +225,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnExtractosMesAnterior);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnExtractosMesAnterior);
 			
 			//reoirt
@@ -225,6 +235,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(checkOperacionesMesProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.checkObjeto(checkOperacionesMesProducto);
 			
 			//Report
@@ -236,9 +247,10 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * MMostrar las gráficas
+	 * @param doc 
 	 * 
 	 */
-	public void checkProductoExtractosGraficos(String codeTC) throws Exception {
+	public void checkProductoExtractosGraficos(String codeTC, XWPFDocument doc) throws Exception {
 		
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(1);
@@ -253,6 +265,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnExtractosDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre extractos");
 				
@@ -266,6 +279,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnExtractosMesAnterior);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnExtractosMesAnterior);	
 			
 	
@@ -274,6 +288,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnGraficosOperacionesMes);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnGraficosOperacionesMes);
 			Reporting.reportOK("OK - Se pulsa en el botn 'Mostrar Gráficos' de los movimientos");
 			
@@ -281,6 +296,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(graficosOperacionesMes);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.checkObjeto(graficosOperacionesMes);
 			Reporting.reportOK("OK - Se muestra un diagrama con las operaciones del mes");
 
@@ -289,9 +305,10 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Acceder al extracto de la tarjeta
+	 * @param doc 
 	 * 
 	 */
-	public void checkProductoExtractosXLS(String codeTC) throws Exception {
+	public void checkProductoExtractosXLS(String codeTC, XWPFDocument doc) throws Exception {
 	
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
@@ -308,6 +325,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnExtractosDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
 			
 			Reporting.reportOK("OK - Se pulsa sobre extractos");
@@ -323,6 +341,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnExtractosMesAnterior);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnExtractosMesAnterior);
 			
 			//1.6 descargamos los excel
@@ -337,6 +356,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnXLSOperacionesMes);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.checkObjeto(btnXLSOperacionesMes);	
 			Browser.clickElementSyncro(btnXLSOperacionesMes);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'Descarga XLS' de los movimientos", "");
@@ -350,11 +370,12 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Metodo para Modificar Tipo Extracto
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void modificarTipoExtracto(String codeTC) throws Exception {
+	public void modificarTipoExtracto(String codeTC, XWPFDocument doc) throws Exception {
 	
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
@@ -371,6 +392,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnExtractosDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnExtractosDetalleProducto);
 			Reporting.reportOK("OK - Se pulsa sobre extractos");
 			
@@ -384,6 +406,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnCambiarInscritoExtracto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnCambiarInscritoExtracto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Cambiar'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Cambiar'");
@@ -394,6 +417,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(checkCambiarExtractoPapel);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(checkCambiarExtractoPapel);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el check 'Cambiar a extracto en Papel'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el check 'Cambiar a extracto en Papel'");
@@ -402,6 +426,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnSeguir);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnSeguir);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Seguir'");
@@ -410,6 +435,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(confirmar);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(confirmar);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Confirmar cambios'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Confirmar cambios'");
@@ -448,6 +474,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(confirmar);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(confirmar);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el botón 'Seguir'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el botón 'Seguir'");
@@ -455,6 +482,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(checkCambiarExtracto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.checkObjeto(checkCambiarExtracto);
 			Reporting.reportOK("OK - Validamos que se ha cambiado el Tipo de Extracto");
 		
@@ -488,11 +516,12 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Metodo para Cambiar Forma de Pago
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void cambiarFormaPago(String codeTC) throws Exception {
+	public void cambiarFormaPago(String codeTC, XWPFDocument doc) throws Exception {
 	
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitForElementScreen(btnDetalleProducto);
@@ -507,6 +536,7 @@ public class Producto extends Utilidades{
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 		
 			// 1.5 Pulsar en 'Cambiar forma de pago'
@@ -515,6 +545,7 @@ public class Producto extends Utilidades{
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnCambiarFormaPagoOpcionesProducto);
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Reporting.reportOK("OK - Se pulsa en el botn 'Cambiar forma de pago'");
 			
 			// Seleccionar 'Pago mnimo' y Pulsar en 'SEGUIR'
@@ -522,11 +553,13 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(radioPagoMinimoCambiarFormaPago);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(radioPagoMinimoCambiarFormaPago);
 			Reporting.reportOK("OK - Se selecciona 'Pago mnimo' y posteriormente en 'Seguir'");
 			Browser.waitForElementScreen(btnSeguirCambiarFormaPago);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnSeguirCambiarFormaPago);
 			
 			// Introducir el OTP y Pulsar en "SEGUIR"
@@ -553,6 +586,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnSeguirCambiarFormaPago);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnSeguirCambiarFormaPago);
 			Reporting.reportOK("OK - Se pulsa cambiar forma de pago");
 
@@ -562,11 +596,12 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Metodo para Cambiar Cuenta Cargo
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void  cambiarCuentaCargo(String codeTC) throws Exception {
+	public void  cambiarCuentaCargo(String codeTC, XWPFDocument doc) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
@@ -583,6 +618,7 @@ public class Producto extends Utilidades{
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Reporting.reportOK("OK - Se selecciona del panel de la izquierda la opción 'Opciones'");
 				
 			
@@ -591,6 +627,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnCambiarCuentaDomiciliacionOpcionesProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnCambiarCuentaDomiciliacionOpcionesProducto);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Cambiar Cuenta de domiciliación'");
 			
@@ -603,6 +640,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnSeguirCambiarCuentaCargo);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnSeguirCambiarCuentaCargo);
 			
 			// Introducir el OTP y pulsar en "SEGUIR"
@@ -629,6 +667,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnSeguirCambiarCuentaCargo);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnSeguirCambiarCuentaCargo);
 			
 
@@ -697,11 +736,12 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Metodo para ver cvv
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void verNumCVVTarjeta(String codeTC) throws Exception {
+	public void verNumCVVTarjeta(String codeTC, XWPFDocument doc) throws Exception {
 
 		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
@@ -717,6 +757,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnOpcionesDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
@@ -725,6 +766,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnConsultarNumCVVOpcionesProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnConsultarNumCVVOpcionesProducto);
 			Reporting.reportOK("OK - Se pulsa en 'Ver nmero y CVV de mi tarjeta'");
 			
@@ -751,6 +793,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnSeguirVerNumCVVTarjeta);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnSeguirVerNumCVVTarjeta);
 			
 			// Se valida que se muestra el Num de Tarjeta
@@ -765,6 +808,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnMasInfoCVV);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnMasInfoCVV);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en 'Ms Info' para ver CVV de mi tarjeta'", "");
 			Reporting.reportOK("OK - Se pulsa en 'Ms Info' para ver CVV de mi tarjeta'");
@@ -774,6 +818,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(checkCVVTarjeta);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			boolean check2 = Browser.checkObjeto(checkCVVTarjeta);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se muestra el Nm de mi tarjeta'", "");
 			Reporting.reportOK("OK - Se muestra el Nm de mi tarjeta'");
@@ -793,11 +838,12 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Metodo para Hacer Ingreso
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void consultarPIN(String codeTC) throws Exception {
+	public void consultarPIN(String codeTC, XWPFDocument doc) throws Exception {
 		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitExt(20);
@@ -812,6 +858,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnOpcionesDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 		
@@ -821,6 +868,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnConsultaPINOpcionesProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnConsultaPINOpcionesProducto);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en 'Consultar PIN'", "");
 			Reporting.reportOK("OK - Se pulsa en 'Consultar PIN'");
@@ -849,6 +897,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnSeguirConsultarPIN);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnSeguirConsultarPIN);
 			
 			// Pulsamos en 'Mostrar el Pin de tu Tarjeta'
@@ -856,11 +905,13 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnMostrarPIN);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.checkObjeto(btnMostrarPIN);
 			
 			Browser.waitForElementScreen(btnMostrarPIN);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnMostrarPIN);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Pulsamos en 'Mostrar el Pin de tu Tarjeta'", "");
 			Reporting.reportOK("OK - Pulsamos en 'Mostrar el Pin de tu Tarjeta'");
@@ -868,6 +919,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(imagenPIN);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			if (Browser.checkObjeto(imagenPIN)	) {
 				Reporting.reportOK("OK - Se muestra el PIN de la Tarjeta");
 			} else {
@@ -881,11 +933,12 @@ public class Producto extends Utilidades{
 	
 	/**
 	 * Metodo para Bloquear Tarjeta
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void bloquearTarjeta(String codeTC) throws Exception {
+	public void bloquearTarjeta(String codeTC, XWPFDocument doc) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
@@ -901,6 +954,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnOpcionesDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
@@ -909,6 +963,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnBloquearTarjeta);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnBloquearTarjeta);
 			Reporting.reportOK("OK - Pulsamos en 'Bloquear la tarjeta'");
 			
@@ -921,6 +976,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(confirmar);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(confirmar);
 			Reporting.reportOK("OK - Pulsamos en 'Seguir'");
 			
@@ -929,6 +985,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(confirmar);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(confirmar);
 			Reporting.reportOK("OK - Pulsamos en 'Aceptar para finalizar el envio'");
 
@@ -936,11 +993,12 @@ public class Producto extends Utilidades{
 	}
 	/**
 	 * Metodo para reenvo de la tarjeta
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void reenviarTarjeta(String codeTC) throws Exception {
+	public void reenviarTarjeta(String codeTC, XWPFDocument doc) throws Exception {
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
@@ -956,6 +1014,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnOpcionesDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnOpcionesDetalleProducto);
 			Reporting.reportOK("OK - Se selecciona del men de la izquierda la opcin 'Opciones'");
 			
@@ -964,6 +1023,7 @@ public class Producto extends Utilidades{
 			Browser.waitForElementScreen(btnReenvioTarjeta);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnReenvioTarjeta);
 			Reporting.reportOK("OK - Pulsamos en 'Reenviar la tarjeta'");
 			
@@ -983,6 +1043,7 @@ public class Producto extends Utilidades{
 				Browser.waitForElementScreen(txtDirecciónEnvio);
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				direccion = Browser.checkFieldText(txtDirecciónEnvio, "PB PRUEBA123 1, B 8 3 A\n" + 
 						"09007 BURGOS\n" + 
 						"BURGOS - ESP");
@@ -1009,6 +1070,7 @@ public class Producto extends Utilidades{
 				Browser.waitForElementScreen(btnSeguirReenvio);
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				Browser.clickElementSyncro(btnSeguirReenvio);
 				Reporting.reportOK("OK - Pulsamos en 'Seguir'");
 				// Introducir OTP y Pulsar en "SEGUIR"
@@ -1016,6 +1078,7 @@ public class Producto extends Utilidades{
 				Browser.waitForElementScreen(txtOTPDatosPersonales);
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				Browser.checkObjeto(txtOTPDatosPersonales);		
 				Browser.waitExt(10);
 				Browser.introduceCodigoOTP(txtOTPDatosPersonales, "");

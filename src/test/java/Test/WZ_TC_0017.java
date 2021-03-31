@@ -1,5 +1,7 @@
 package Test;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,7 @@ import general.Final;
 import general.Log;
 import general.Reporting;
 import general.Utilidades;
+import general.WordMerge;
 
 
 
@@ -31,6 +34,7 @@ public class WZ_TC_0017 {
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
+		XWPFDocument doc = null;
 
 		try {
 
@@ -62,9 +66,8 @@ public class WZ_TC_0017 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			XWPFDocument doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC);
 			posicionGlobal.checkFavoritos(codeTC, doc);
-			Utilidades.closeWordDocument(doc, codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
@@ -72,6 +75,7 @@ public class WZ_TC_0017 {
 			Log.info(e);
 			
 		} finally {
+			Utilidades.closeWordDocument(doc, codeTC);
 			Browser.stopDriver();
 			Log.info("Cerramos el navegador");
 		}

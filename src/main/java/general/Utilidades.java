@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +14,8 @@ import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -458,5 +461,44 @@ public class Utilidades {
 	 
 	    public static String getOTP (String bodyEmail) {
 	    	return bodyEmail.substring(bodyEmail.indexOf(":")+2, bodyEmail.indexOf(":")+8);
+	    }
+	    
+	    public static void CrearWordReporteFinal(String entorno) {
+	    	
+	    	WordMerge wm = null;
+	    	
+	    	try {
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				LocalDate localDate = LocalDate.now();
+				//System.out.println(dtf.format(localDate)); //2016/11/16
+				FileOutputStream faos = new FileOutputStream(entorno + "-" + dtf.format(localDate) + ".docx");
+				wm = new WordMerge(faos); 
+				
+				for (int i = 1; i<=32; i++) {
+					File f = new File("WZ_TC_00" + String.format("%02d", i) +".docx");
+					if(f.exists() && !f.isDirectory()) { 
+					    //System.out.println("SI existe el " + String.format("%02d", i));
+					    wm.add( new FileInputStream("WZ_TC_00" + String.format("%02d", i) +".docx") ); 
+					}
+					else {
+						//System.out.println("NO existe el " + String.format("%02d", i));
+					}
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					wm.doMerge();
+					wm.close();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	    	
 	    }
 }

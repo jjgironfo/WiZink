@@ -4,6 +4,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Properties;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -13,6 +14,7 @@ import general.Final;
 import general.Log;
 import general.ProjectPaths;
 import general.Reporting;
+import general.Utilidades;
 import io.qameta.allure.Description;
 import pageobject.Login;
 
@@ -23,6 +25,7 @@ public class WZ_TC_0003 {
 	@Description("Recordar usuario")
 	public static void recordarUsuario(@Optional String url, @Optional String nombreUsuario, @Optional String contrasenia) throws Exception {
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
+		XWPFDocument doc = null;
 
 		try {
 
@@ -53,7 +56,8 @@ public class WZ_TC_0003 {
 			 * Start test
 			 */
 			
-			login.recordarUsuario(codeTC);
+			doc = Utilidades.createWordDocument(codeTC);
+			login.recordarUsuario(codeTC, doc);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
@@ -61,6 +65,7 @@ public class WZ_TC_0003 {
 			Log.info(e);
 			
 		} finally {
+			Utilidades.closeWordDocument(doc, codeTC);
 			Browser.stopDriver();
 			Log.info("Cerramos el navegador");
 		}

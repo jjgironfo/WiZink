@@ -6,6 +6,7 @@ import static general.Browser.driver;
 
 import java.util.Properties;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -192,6 +193,93 @@ public class Login extends Utilidades{
 	 * @return
 	 * 
 	 */
+	@Step("doLoginUsuarioPassword")
+	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia, String codeTC, XWPFDocument doc) throws Exception {
+		
+			//boolean isDisabled = false;
+		
+		nombreUsuario = PropertyControl.getLogProperty("usuario_" + actualEnv);
+		contrasenia = PropertyControl.getLogProperty("password_" + actualEnv);
+		
+		Browser.waitForElementScreen(btnPrivacidadLogin);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
+		Browser.clickElementSyncro(btnPrivacidadLogin);
+		
+		Browser.waitForElementScreen(btnAreaCliente);
+		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+			  e.printStackTrace(); }
+		Browser.clickElementSyncro(btnAreaCliente);
+			// Aceptamos PopUp 'TU PRIVACIDAD ES IMPORTANTE PARA NOSOTROS'
+		//if (Browser.checkFieldDisabled(btnPrivacidadLogin,"login") {
+					//try {
+				//Browser.clickElementSyncro(btnPrivacidadLogin);
+		
+		//Browser.clickElementSyncro(btnPrivacidadLogin);
+					//} catch (Exception e) {
+						//System.out.println("No existe el PopUp 'Tu Privacidad es Importante para Nosotros'");
+					//}
+				//}
+			
+			//Browser.waitExt(20);
+			//if (Browser.checkFieldDisabled(btnAccesoClientes, "Acceso clientes", isDisabled)) {
+				
+				Browser.waitForElementScreen(txtUsuario);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					e.printStackTrace(); }
+				Browser.clickElementSyncro(txtUsuario);
+				
+				Browser.waitForElementScreen(txtUsuario);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
+				Browser.writeTextSyncro(txtUsuario, nombreUsuario);
+				
+				Browser.waitForElementScreen(txtPassword);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
+				Browser.clickElementSyncro(txtPassword);
+				
+				Browser.waitForElementScreen(txtPassword);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
+				Browser.writeTextSyncro(txtPassword, contrasenia);
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
+				Reporting.reportOK("OK - Escribirmos usuarios y contraseña");
+				
+				 
+				//Se comprueba si aparece la pantalla de aceptar condiciones
+				Browser.waitForElementScreen(btnAccesoClientes);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
+				Browser.clickElementSyncro(btnAccesoClientes);
+				Reporting.reportOK("OK - Pulasmos en acceder");
+
+				Browser.waitForElementScreen(logoWizink);
+				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
+					  e.printStackTrace(); }
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
+				Browser.waitForElementScreen(logoWizink);
+
+				//Se comprueba si aparece la pantalla de aceptar condiciones
+				//https://wizinkprees/clientes/contrato_login"
+				if(Browser.checkObjeto(botonCondiciones)) {
+					Browser.clickElementSyncro(botonCondiciones);
+					Browser.waitForElementScreen(pag3Condiciones);
+					WebElement targetElement = driver.findElement(By.xpath("//*[@id=\"id3_3\"]/p"));
+					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", targetElement);
+					Browser.clickElementSyncro(botonSiCondiciones);
+					Reporting.reportOK("OK - Aceptamos las condiciones de uso");
+				}
+			//}
+			
+	}
+	
+	/**
+	 * Metodo para realizar login en la aplicacion - Introduciendo Usuario y Password
+	 * 
+	 * @return
+	 * 
+	 */
 	public void doLoginUsuarioPassword(String nombreUsuario, String contrasenia) throws Exception {
 		
 			//boolean isDisabled = false;
@@ -239,11 +327,12 @@ public class Login extends Utilidades{
 	
 	/**
 	 * Metodo para realizar login en la aplicacion - Introduciendo Usuario y Password
+	 * @param doc 
 	 * 
 	 * @return
 	 * 
 	 */
-	public void recordarUsuario(String codeTC) throws Exception {
+	public void recordarUsuario(String codeTC, XWPFDocument doc) throws Exception {
 		
 		Browser.waitForElementScreen(btnPrivacidadLogin);
 
@@ -272,13 +361,14 @@ public class Login extends Utilidades{
 
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }
+		Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 		Browser.checkFieldText(titleRecordarUsuario, "¿Has olvidado tu usuario?");
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }
 			
 			
 	}
-	public void recordarPassword(String codeTC) throws Exception {
+	public void recordarPassword(String codeTC, XWPFDocument doc) throws Exception {
 		Browser.waitForElementScreen(btnPrivacidadLogin);
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }
@@ -297,6 +387,7 @@ public class Login extends Utilidades{
 		Browser.waitForElementScreen(titleRecordarPassword);
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }
+		Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 		Browser.checkFieldText(titleRecordarPassword, "Accede a WiZink Online");
 			
 	}

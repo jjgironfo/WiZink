@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.testng.annotations.Optional;
 
 import io.qameta.allure.Description;
@@ -19,6 +20,7 @@ import general.Browser;
 import general.Final;
 import general.Log;
 import general.Reporting;
+import general.Utilidades;
 
 
 
@@ -30,6 +32,7 @@ public class WZ_TC_0025 {
 	static void login(@Optional (Final.CHROME) String browserName, @Optional String userName , @Optional  String pass) throws Exception {
 
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
+		XWPFDocument doc = null;
 
 		try {
 
@@ -61,9 +64,8 @@ public class WZ_TC_0025 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-		
-			
-			producto.cambiarFormaPago(codeTC);
+			doc = Utilidades.createWordDocument(codeTC);
+			producto.cambiarFormaPago(codeTC, doc);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {
@@ -71,6 +73,7 @@ public class WZ_TC_0025 {
 			Log.info(e);
 			
 		} finally {
+			Utilidades.closeWordDocument(doc, codeTC);
 			Browser.stopDriver();
 			Log.info("Cerramos el navegador");
 		}
