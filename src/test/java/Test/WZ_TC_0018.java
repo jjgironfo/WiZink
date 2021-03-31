@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.testng.annotations.Optional;
 
 import io.qameta.allure.Description;
@@ -18,6 +19,7 @@ import general.Browser;
 import general.Final;
 import general.Log;
 import general.Reporting;
+import general.Utilidades;
 
 
 
@@ -60,7 +62,9 @@ public class WZ_TC_0018 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			posicionGlobal.checkFavoritos(codeTC);
+			XWPFDocument doc = Utilidades.createWordDocument(codeTC);
+			posicionGlobal.checkFavoritos(codeTC, doc);
+			Utilidades.closeWordDocument(doc, codeTC);
 			Reporting.reportResultOK();
 
 		} catch (Exception e) {

@@ -2,6 +2,7 @@ package pageobject;
 
 import static general.Browser.driver;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -36,13 +37,14 @@ public class PosicionGlobal extends Utilidades{
 	 * @return
 	 * 
 	 */
-	 public void checkFavoritos(String codeTC) throws Exception {
+	 public void checkFavoritos(String codeTC, XWPFDocument doc) throws Exception {
 	
 
 			// 1.3 En el apartado de Accesos directos pulsar sobre Añadir
 		 	Browser.waitForElementScreen(btnAnadirAccesoDirecto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.clickElementSyncro(btnAnadirAccesoDirecto);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Añadir Acceso Directo'");
 			
@@ -100,6 +102,7 @@ public class PosicionGlobal extends Utilidades{
 			//Browser.waitForElementScreen(btnAspaRojarAccesoDirectoPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.checkObjetoNoExiste(btnAspaRojarAccesoDirectoPopUp);
 			Reporting.reportOK("OK - Se valida se ha eliminado el Acceso Directo creado");
 

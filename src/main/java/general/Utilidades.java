@@ -1,5 +1,6 @@
 package general;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -18,6 +19,12 @@ import java.util.Properties;
 import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.util.Units;
+import org.apache.poi.xwpf.usermodel.BreakType;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +35,7 @@ import org.openqa.selenium.remote.Augmenter;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 
+import javax.imageio.ImageIO;
 import javax.mail.Address;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -190,6 +198,80 @@ public class Utilidades {
         }
         return null;
   }
+	
+	@Attachment(value = "Screenshot jpg attachment", type = "image/jpg")
+    @Step("Taking a screenshot from Assert")
+	
+	public static File fileGetRemoteScreenshot(WebDriver driver) throws URISyntaxException, IOException {
+		   WebDriver augmentedDriver = new Augmenter().augment(driver);
+		   File screenshot = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);
+		   return screenshot;
+  }
+	
+	public static XWPFDocument createWordDocument(String codeTC) {
+		XWPFDocument doc = new XWPFDocument();
+		XWPFParagraph p = doc.createParagraph();
+		XWPFRun r = p.createRun();
+		String p1 = codeTC;
+		r.setFontFamily("Arial Black");
+		r.setFontSize(24);
+		r.setText(p1);
+		r.addBreak();
+		return doc;
+	}
+	
+	public static void closeWordDocument(XWPFDocument doc, String codeTC) throws IOException {
+		FileOutputStream out = new FileOutputStream(codeTC + ".docx");
+		doc.write(out);
+		out.close();
+		doc.close();
+	}
+	
+	public static void addImagesToWordDocument(XWPFDocument doc, File imageFile1)
+			throws IOException, InvalidFormatException {
+		
+		XWPFParagraph p = doc.createParagraph();
+		XWPFRun r = p.createRun();
+		BufferedImage bimg1 = ImageIO.read(imageFile1);
+		int width1 = bimg1.getWidth();
+		int height1 = bimg1.getHeight();
+		String imgFile1 = imageFile1.getName();
+		int imgFormat1 = getImageFormat(imgFile1);
+		r.addPicture(new FileInputStream(imageFile1), imgFormat1, imgFile1, Units.toEMU(width1), Units.toEMU(height1));
+		// page break
+		r.addBreak(BreakType.PAGE);
+		
+	}
+
+	private static int getImageFormat(String imgFileName) {
+		int format;
+		if (imgFileName.endsWith(".emf"))
+			format = XWPFDocument.PICTURE_TYPE_EMF;
+		else if (imgFileName.endsWith(".wmf"))
+			format = XWPFDocument.PICTURE_TYPE_WMF;
+		else if (imgFileName.endsWith(".pict"))
+			format = XWPFDocument.PICTURE_TYPE_PICT;
+		else if (imgFileName.endsWith(".jpeg") || imgFileName.endsWith(".jpg"))
+			format = XWPFDocument.PICTURE_TYPE_JPEG;
+		else if (imgFileName.endsWith(".png"))
+			format = XWPFDocument.PICTURE_TYPE_PNG;
+		else if (imgFileName.endsWith(".dib"))
+			format = XWPFDocument.PICTURE_TYPE_DIB;
+		else if (imgFileName.endsWith(".gif"))
+			format = XWPFDocument.PICTURE_TYPE_GIF;
+		else if (imgFileName.endsWith(".tiff"))
+			format = XWPFDocument.PICTURE_TYPE_TIFF;
+		else if (imgFileName.endsWith(".eps"))
+			format = XWPFDocument.PICTURE_TYPE_EPS;
+		else if (imgFileName.endsWith(".bmp"))
+			format = XWPFDocument.PICTURE_TYPE_BMP;
+		else if (imgFileName.endsWith(".wpg"))
+			format = XWPFDocument.PICTURE_TYPE_WPG;
+		else {
+			return 0;
+		}
+		return format;
+	}
 	
 	 private static final String SLASH = File.separator;
 	 public static final String reportsDir = "." + SLASH + "target" + SLASH + "site" + SLASH + "images";
