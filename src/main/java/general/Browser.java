@@ -50,6 +50,13 @@ public class Browser {
 
 	private static Object object;
 	public static String rutaPath;
+	
+	//OS validator
+	private static String OS = System.getProperty("os.name").toLowerCase();
+    public static boolean IS_WINDOWS = (OS.indexOf("win") >= 0);
+    public static boolean IS_MAC = (OS.indexOf("mac") >= 0);
+    public static boolean IS_UNIX = (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
+    public static boolean IS_SOLARIS = (OS.indexOf("sunos") >= 0);
 
 	
 	/**
@@ -139,7 +146,17 @@ public class Browser {
 		cleanChrome();
 		
 		// property
-		System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver.exe");
+		if (IS_WINDOWS) {
+			System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver.exe");
+        } else if (IS_MAC) {
+        	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
+        } else if (IS_UNIX) {
+        	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
+        } else if (IS_SOLARIS) {
+        	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
+        } else {
+            System.out.println("Your OS is not support!!");
+        }
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 		
 		/** Chrome Options */

@@ -1044,7 +1044,11 @@ public class Producto extends Utilidades{
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
 				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
-				direccion = Browser.checkFieldText(txtDirecciónEnvio, "PB PRUEBA123 1, B 8 3 A\n" + 
+				//System.out.println("original:" + driver.findElement(txtDirecciónEnvio).getText());
+				/*System.out.println("se compara con:" + "PB PRUEBA123 1, B 8 3 A\n" + 
+						"09007 BURGOS\n" + 
+						"BURGOS - ESP");*/
+				direccion = Browser.checkFieldText(txtDirecciónEnvio, "PG PRUEBA123 1, B 8 3 A\n" + 
 						"09007 BURGOS\n" + 
 						"BURGOS - ESP");
 				if(direccion) {
