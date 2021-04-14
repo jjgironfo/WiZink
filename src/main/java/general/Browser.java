@@ -184,9 +184,9 @@ public class Browser {
 			
 			// clean Chrome
 			Browser.waitExt(Final.ONE);
-			Runtime.getRuntime().exec("Taskkill /F /IM chromedriver.exe");
+			Runtime.getRuntime().exec("Taskkill /F /IM chromedriver");
 			Browser.waitExt(Final.ONE);
-			Runtime.getRuntime().exec("Taskkill /F /IM chrome.exe");
+			Runtime.getRuntime().exec("Taskkill /F /IM chrome");
 			Log.info("Limpiamos Chrome");
 		}
 		
