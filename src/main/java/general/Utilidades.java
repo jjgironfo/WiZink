@@ -224,7 +224,12 @@ public class Utilidades {
 	}
 	
 	public static void closeWordDocument(XWPFDocument doc, String codeTC) throws IOException {
-		FileOutputStream out = new FileOutputStream(codeTC + ".docx");
+		String wordDir = "." + SLASH + "wordReport";
+		File theDir = new File(wordDir);
+		if (!theDir.exists()){
+		    theDir.mkdirs();
+		}
+		FileOutputStream out = new FileOutputStream(wordDir + SLASH + codeTC + ".docx");
 		doc.write(out);
 		out.close();
 		doc.close();
