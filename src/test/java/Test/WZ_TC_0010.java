@@ -62,7 +62,7 @@ public class WZ_TC_0010 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0010_TXT_0);
 			areaPersonal.checkAreaPersonal(codeTC, doc);
 			Reporting.reportResultOK();
 

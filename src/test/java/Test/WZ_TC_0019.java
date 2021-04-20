@@ -64,7 +64,7 @@ public class WZ_TC_0019 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0019_TXT_0);
 			producto.checkProductoMovimientosHoy(codeTC, doc);
 			Reporting.reportResultOK();
 

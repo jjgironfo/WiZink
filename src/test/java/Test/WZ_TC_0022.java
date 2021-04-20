@@ -64,7 +64,7 @@ public class WZ_TC_0022 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0022_TXT_0);
 			producto.checkProductoExtractosXLS(codeTC, doc);
 			Reporting.reportResultOK();
 

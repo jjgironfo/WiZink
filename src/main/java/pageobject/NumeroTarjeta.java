@@ -10,6 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import general.Browser;
+import general.Final;
 import general.ProjectPaths;
 import general.PropertyControl;
 import general.Reporting;
@@ -43,6 +44,9 @@ public class NumeroTarjeta extends Utilidades {
 	 * 
 	 */
 	public boolean mostrarNumeroTarjeta(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0005_TXT_1);
+		
 		try {
 			boolean resultado = false;
 

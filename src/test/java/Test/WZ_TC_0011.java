@@ -62,7 +62,7 @@ public class WZ_TC_0011 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0011_TXT_0);
 			areaPersonal.cambiarDatosPersonales(telefono, codeTC, doc);
 			Reporting.reportResultOK();
 

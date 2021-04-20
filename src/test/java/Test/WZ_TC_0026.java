@@ -64,7 +64,7 @@ public class WZ_TC_0026 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);	
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0026_TXT_0);	
 			producto.cambiarCuentaCargo(codeTC, doc);
 			Reporting.reportResultOK();
 

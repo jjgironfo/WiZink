@@ -61,7 +61,7 @@ public class WZ_TC_0006 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass,codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0006_TXT_0);
 			mensajes.checkMsgRecibidos(codeTC, doc);
 			Reporting.reportResultOK();
 

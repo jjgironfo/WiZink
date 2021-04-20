@@ -61,7 +61,7 @@ public class WZ_TC_0008 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0008_TXT_0);
 			mensajes.redactarMsg(codeTC, doc);
 			Reporting.reportResultOK();
 

@@ -10,6 +10,7 @@ import org.apache.velocity.runtime.parser.node.GetExecutor;
 import org.openqa.selenium.By;
 
 import general.Browser;
+import general.Final;
 import general.PropertyControl;
 import general.Reporting;
 import general.Utilidades;
@@ -116,7 +117,13 @@ public class Producto extends Utilidades{
 	 */
 	public void checkProductoOpciones(String codeTC, XWPFDocument doc) throws Exception {
 		
-
+			
+			if (codeTC == "WZ_TC_0024") {
+				Utilidades.addTextToDocument(doc, Final.TC_0024_TXT_1);
+			} else if (codeTC == "WZ_TC_0027") {
+				Utilidades.addTextToDocument(doc, Final.TC_0027_TXT_1);
+			}
+		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			
 			Browser.waitExt(20);
@@ -164,6 +171,8 @@ public class Producto extends Utilidades{
 	 */
 	public void checkProductoMovimientosHoy(String codeTC, XWPFDocument doc) throws Exception {
 		
+			Utilidades.addTextToDocument(doc, Final.TC_0019_TXT_1);
+		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitForElementScreen(btnDetalleProducto);
@@ -194,6 +203,8 @@ public class Producto extends Utilidades{
 	public void checkProductoExtractos(String codeTC, XWPFDocument doc) throws Exception {
 		
 
+			Utilidades.addTextToDocument(doc, Final.TC_0020_TXT_1);
+		
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitForElementScreen(btnDetalleProducto);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
@@ -251,6 +262,8 @@ public class Producto extends Utilidades{
 	 * 
 	 */
 	public void checkProductoExtractosGraficos(String codeTC, XWPFDocument doc) throws Exception {
+		
+			Utilidades.addTextToDocument(doc, Final.TC_0021_TXT_1);
 		
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(1);
@@ -310,6 +323,8 @@ public class Producto extends Utilidades{
 	 */
 	public void checkProductoExtractosXLS(String codeTC, XWPFDocument doc) throws Exception {
 	
+			Utilidades.addTextToDocument(doc, Final.TC_0022_TXT_1);
+		
 
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(1);
@@ -378,6 +393,8 @@ public class Producto extends Utilidades{
 	public void modificarTipoExtracto(String codeTC, XWPFDocument doc) throws Exception {
 	
 
+			Utilidades.addTextToDocument(doc, Final.TC_0023_TXT_1);
+		
 			// 1.3 Pulsar sobre la informacin de la tarjeta
 			Browser.waitExt(20);
 			Browser.waitForElementScreen(btnDetalleProducto);
@@ -522,6 +539,8 @@ public class Producto extends Utilidades{
 	 * 
 	 */
 	public void cambiarFormaPago(String codeTC, XWPFDocument doc) throws Exception {
+		
+			Utilidades.addTextToDocument(doc, Final.TC_0025_TXT_1);
 	
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitForElementScreen(btnDetalleProducto);
@@ -603,7 +622,8 @@ public class Producto extends Utilidades{
 	 */
 	public void  cambiarCuentaCargo(String codeTC, XWPFDocument doc) throws Exception {
 		
-
+			Utilidades.addTextToDocument(doc, Final.TC_0026_TXT_1);
+		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitExt(5);
 			Browser.waitForElementScreen(btnDetalleProducto);
@@ -742,6 +762,8 @@ public class Producto extends Utilidades{
 	 * 
 	 */
 	public void verNumCVVTarjeta(String codeTC, XWPFDocument doc) throws Exception {
+		
+			Utilidades.addTextToDocument(doc, Final.TC_0030_TXT_1);
 
 		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
@@ -845,6 +867,12 @@ public class Producto extends Utilidades{
 	 */
 	public void consultarPIN(String codeTC, XWPFDocument doc) throws Exception {
 		
+			if (codeTC == "WZ_TC_0028") {
+				Utilidades.addTextToDocument(doc, Final.TC_0028_TXT_1);
+			} else if (codeTC == "WZ_TC_0029") {
+				Utilidades.addTextToDocument(doc, Final.TC_0029_TXT_1);
+			}
+		
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitExt(20);
 			Browser.waitForElementScreen(btnDetalleProducto);
@@ -940,6 +968,7 @@ public class Producto extends Utilidades{
 	 */
 	public void bloquearTarjeta(String codeTC, XWPFDocument doc) throws Exception {
 		
+			Utilidades.addTextToDocument(doc, Final.TC_0031_TXT_1);
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro
 			Browser.waitExt(20);
@@ -999,6 +1028,8 @@ public class Producto extends Utilidades{
 	 * 
 	 */
 	public void reenviarTarjeta(String codeTC, XWPFDocument doc) throws Exception {
+		
+			Utilidades.addTextToDocument(doc, Final.TC_0032_TXT_1);
 		
 
 			// 1.3 Se pulsa sobre el producto asociado al cliente Visa Oro

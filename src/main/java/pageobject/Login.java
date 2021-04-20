@@ -95,10 +95,6 @@ public class Login extends Utilidades{
 	// Aceptar Cookies
 	private By btnAceptarCookie = By.id("cookieButton");
 	
-
-
-
-	
 	
 	
 	/**
@@ -200,6 +196,9 @@ public class Login extends Utilidades{
 		
 		nombreUsuario = PropertyControl.getLogProperty("usuario_" + actualEnv);
 		contrasenia = PropertyControl.getLogProperty("password_" + actualEnv);
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0002_TXT_1 + " " + nombreUsuario);
+		Utilidades.addTextToDocument(doc, Final.TC_0002_TXT_2);
 		
 		Browser.waitForElementScreen(btnPrivacidadLogin);
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
@@ -334,6 +333,8 @@ public class Login extends Utilidades{
 	 */
 	public void recordarUsuario(String codeTC, XWPFDocument doc) throws Exception {
 		
+		Utilidades.addTextToDocument(doc, Final.TC_0003_TXT_1);
+		
 		Browser.waitForElementScreen(btnPrivacidadLogin);
 
 		
@@ -369,6 +370,9 @@ public class Login extends Utilidades{
 			
 	}
 	public void recordarPassword(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0004_TXT_1);
+		
 		Browser.waitForElementScreen(btnPrivacidadLogin);
 		try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 			  e.printStackTrace(); }

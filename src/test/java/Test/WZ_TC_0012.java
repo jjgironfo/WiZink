@@ -62,7 +62,7 @@ public class WZ_TC_0012 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0012_TXT_0);
 			areaPersonal.cambiarDatosDemograficos(codeTC, doc);
 			Reporting.reportResultOK();
 

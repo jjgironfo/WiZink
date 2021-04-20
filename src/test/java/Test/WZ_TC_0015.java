@@ -62,7 +62,7 @@ public class WZ_TC_0015 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0015_TXT_0);
 			areaPersonal.cambiarPasswordPerfilAreaPersonal(pass, codeTC, doc);
 			Reporting.reportResultOK();
 

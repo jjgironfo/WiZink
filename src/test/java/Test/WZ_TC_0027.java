@@ -64,7 +64,7 @@ public class WZ_TC_0027 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0027_TXT_0);
 			producto.checkProductoOpciones(codeTC, doc);
 			producto.hacerIngreso(codeTC);
 			Reporting.reportResultOK();

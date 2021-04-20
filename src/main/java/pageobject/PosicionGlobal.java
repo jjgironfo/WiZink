@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 import general.Browser;
+import general.Final;
 import general.ProjectPaths;
 import general.Reporting;
 import general.Utilidades;
@@ -38,7 +39,12 @@ public class PosicionGlobal extends Utilidades{
 	 * 
 	 */
 	 public void checkFavoritos(String codeTC, XWPFDocument doc) throws Exception {
-	
+		 
+		 	if (codeTC == "WZ_TC_0017") {
+		 		Utilidades.addTextToDocument(doc, Final.TC_0017_TXT_1);
+		 	}else if(codeTC == "WZ_TC_0018") {
+		 		Utilidades.addTextToDocument(doc, Final.TC_0018_TXT_1);
+		 	}
 
 			// 1.3 En el apartado de Accesos directos pulsar sobre Añadir
 		 	Browser.waitForElementScreen(btnAnadirAccesoDirecto);
@@ -70,6 +76,7 @@ public class PosicionGlobal extends Utilidades{
 			Browser.waitForElementScreen(btnAnadirOtroAccesoDirectoPopUp);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
+			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 			Browser.waitExt(3);
 			Browser.clickElementSyncro(btnAnadirOtroAccesoDirectoPopUp);
 			Reporting.reportOK("OK - Se selecciona en el combo la opcion 'Consultar PIN'");
@@ -82,6 +89,7 @@ public class PosicionGlobal extends Utilidades{
 					Browser.waitForElementScreen(btnEliminarAccesoDirectoPopUp);
 					try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 						  e.printStackTrace(); }
+					Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 					Browser.clickElementSyncro(btnEliminarAccesoDirectoPopUp);
 				} catch (Exception e) {
 					Reporting.reportKO("KO - No existe el Boton Eliminar Favoritos");

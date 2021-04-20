@@ -63,7 +63,7 @@ public class WZ_TC_0016 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0016_TXT_0);
 			Reporting.reportOK("El login se ha realizado de manera correcta");
 			areaPersonal.checkDocumentacion(codeTC, doc);
 			

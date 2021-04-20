@@ -64,7 +64,7 @@ public class WZ_TC_0032 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0032_TXT_0);
 			producto.reenviarTarjeta(codeTC, doc);
 			Reporting.reportResultOK();
 

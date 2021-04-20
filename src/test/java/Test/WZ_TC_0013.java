@@ -62,7 +62,7 @@ public class WZ_TC_0013 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0013_TXT_0);
 			areaPersonal.cambiarFotoPerfilAreaPersonal(codeTC, doc);
 			Reporting.reportResultOK();
 

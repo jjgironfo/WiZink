@@ -66,7 +66,7 @@ public class WZ_TC_0017 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0017_TXT_0);
 			posicionGlobal.checkFavoritos(codeTC, doc);
 			Reporting.reportResultOK();
 

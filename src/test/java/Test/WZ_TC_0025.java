@@ -64,7 +64,7 @@ public class WZ_TC_0025 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0025_TXT_0);
 			producto.cambiarFormaPago(codeTC, doc);
 			Reporting.reportResultOK();
 

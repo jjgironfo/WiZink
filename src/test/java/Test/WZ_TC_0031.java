@@ -64,7 +64,7 @@ public class WZ_TC_0031 {
 			 */
 			
 			login.doLoginUsuarioPassword(userName, pass, codeTC);
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0031_TXT_0);
 			producto.bloquearTarjeta(codeTC, doc);
 			Reporting.reportResultOK();
 

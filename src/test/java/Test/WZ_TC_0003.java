@@ -56,7 +56,7 @@ public class WZ_TC_0003 {
 			 * Start test
 			 */
 			
-			doc = Utilidades.createWordDocument(codeTC);
+			doc = Utilidades.createWordDocument(codeTC + " - " + Final.TC_0003_TXT_0);
 			login.recordarUsuario(codeTC, doc);
 			Reporting.reportResultOK();
 

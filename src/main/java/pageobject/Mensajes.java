@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import general.Browser;
+import general.Final;
 import general.ProjectPaths;
 import general.Reporting;
 import general.Utilidades;
@@ -55,6 +56,9 @@ public class Mensajes extends Utilidades{
 	 * 
 	 */
 	public boolean checkMsgRecibidos(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0006_TXT_1);
+		
 		try {
 			Browser.waitExt(1);	
 			boolean resultado = false;
@@ -130,6 +134,9 @@ public class Mensajes extends Utilidades{
 	 * 
 	 */
 	public boolean checkMsgEnviados(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0007_TXT_1);
+		
 		try {
 			boolean resultado = false;
 			
@@ -224,6 +231,9 @@ public class Mensajes extends Utilidades{
 	 */
 	@Step("Redactar Mensaje")
 	public boolean redactarMsg(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0008_TXT_1);
+		
 		try {
 
 			boolean resultado = false;
@@ -294,6 +304,9 @@ public class Mensajes extends Utilidades{
 	 * 
 	 */
 	public boolean borrarMensajes(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0009_TXT_1);
+		
 		try {
 			boolean resultado = false;
 			

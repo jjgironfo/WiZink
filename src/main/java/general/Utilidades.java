@@ -223,6 +223,14 @@ public class Utilidades {
 		return doc;
 	}
 	
+	public static void addTextToDocument(XWPFDocument doc, String text) {
+		XWPFParagraph p = doc.createParagraph();
+		XWPFRun r = p.createRun();
+		String p1 = text;
+		r.setText(p1);
+		r.addBreak();
+	}
+	
 	public static void closeWordDocument(XWPFDocument doc, String codeTC) throws IOException {
 		FileOutputStream out = new FileOutputStream(codeTC + ".docx");
 		doc.write(out);

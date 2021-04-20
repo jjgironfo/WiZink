@@ -98,7 +98,7 @@ public class AreaPersonal extends Utilidades {
 	private By checkGenerales = By.xpath("//h4[text()='Generales']");
 	private By checkCredito = By.xpath("//h4[text()='Crédito']");
 	
-	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[text()='T&C Marketplace']");
+	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[contains(text(),'Marketplace')]");
 	private By btnContratoMulticanal = By.xpath("//a/p[text()='OLB - Contrato Multicanal']");
 	
 	
@@ -112,7 +112,7 @@ public class AreaPersonal extends Utilidades {
 	 */
 	public void checkAreaPersonal(String codeTC, XWPFDocument doc) throws Exception {
 
-			
+				Utilidades.addTextToDocument(doc, Final.TC_0010_TXT_1);
 				
 				boolean isDisabled = true;
 				boolean NIF = false;
@@ -176,6 +176,7 @@ public class AreaPersonal extends Utilidades {
 	 */
 	public void  checkDocumentacion(String codeTC, XWPFDocument doc) throws Exception{
 		
+		Utilidades.addTextToDocument(doc, Final.TC_0016_TXT_1);
 		
 				Browser.waitExt(1);
 				
@@ -270,6 +271,8 @@ public class AreaPersonal extends Utilidades {
 	 * 
 	 */
 	public void cambiarFotoPerfilAreaPersonal(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0013_TXT_1);
 		
 			boolean isDisabled = true;
 
@@ -368,6 +371,9 @@ public class AreaPersonal extends Utilidades {
 	 * 
 	 */
 	public boolean cambiarPasswordPerfilAreaPersonal(String contrasenia, String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0015_TXT_1);
+		
 		try {
 			Browser.waitExt(1);
 			boolean resultado = false;
@@ -466,6 +472,9 @@ public class AreaPersonal extends Utilidades {
 	 * 
 	 */
 	public boolean cambiarUsuarioPerfilAreaPersonal(String nombreUsuario, String contrasenia, String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0014_TXT_1);
+		
 		try {
 			boolean resultado = false;
 
@@ -664,6 +673,9 @@ public class AreaPersonal extends Utilidades {
 	 * 
 	 */
 	public boolean cambiarDatosPersonales(String telefono, String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0011_TXT_1);
+		
 		try {
 			boolean resultado = false;
 			telefono = PropertyControl.getLogProperty("telefono_" + actualEnv);
@@ -770,6 +782,9 @@ public class AreaPersonal extends Utilidades {
 	 * 
 	 */
 	public boolean cambiarDatosDemograficos(String codeTC, XWPFDocument doc) throws Exception {
+		
+		Utilidades.addTextToDocument(doc, Final.TC_0012_TXT_1);
+		
 		try {
 			boolean resultado = false;
 			String nombreVia = "Prueba123";
