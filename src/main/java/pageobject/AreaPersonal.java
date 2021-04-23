@@ -522,7 +522,7 @@ public class AreaPersonal extends Utilidades {
 						Browser.waitForElementScreen(txtUsuarioCambiarUsuario);
 						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 							  e.printStackTrace(); }
-						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, "digesp066");
+						Browser.writeTextSyncro(txtUsuarioCambiarUsuario, "EPP002");
 						
 						Browser.waitForElementScreen(txtPasswordCambiarUsuario);
 						try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
