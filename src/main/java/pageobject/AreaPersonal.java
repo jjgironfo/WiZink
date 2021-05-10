@@ -724,11 +724,11 @@ public class AreaPersonal extends Utilidades {
 
 			// 1.4 Pulsar el botn Cambiar Datos Personales
 			
-			Browser.waitForElementScreen(btnCambiarDatoDemografico);
+			Browser.waitForElementScreen(btnCambiarDatosAreaPersonal);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
-			Browser.clickElementSyncro(btnCambiarDatoDemografico);
+			Browser.clickElementSyncro(btnCambiarDatosAreaPersonal);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Personales'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Personales'");
 
