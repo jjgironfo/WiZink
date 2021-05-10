@@ -831,11 +831,11 @@ public class AreaPersonal extends Utilidades {
 			Reporting.reportOK("OK - Se pulsa en el botn 'rea Personal'");
 
 			// 1.4 Pulsar el botn Cambiar Datos Demogrficos
-			Browser.waitForElementScreen(btnCambiarDatosAreaPersonal);
+			Browser.waitForElementScreen(btnCambiarDatoDemografico);
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
-			Browser.clickElementSyncro(btnCambiarDatosAreaPersonal);
+			Browser.clickElementSyncro(btnCambiarDatoDemografico);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa sobre el link 'Cambiar Datos Demogrficos'", "");
 			Reporting.reportOK("OK - Se pulsa sobre el link 'Cambiar Datos Demogrficos'");
 
