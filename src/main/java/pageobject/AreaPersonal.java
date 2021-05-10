@@ -7,6 +7,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Properties;
@@ -15,6 +16,7 @@ import javax.swing.ImageIcon;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import general.Browser;
 import general.Final;
@@ -100,6 +102,13 @@ public class AreaPersonal extends Utilidades {
 	
 	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[contains(text(),'Marketplace')]");
 	private By btnContratoMulticanal = By.xpath("//a/p[text()='OLB - Contrato Multicanal']");
+	
+	//OS validator
+	private static String OS = System.getProperty("os.name").toLowerCase();
+    public static boolean IS_WINDOWS = (OS.indexOf("win") >= 0);
+    public static boolean IS_MAC = (OS.indexOf("mac") >= 0);
+    public static boolean IS_UNIX = (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
+    public static boolean IS_SOLARIS = (OS.indexOf("sunos") >= 0);
 	
 	
 
@@ -623,46 +632,70 @@ public class AreaPersonal extends Utilidades {
 	public static void uploadMediaByRobot(String fileName) {
 	    //File Need to be imported
 	    File file = new File(PathControl.getRootPath() + File.separator + fileName);
+	    System.out.println("File:" + PathControl.getRootPath().toString() + File.separator.toString() + fileName.toString());
 	    StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
+	    System.out.println("stringSelection:" + file.getAbsolutePath().toString());
 	    //Copy to clipboard
 	    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 
+    
 	    Robot robot = null;
 	    try {
 	        robot = new Robot();
 	    } catch (AWTException e) {
 	        e.printStackTrace();
 	    }
-
-	    // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-	    robot.keyPress(KeyEvent.VK_META);
-	    robot.keyPress(KeyEvent.VK_TAB);
-	    robot.keyRelease(KeyEvent.VK_META);
-	    robot.keyRelease(KeyEvent.VK_TAB);
-	    robot.delay(500);
-
-	    //Open Goto window
-	    robot.keyPress(KeyEvent.VK_META);
-	    robot.keyPress(KeyEvent.VK_SHIFT);
-	    robot.keyPress(KeyEvent.VK_G);
-	    robot.keyRelease(KeyEvent.VK_META);
-	    robot.keyRelease(KeyEvent.VK_SHIFT);
-	    robot.keyRelease(KeyEvent.VK_G);
-
-	    //Paste the clipboard value
-	    robot.keyPress(KeyEvent.VK_META);
-	    robot.keyPress(KeyEvent.VK_V);
-	    robot.keyRelease(KeyEvent.VK_META);
-	    robot.keyRelease(KeyEvent.VK_V);
-
-	    //Press Enter key to close the Goto window and Upload window
-	    robot.keyPress(KeyEvent.VK_ENTER);
-	    robot.keyRelease(KeyEvent.VK_ENTER);
 	    
-	    robot.delay(500);
+	    if (IS_WINDOWS) {
+	    	robot.mouseMove(100, 5);
+	    	robot.mousePress(InputEvent.BUTTON1_MASK);
+	    	robot.mouseRelease(InputEvent.BUTTON1_MASK );
+	    	robot.keyPress(KeyEvent.VK_CONTROL);
+	    	robot.keyPress(KeyEvent.VK_V);
+	    	robot.keyRelease(KeyEvent.VK_V);
+	    	robot.keyRelease(KeyEvent.VK_CONTROL);
+	    	robot.keyPress(KeyEvent.VK_ENTER);
+	    	robot.delay(200);
+	    	robot.keyRelease(KeyEvent.VK_ENTER);
+        } else if (IS_MAC) {
+        	// Cmd + Tab is needed since it launches a Java app and the browser looses focus
+    	    robot.keyPress(KeyEvent.VK_META);
+    	    robot.keyPress(KeyEvent.VK_TAB);
+    	    robot.keyRelease(KeyEvent.VK_META);
+    	    robot.keyRelease(KeyEvent.VK_TAB);
+    	    robot.delay(500);
+
+    	    //Open Goto window
+    	    robot.keyPress(KeyEvent.VK_META);
+    	    robot.keyPress(KeyEvent.VK_SHIFT);
+    	    robot.keyPress(KeyEvent.VK_G);
+    	    robot.keyRelease(KeyEvent.VK_META);
+    	    robot.keyRelease(KeyEvent.VK_SHIFT);
+    	    robot.keyRelease(KeyEvent.VK_G);
+
+    	    //Paste the clipboard value
+    	    robot.keyPress(KeyEvent.VK_META);
+    	    robot.keyPress(KeyEvent.VK_V);
+    	    robot.keyRelease(KeyEvent.VK_META);
+    	    robot.keyRelease(KeyEvent.VK_V);
+
+    	    //Press Enter key to close the Goto window and Upload window
+    	    robot.keyPress(KeyEvent.VK_ENTER);
+    	    robot.keyRelease(KeyEvent.VK_ENTER);
+    	    
+    	    robot.delay(500);
+    	    
+    	    robot.keyPress(KeyEvent.VK_ENTER);
+    	    robot.keyRelease(KeyEvent.VK_ENTER);
+        } else if (IS_UNIX) {
+        	System.out.println("Your OS is not support!!");
+        } else if (IS_SOLARIS) {
+        	System.out.println("Your OS is not support!!");
+        } else {
+            System.out.println("Your OS is not support!!");
+        }
+
 	    
-	    robot.keyPress(KeyEvent.VK_ENTER);
-	    robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 	
 	/**
