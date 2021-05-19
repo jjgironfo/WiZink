@@ -44,8 +44,8 @@ public class AreaPersonal extends Utilidades {
 	private By email = By.xpath("//h4[text()='Email']");
 	private By telefono = By.xpath("//h4[text()='Nombre y apellidos']");
 	private By telefonoField = By.id("phone");
-	private By btnCambiarMiUsuario = By.id("cambiarUsername");
-	private By btnCambiarMiPassword = By.id("cambiarContrasena");
+	private By btnCambiarMiUsuario = By.name("Cambiar mi usuario");
+	private By btnCambiarMiPassword = By.name("Cambiar mi contraseÃ±a");
 	private By btnActualizarDocumentoIdentidad = By.xpath("//a[text()='ACTUALIZAR DOCUMENTO DE IDENTIDAD']");
 	private By btnCambiarDatosAreaPersonal = By.id("personalDataChangeLink");
 	private By btnCambiarDatoFoto = By.id("changePhoto");
