@@ -56,6 +56,7 @@ public class Login extends Utilidades{
 	private By btnTarjetas = By.xpath("//*[@class='owl-item active']");
 	private By btnContacto = By.id("contactLink");
 	private By btnInforLegal = By.id("legalInformationLink");
+	private By btnCloseMantenteAlerta = By.xpath("//a[text()='Close']");
 	
 	// Objetos Registro
 	private By btnRegistrateAhora = By.id("goToUserRegisterLink");
@@ -179,6 +180,11 @@ public class Login extends Utilidades{
 					Browser.clickElementSyncro(botonSiCondiciones);
 					Reporting.reportOK("OK - Aceptamos las condiciones de uso");
 				}
+				
+				if(Browser.checkObjeto(btnCloseMantenteAlerta)){
+					Browser.waitForElementScreen(btnCloseMantenteAlerta);
+					Browser.clickElementSyncro(btnCloseMantenteAlerta);
+				}
 			//}
 			
 	}
@@ -269,6 +275,13 @@ public class Login extends Utilidades{
 					Browser.clickElementSyncro(botonSiCondiciones);
 					Reporting.reportOK("OK - Aceptamos las condiciones de uso");
 				}
+				
+				if(Browser.checkObjeto(btnCloseMantenteAlerta)){
+					Browser.waitForElementScreen(btnCloseMantenteAlerta);
+					Browser.clickElementSyncro(btnCloseMantenteAlerta);
+				}
+				
+				
 			//}
 			
 	}
