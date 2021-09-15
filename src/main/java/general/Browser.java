@@ -73,6 +73,7 @@ public class Browser {
 		System.out.println("actualEnv:" + actualEnv);
 		
 		rutaPath = PathControl.getRootPath();
+		System.out.println("metodo 1");
 		
 		// disable selenium log output 
 		java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
@@ -84,6 +85,7 @@ public class Browser {
 					// pendiente de implementar
 				}else {
 					driver = startChrome();
+					System.out.println("metodo 3");
 				}
 				break;
 			case Final.IEXPLORER:
@@ -148,8 +150,12 @@ public class Browser {
 		// property
 		if (IS_WINDOWS) {
 			System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver.exe");
+			
         } else if (IS_MAC) {
+        	
+        	
         	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
+        	System.out.println("metodo 2");
         } else if (IS_UNIX) {
         	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
         } else if (IS_SOLARIS) {
@@ -161,15 +167,25 @@ public class Browser {
 		
 		/** Chrome Options */
 		ChromeOptions options = new ChromeOptions();
+		
 		HashMap<String, String> datos = new HashMap<>();
 		// Directorio por defecto para las descargas
 		datos.put("download.default_directory", PathControl.getRootPath());
+		
 		// Set options
 		options.setExperimentalOption("prefs", datos);
+		options.addArguments("disable-gpu");
+		options.addArguments("no-sandbox");
+				
 		options.addArguments("ignore-certificate-errors");
+		
+		
+
 
 		// initialize driver
+		
 		driver = new ChromeDriver(options);
+		
 		return driver;
 
 	}
