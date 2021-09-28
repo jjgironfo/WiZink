@@ -31,15 +31,12 @@ public class WZ_TC_0012 {
 
 		String codeTC = Browser.getActualTC(Thread.currentThread().getStackTrace()[Final.ONE].getClassName());
 		XWPFDocument doc = null;
-		System.out.println("1");
 
 		try {
 
 			// We launch the Test case
 			Reporting.initializeReporting(codeTC);
-			System.out.println("2");
 			Reporting.reportOK("*** EJECUCIÓN PRUEBA: " + codeTC + " ***");
-			System.out.println("3");
 			/**
 			 * INITIALIZE THE OBJECTS
 			 * 
@@ -47,12 +44,10 @@ public class WZ_TC_0012 {
 
 			Login login = new Login();
 			AreaPersonal areaPersonal = new AreaPersonal();
-			System.out.println("4");
 			/**
 			 *  INITIALIZE BROWSER
 			*/
 			Browser.start();
-			System.out.println("5");
 			/**
 			 * NAVIGATE TO URL
 			 */
