@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import general.Browser;
 import general.Final;
@@ -33,6 +34,7 @@ public class AreaPersonal extends Utilidades {
 
 	// Objetos Area Personal
 	private By btnAreaPersonal = By.id("userDataHeaderLink");
+	private By btnDatosPersonales = By.id("customerLink1");
 	
 	// Check Pantalla Area Personal
 	private By txtNombreApellidos = By.xpath("//h4[text()='Nombre y apellidos']");
@@ -133,6 +135,11 @@ public class AreaPersonal extends Utilidades {
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
 				Browser.clickElementSyncro(btnAreaPersonal);
+				//Se pone esta línea para hacer click en DATOS PERSONALES ya que a partir del 06-10-2021 no entra directamente a ese apartado
+				Browser.waitForElementScreen(btnDatosPersonales);
+				WebElement element = driver.findElement(btnDatosPersonales);
+				JavascriptExecutor executor = (JavascriptExecutor)driver;
+				executor.executeScript("arguments[0].click();", element);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
@@ -193,8 +200,14 @@ public class AreaPersonal extends Utilidades {
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
 				Browser.clickElementSyncro(btnAreaPersonal);
+				//Se pone esta línea para hacer click en DATOS PERSONALES ya que a partir del 06-10-2021 no entra directamente a ese apartado
+				Browser.waitForElementScreen(btnDatosPersonales);
+				WebElement element = driver.findElement(btnDatosPersonales);
+				JavascriptExecutor executor = (JavascriptExecutor)driver;
+				executor.executeScript("arguments[0].click();", element);
 				
 				Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
+				
 
 				Browser.waitExt(5);
 				Browser.waitForElementScreen(btnDocumentacion);
@@ -290,6 +303,11 @@ public class AreaPersonal extends Utilidades {
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
+			//Se pone esta línea para hacer click en DATOS PERSONALES ya que a partir del 06-10-2021 no entra directamente a ese apartado
+			Browser.waitForElementScreen(btnDatosPersonales);
+			WebElement element = driver.findElement(btnDatosPersonales);
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", element);
 			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
 			// 1.4 Pulsar sobre el link 'Cambiar' de la Foto de Perfil
@@ -392,6 +410,11 @@ public class AreaPersonal extends Utilidades {
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
+			//Se pone esta línea para hacer click en DATOS PERSONALES ya que a partir del 06-10-2021 no entra directamente a ese apartado
+			Browser.waitForElementScreen(btnDatosPersonales);
+			WebElement element = driver.findElement(btnDatosPersonales);
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", element);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 			Reporting.reportOK("OK - Se pulsa en el botón 'Área Personal'");
 
@@ -492,6 +515,11 @@ public class AreaPersonal extends Utilidades {
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Browser.clickElementSyncro(btnAreaPersonal);
+			//Se pone esta línea para hacer click en DATOS PERSONALES ya que a partir del 06-10-2021 no entra directamente a ese apartado
+			Browser.waitForElementScreen(btnDatosPersonales);
+			WebElement element = driver.findElement(btnDatosPersonales);
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", element);
 			//egea.reportaTraza(testCase, "INFO", "OK", "Se pulsa en el botn 'rea Personal'", "");
 			Reporting.reportOK("OK - Se pulsa en el botn Área Personal'");
 

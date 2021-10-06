@@ -57,6 +57,7 @@ public class Login extends Utilidades{
 	private By btnContacto = By.id("contactLink");
 	private By btnInforLegal = By.id("legalInformationLink");
 	private By btnCloseMantenteAlerta = By.xpath("//a[text()='Close']");
+	private By btnCloseActualizarDatos = By.xpath("//*[@id='economicDataPopUp']/div/div/div/button/span");
 	
 	// Objetos Registro
 	private By btnRegistrateAhora = By.id("goToUserRegisterLink");
@@ -185,6 +186,11 @@ public class Login extends Utilidades{
 					Browser.waitForElementScreen(btnCloseMantenteAlerta);
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
 				}
+				
+				if(Browser.checkObjeto(btnCloseActualizarDatos)){
+					Browser.waitForElementScreen(btnCloseActualizarDatos);
+					Browser.clickElementSyncro(btnCloseActualizarDatos);
+				}
 			//}
 			
 	}
@@ -279,6 +285,11 @@ public class Login extends Utilidades{
 				if(Browser.checkObjeto(btnCloseMantenteAlerta)){
 					Browser.waitForElementScreen(btnCloseMantenteAlerta);
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
+				}
+				
+				if(Browser.checkObjeto(btnCloseActualizarDatos)){
+					Browser.waitForElementScreen(btnCloseActualizarDatos);
+					Browser.clickElementSyncro(btnCloseActualizarDatos);
 				}
 				
 				
