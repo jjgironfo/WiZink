@@ -2,6 +2,9 @@ package pageobject;
 
 import static general.Browser.driver;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
 //import static Com.Funciones.driver;
 
 import java.util.Properties;
@@ -58,6 +61,7 @@ public class Login extends Utilidades{
 	private By btnInforLegal = By.id("legalInformationLink");
 	private By btnCloseMantenteAlerta = By.xpath("//a[text()='Close']");
 	private By btnCloseActualizarDatos = By.xpath("//*[@id='economicDataPopUp']/div/div/div/button/span");
+	private By btnCloseCambiarTarjetaWizinkMe = By.xpath("//*[@id='minervaGotoPopUp']//*[@aria-label='Close']");
 	
 	// Objetos Registro
 	private By btnRegistrateAhora = By.id("goToUserRegisterLink");
@@ -170,7 +174,7 @@ public class Login extends Utilidades{
 				try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 					  e.printStackTrace(); }
 				Browser.waitForElementScreen(logoWizink);
-
+				Reporting.reportOK("1");
 				//Se comprueba si aparece la pantalla de aceptar condiciones
 				//https://wizinkprees/clientes/contrato_login"
 				if(Browser.checkObjeto(botonCondiciones)) {
@@ -181,16 +185,23 @@ public class Login extends Utilidades{
 					Browser.clickElementSyncro(botonSiCondiciones);
 					Reporting.reportOK("OK - Aceptamos las condiciones de uso");
 				}
-				
+				Reporting.reportOK("2");
 				if(Browser.checkObjeto(btnCloseMantenteAlerta)){
 					Browser.waitForElementScreen(btnCloseMantenteAlerta);
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
 				}
-				
-				if(Browser.checkObjeto(btnCloseActualizarDatos)){
-					Browser.waitForElementScreen(btnCloseActualizarDatos);
-					Browser.clickElementSyncro(btnCloseActualizarDatos);
+				/*
+				 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos)){
+				 * Browser.waitForElementScreen(btnCloseActualizarDatos);
+				 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
+				 */
+				Reporting.reportOK("4");
+				if(Browser.checkObjeto(btnCloseCambiarTarjetaWizinkMe)){
+					Browser.waitForElementScreen(btnCloseCambiarTarjetaWizinkMe);
+					Browser.clickElementSyncro(btnCloseCambiarTarjetaWizinkMe);
 				}
+		
+				
 			//}
 			
 	}
@@ -270,7 +281,7 @@ public class Login extends Utilidades{
 					  e.printStackTrace(); }
 				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
 				Browser.waitForElementScreen(logoWizink);
-
+				Reporting.reportOK("1");
 				//Se comprueba si aparece la pantalla de aceptar condiciones
 				//https://wizinkprees/clientes/contrato_login"
 				if(Browser.checkObjeto(botonCondiciones)) {
@@ -281,17 +292,24 @@ public class Login extends Utilidades{
 					Browser.clickElementSyncro(botonSiCondiciones);
 					Reporting.reportOK("OK - Aceptamos las condiciones de uso");
 				}
-				
+				Reporting.reportOK("2");
 				if(Browser.checkObjeto(btnCloseMantenteAlerta)){
 					Browser.waitForElementScreen(btnCloseMantenteAlerta);
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
 				}
+				/*
+				 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos) &&
+				 * Browser.isElementDisplayed(btnCloseActualizarDatos)){
+				 * Browser.waitForElementScreen(btnCloseActualizarDatos);
+				 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
+				 */
+				Reporting.reportOK("4");
+				if(Browser.checkObjeto(btnCloseCambiarTarjetaWizinkMe)){
+					Browser.waitForElementScreen(btnCloseCambiarTarjetaWizinkMe);
+					Browser.clickElementSyncro(btnCloseCambiarTarjetaWizinkMe); }
+		
 				
-				if(Browser.checkObjeto(btnCloseActualizarDatos)){
-					Browser.waitForElementScreen(btnCloseActualizarDatos);
-					Browser.clickElementSyncro(btnCloseActualizarDatos);
-				}
-				
+		 
 				
 			//}
 			
