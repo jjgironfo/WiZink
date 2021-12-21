@@ -60,8 +60,8 @@ public class Login extends Utilidades{
 	private By btnContacto = By.id("contactLink");
 	private By btnInforLegal = By.id("legalInformationLink");
 	private By btnCloseMantenteAlerta = By.xpath("//a[text()='Close']");
-	private By btnCloseActualizarDatos = By.xpath("//*[@id='economicDataPopUp']/div/div/div/button/span");
-	private By btnCloseCambiarTarjetaWizinkMe = By.xpath("//*[@id='minervaGotoPopUp']//*[@aria-label='Close']");
+	private By btnCloseActualizarDatos = By.xpath("//*[@id='economicDataPopUpClose']//*[text()='×']");
+	private By btnCloseCambiarTarjetaWizinkMe = By.xpath("//*[@id='minervaGotoPopUp']//*[text()='×']");
 	
 	// Objetos Registro
 	private By btnRegistrateAhora = By.id("goToUserRegisterLink");
@@ -190,11 +190,13 @@ public class Login extends Utilidades{
 					Browser.waitForElementScreen(btnCloseMantenteAlerta);
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
 				}
-				/*
-				 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos)){
-				 * Browser.waitForElementScreen(btnCloseActualizarDatos);
-				 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
-				 */
+				
+		/*
+		 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos)){
+		 * Browser.waitForElementScreen(btnCloseActualizarDatos);
+		 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
+		 */
+				 
 				Reporting.reportOK("4");
 				if(Browser.checkObjeto(btnCloseCambiarTarjetaWizinkMe)){
 					Browser.waitForElementScreen(btnCloseCambiarTarjetaWizinkMe);
@@ -297,14 +299,17 @@ public class Login extends Utilidades{
 					Browser.waitForElementScreen(btnCloseMantenteAlerta);
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
 				}
-				/*
-				 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos) &&
-				 * Browser.isElementDisplayed(btnCloseActualizarDatos)){
-				 * Browser.waitForElementScreen(btnCloseActualizarDatos);
-				 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
-				 */
+				
+		/*
+		 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos) &&
+		 * Browser.isElementDisplayed(btnCloseActualizarDatos)){
+		 * Browser.waitForElementScreen(btnCloseActualizarDatos);
+		 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
+		 */
+				 
 				Reporting.reportOK("4");
-				if(Browser.checkObjeto(btnCloseCambiarTarjetaWizinkMe)){
+				if(Browser.checkObjeto(btnCloseCambiarTarjetaWizinkMe) &&
+					Browser.isElementDisplayed(btnCloseCambiarTarjetaWizinkMe)){
 					Browser.waitForElementScreen(btnCloseCambiarTarjetaWizinkMe);
 					Browser.clickElementSyncro(btnCloseCambiarTarjetaWizinkMe); }
 		

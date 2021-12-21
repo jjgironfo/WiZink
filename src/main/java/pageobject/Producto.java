@@ -1015,8 +1015,8 @@ public class Producto extends Utilidades{
 			try { this.takeRemoteScreenshot(driver, codeTC); } catch(Exception e){
 				  e.printStackTrace(); }
 			Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
-			Browser.clickElementSyncro(confirmar);
-			Reporting.reportOK("OK - Pulsamos en 'Aceptar para finalizar el envio'");
+			//Browser.clickElementSyncro(confirmar);
+			//Reporting.reportOK("OK - Pulsamos en 'Aceptar para finalizar el envio'");
 
 
 	}
