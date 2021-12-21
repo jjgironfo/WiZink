@@ -71,7 +71,6 @@ public class WZ_TC_0020 {
 		} catch (Exception e) {
 			Log.info(e);
 			Reporting.reportResultKO();
-			
 		} finally {
 			Utilidades.closeWordDocument(doc, codeTC);
 			Browser.stopDriver();
