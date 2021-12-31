@@ -1,5 +1,7 @@
 package general;
 
+import static general.Browser.driver;
+
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -234,7 +236,18 @@ public class Utilidades {
 	public static void closeWordDocument(XWPFDocument doc, String codeTC) throws IOException {
 		if ( doc!=null) {
 			
-
+			try {
+				Utilidades.addImagesToWordDocument(doc, Utilidades.fileGetRemoteScreenshot(driver));
+			} catch (InvalidFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			String wordDir = "." + SLASH + "wordReport";
 			File theDir = new File(wordDir);
 			if (!theDir.exists()){

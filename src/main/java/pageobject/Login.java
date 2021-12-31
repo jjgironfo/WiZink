@@ -191,11 +191,12 @@ public class Login extends Utilidades{
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
 				}
 				
-		/*
-		 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos)){
-		 * Browser.waitForElementScreen(btnCloseActualizarDatos);
-		 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
-		 */
+		
+				  Reporting.reportOK("3");
+				  if(Browser.checkObjeto(btnCloseActualizarDatos)){
+				  Browser.waitForElementScreen(btnCloseActualizarDatos);
+				  Browser.clickElementSyncro(btnCloseActualizarDatos); }
+		 
 				 
 				Reporting.reportOK("4");
 				if(Browser.checkObjeto(btnCloseCambiarTarjetaWizinkMe)){
@@ -300,12 +301,13 @@ public class Login extends Utilidades{
 					Browser.clickElementSyncro(btnCloseMantenteAlerta);
 				}
 				
-		/*
-		 * Reporting.reportOK("3"); if(Browser.checkObjeto(btnCloseActualizarDatos) &&
-		 * Browser.isElementDisplayed(btnCloseActualizarDatos)){
-		 * Browser.waitForElementScreen(btnCloseActualizarDatos);
-		 * Browser.clickElementSyncro(btnCloseActualizarDatos); }
-		 */
+		
+			  Reporting.reportOK("3");
+			  if(Browser.checkObjeto(btnCloseActualizarDatos) &&
+			  Browser.isElementDisplayed(btnCloseActualizarDatos)){
+			  Browser.waitForElementScreen(btnCloseActualizarDatos);
+			  Browser.clickElementSyncro(btnCloseActualizarDatos); }
+		 
 				 
 				Reporting.reportOK("4");
 				if(Browser.checkObjeto(btnCloseCambiarTarjetaWizinkMe) &&
