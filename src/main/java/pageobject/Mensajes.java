@@ -35,7 +35,7 @@ public class Mensajes extends Utilidades{
 	
 	// Redactar Mensaje
 	private By desplegableAsuntoMsg = By.id("subject-messageSelectBoxIt");
-	private By desplegableOpcionConsultaTarjetaMsg = By.xpath("//a[text()='Consulta Tarjeta']");
+	private By desplegableOpcionConsultaTarjetaMsg = By.xpath("//a[text()='Consultar Tarjeta']");
 	private By textAreaMsg = By.id("msg-text");
 	private By btnEnviarMsg = By.id("sendNewMsgButton");
 	private By checkMensajeEnvioMsg = By.id("messageSentDiv");
