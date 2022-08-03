@@ -102,7 +102,8 @@ public class AreaPersonal extends Utilidades {
 	private By checkGenerales = By.xpath("//h4[text()='Generales']");
 	private By checkCredito = By.xpath("//h4[text()='Crédito']");
 	
-	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[contains(text(),'Marketplace')]");
+//	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[contains(text(),'Marketplace')]");
+	private By btnTerminosYCondicionesGeneral = By.xpath("//a/p[contains(text(),'Transparencia')]");
 	private By btnContratoMulticanal = By.xpath("//a/p[text()='OLB - Contrato Multicanal']");
 	
 	//OS validator
