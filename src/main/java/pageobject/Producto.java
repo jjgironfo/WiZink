@@ -1079,13 +1079,15 @@ public class Producto extends Utilidades{
 				/*System.out.println("se compara con:" + "PB PRUEBA123 1, B 8 3 A\n" + 
 						"09007 BURGOS\n" + 
 						"BURGOS - ESP");*/
-				direccion = driver.findElement(txtDirecciónEnvio).getText().contains("CL ESCORIAL 00069,\n" + 
+				direccion = driver.findElement(txtDirecciónEnvio).getText().contains( 
 						"28950 MORALEJA ENMEDIO\n" + 
 						"MADRID - ESP");
 				if(direccion) {
 					Reporting.reportOK("OK - Verificamos la dirección de envío");
 				} else {
-					Reporting.reportKO("KO - Verificamos la dirección de envío");
+					Reporting.reportKO("KO - Verificamos la dirección de envío. Dirección actual: " + driver.findElement(txtDirecciónEnvio).getText() + "\n- Dirección esperada: " + 
+							"28950 MORALEJA ENMEDIO\n" + 
+							"MADRID - ESP");
 				}
 				break;
 			default:

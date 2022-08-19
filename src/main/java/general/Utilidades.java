@@ -253,7 +253,7 @@ public class Utilidades {
 			if (!theDir.exists()){
 			    theDir.mkdirs();
 			}
-			FileOutputStream out = new FileOutputStream(wordDir + SLASH + codeTC + ".docx");
+			FileOutputStream out = new FileOutputStream(wordDir + SLASH + System.getProperty("entorno") + "-" + codeTC + ".docx");
 			doc.write(out);
 			out.close();
 			doc.close();
@@ -329,7 +329,7 @@ public class Utilidades {
 	            Session session = Session.getDefaultInstance(props, null);
 	 
 	            Store store = session.getStore("imaps");
-	            store.connect("smtp.gmail.com", "testing.mobile.cex@gmail.com", "Everis01");
+	            store.connect("smtp.gmail.com", "testing.mobile.cex@gmail.com", "hhpzfjivnipfkowr");
 	 
 	            Folder inbox = store.getFolder("inbox");
 	            inbox.open(Folder.READ_ONLY);
