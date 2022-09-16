@@ -24,4 +24,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean test -Dsurefire.suiteXmlFiles=Test2.xml,Test3.xml,Test4.xml,Test5.xml,Test6.xml,Test7.xml,Test8.xml,Test9.xml,Test10.xml,Test11.xml,Test12.xml,Test13.xml,Test14.xml,Test15.xml,Test16.xml,Test17.xml,Test18.xml,Test19.xml,Test20.xml,Test21.xml,Test22.xml,Test23.xml,Test24.xml,Test25.xml,Test26.xml,Test27.xml,Test28.xml,Test29.xml,Test30.xml,Test31.xml,Test32.xml -Dentorno=PRE
+      run: mvn clean test -Dsurefire.suiteXmlFiles=Test2.xml -Dentorno=PRE
