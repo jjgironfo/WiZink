@@ -154,6 +154,8 @@ public class Browser {
         	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
         } else if (IS_SOLARIS) {
         	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
+		} else if (IS_UBUNTU) {
+        	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"bin" + File.separator + "chromedriver");
         } else {
             System.out.println("Your OS is not support!!");
         }
