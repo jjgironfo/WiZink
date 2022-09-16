@@ -1,0 +1,26 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: clean test -Dsurefire.suiteXmlFiles=Test2.xml,Test3.xml,Test4.xml,Test5.xml,Test6.xml,Test7.xml,Test8.xml,Test9.xml,Test10.xml,Test11.xml,Test12.xml,Test13.xml,Test14.xml,Test15.xml,Test16.xml,Test17.xml,Test18.xml,Test19.xml,Test20.xml,Test21.xml,Test22.xml,Test23.xml,Test24.xml,Test25.xml,Test26.xml,Test27.xml,Test28.xml,Test29.xml,Test30.xml,Test31.xml,Test32.xml -Dentorno=PRE
