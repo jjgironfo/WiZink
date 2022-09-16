@@ -57,7 +57,7 @@ public class Browser {
     public static boolean IS_MAC = (OS.indexOf("mac") >= 0);
     public static boolean IS_UNIX = (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
     public static boolean IS_SOLARIS = (OS.indexOf("sunos") >= 0);
-
+	public static boolean IS_UBUNTU = (OS.indexOf("ubu") >= 0);
 	
 	/**
 	 * Initialize Browser, Driver and the variables of this class
@@ -154,6 +154,8 @@ public class Browser {
         	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
         } else if (IS_SOLARIS) {
         	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"lib" + File.separator + "chromedriver");
+		} else if (IS_UBUNTU) {
+        	System.setProperty("webdriver.chrome.driver", PathControl.getRootPath() + File.separator +"bin" + File.separator + "chromedriver");
         } else {
             System.out.println("Your OS is not support!!");
         }
